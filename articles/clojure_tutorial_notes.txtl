@@ -1,0 +1,563 @@
+---
+title: Clojure tutorial reading notes
+tag:   reading notes
+date:  Mar 03 2012
+---
+
+= Questions
+
+What can you safely omit?
+* macros
+* multimethods
+* protocols
+* concurrency
+* Java interop (come back later for this)
+* 
+= Action points
+find a clojure repl with syntax highlighting
+=> None
+
+check out clojure blog posts (esp relevance)
+
+= Notes
+
+From http://java.ociweb.com/mark/clojure/article.html
+
+Overview
+* Clojure provides three ways of safely sharing mutable data, all of which
+* use mutable references to immutable data. 
+*    Refs provide synchronous access to multiple pieces of shared data
+*    ("coordinated") by using Software Transactional Memory (STM). 
+*    Atoms provide synchronous access to a single piece of shared data. 
+*    Agents provide asynchronous access to a single piece of shared data.
+* 
+* ; When a set is used as a function, it returns a boolean ; that indicates
+* whether the argument is in the set.
+* 
+*    (def vowel? (set "aeiou")) 
+*    (vowel? \x) => nil
+* 
+* Clojure doesn't support variables. Instead it provides bindings which
+* are like variables that are not intended to be changed after a value is
+* assigned. There are global bindings, thread-local bindings, bindings that
+* are local to a function, and bindings that are local to a given form.
+* 
+*    The def special form creates a global binding and optionally gives it a
+*    "root value" that is visible in all threads unless a thread-local value
+*    is assigned. def can also be used to change the root value of an existing
+*    binding. However, doing this is frowned upon because it sacrifices the
+*    benefits of working with immutable data.
+* 
+*    The let special form creates bindings that are local to that form.
+* 
+*    The binding macro is similar to let, but it temporarily gives new,
+*    thread-local values to existing global bindings. The new values are seen
+*    inside that form and also in functions called from inside it. When the
+*    binding form exits, the bindings revert to their previous values.
+* 
+*    ; The next line uses an anonymous function that adds 3 to its argument.
+*    (map #(+ % 3) [2 4 7]) 
+*    ; -> (5 7 10) (map + [2 4 7] [5 6] [1 2 3 4]) 
+*    ; adds corresponding items -> (8 12)
+* 
+* The apply function returns the result of a given function when all the items
+* in a given collection are used as arguments. For example:
+
+* (apply + [2 4 7]); -> 13
+
+Collection retrieval
+
+* (def stooges ["Moe" "Larry" "Curly" "Shemp"]) (first stooges) ; -> "Moe"
+* (second stooges) ; -> "Larry" (last stooges) ; -> "Shemp" (nth stooges 2)
+* ; indexes start at 0 -> "Curly"
+
+* (next stooges) ; -> ("Larry" "Curly" "Shemp") (butlast stooges) ; -> ("Moe"
+* "Larry" "Curly") (drop-last 2 stooges) ; -> ("Moe" "Larry") ; Get names
+* containing more than three characters.  (filter #(> (count %) 3) stooges)
+* ; -> ("Larry" "Curly" "Shemp") (nthnext stooges 2) ; -> ("Curly" "Shemp")
+
+* (every? #(instance? String %) stooges) ; -> true
+* (not-every? #(instance? String %) stooges) ; -> false (some
+* #(instance? Number %) stooges) ; -> nil (not-any? #(instance? Number %)
+* stooges) ; -> true
+
+Lists
+* are ordered collections of items. They are ideal when new items will be
+* added to or removed from the front (constant-time). They are not efficient
+* (linear time) for finding items by index (using nth)
+
+* (def stooges (list "Moe" "Larry" "Curly")) 
+* (def stooges 
+*    (quote ("Moe" "Larry" "Curly"))) 
+* (def stooges '("Moe" "Larry" "Curly"))
+
+* (some #(= % "Moe") stooges)  ; -> true 
+* (some #(= % "Mark") stooges) ; -> nil
+
+* ; Another approach is to create a set from the list ; and then use the
+* contains? function on the set as follows.  
+* 
+* (contains? (set stooges) "Moe") ; -> true
+
+* into creates a new list that contains all the items in two lists. For
+* example:
+
+*    (def kids-of-mike '("Greg" "Peter" "Bobby")) 
+*    (def kids-of-carol '("Marcia" "Jan" "Cindy")) 
+*    (def brady-bunch (into kids-of-mike kids-of-carol)) 
+*    (println brady-bunch) 
+*    ; -> (Cindy Jan Marcia Greg Peter Bobby)
+
+* peek and pop functions can be used to treat a list as a stack
+
+Vectors
+* are also ordered collections of items.
+
+* They are ideal when new items will be added to or removed from the back
+* (constant-time). This means that using conj is more efficient than cons
+* for adding items.
+
+* They are efficient (constant time) for finding (using nth) or changing
+* (using assoc) items by index. Function definitions specify their parameter
+* list using a vector.
+
+* (def stooges (vector "Moe" "Larry" "Curly")) 
+* (def stooges ["Moe" "Larry" "Curly"])
+
+* (get stooges 1 "unknown")
+
+* assoc creates a new vector where the item specified by an index is
+* replaced. 
+*    If the index is equal to the number of items in the vector,
+*    a new item is added to the end. 
+*    If it is greater than the number of items
+*    in the vector, an IndexOutOfBoundsException is thrown
+
+*    (assoc stooges 2 "Shemp")
+
+Sets
+* Collection of unique items
+
+* (def more-stooges (conj stooges "Shemp")) 
+* ; -> #{"Moe" "Larry" "Curly" "Shemp"} 
+* 
+* (def less-stooges (disj more-stooges "Curly")) 
+* ; -> #{"Moe" "Larry" "Shemp"}
+
+Maps
+* Hash/dict
+
+* (def popsicle-map
+*    {:red :cherry, :green :apple, :purple :grape})
+
+* (def popsicle-map
+*    (sorted-map :red :cherry, :green :apple, :purple :grape))
+
+* (doseq [[color flavor] popsicle-map]
+*    (println
+*       (str "The flavor of " (name color) " popsicles is " (name flavor)
+*       ".")))
+
+* Easily nested
+*    (def person {
+*       :name "Mark Volkmann" :address {
+*          :street "644 Glen Summit" :city "St. Charles" :state "Missouri"
+*          :zip 63304 }
+*       :employer {
+*          :name "Object Computing, Inc."  :address { :street "12140 Woodcrest
+*          Executive Drive, Suite 250" :city "Creve Coeur" :state "Missouri"
+*          :zip 63141}}})
+
+Struct maps
+* (defstruct car-struct :make :model :year :color)
+
+* (struct car-struct "Toyota" "Prius" 2009))
+
+Functions
+* (defn parting
+*    "returns a String parting" [name] (str "Goodbye, " name)) ; concatenation
+
+*    (println (parting "Mark")) ; -> Goodbye, Mark
+
+* Functions defined with the defn- macro are private. This means they are
+* only visible in the namespace in which they are defined.
+
+* Other macros that produce private definitions, such as defmacro- and
+* defstruct-,
+
+* Functions can take a variable number of parameters. Optional parameters
+* must appear at the end. They are gathered into a list by adding an
+* ampersand and a name for the list at the end of the parameter list.
+
+* (defn power [base & exponents]
+*    ; Using java.lang.Math static method pow. 
+*    (reduce #(Math/pow %1 %2) base exponents))
+
+* (power 2 3 4) ; 2 to the 3rd = 8; 8 to the 4th = 4096
+
+* Function definitions can contain more than one parameter list and
+* corresponding body.
+
+* Each parameter list must contain a different number of parameters. This
+* supports overloading functions based on arity.
+
+* Often it is useful for a body to call the same function with a different
+* number of arguments in order to provide default values for some of
+* them. For example:
+
+*    (defn parting
+*       "returns a String parting in a given language"
+*       
+*       ([] (parting "World"))
+*       ([name] (parting name "en"))
+*       ([name language])
+
+*       ; condp is similar to a case statement in other languages.  ; It is
+*       described in more detail later.  ; It is used here to take different
+*       actions based on whether the ; parameter "language" is set to "en",
+*       "es" or something else.  
+*       
+*       (condp = language
+*          "en" (str "Goodbye, " name) 
+*          "es" (str "Adios, " name)
+
+*          (throw (IllegalArgumentException.
+*             (str "unsupported language " language))))))
+
+*    (println (parting)) ; -> Goodbye, World 
+*    (println (parting "Mark")) ; -> Goodbye, Mark 
+*    (println (parting "Mark" "es")) ; -> Adios, Mark
+*    (println (parting "Mark", "xy")) ; -> java.lang.IllegalArgumentException:
+*    unsupported language xy
+
+* (def years [1940 1944 1961 1985 1987]) (filter #(even? %) years)
+
+* Multimethods
+
+*    (defmulti what-am-i class) ; class is the dispatch function
+* 
+*    (defmethod what-am-i Number [arg] (println arg "is a Number")) 
+*    (defmethod what-am-i String [arg] (println arg "is a String")) 
+*    (defmethod what-am-i :default [arg] (println arg "is something else"))
+* 
+*    (what-am-i 19) ; -> 19 is a Number 
+*    (what-am-i "Hello") ; -> Hello is a String 
+*    (what-am-i true) ; -> true is something else
+* 
+* Placeholder for unused args
+* 
+*    (defn callback2 [n1 _ n3] (+ n1 n3)) ; only uses 1st & 3rd arguments
+* 
+* complement ->  opposite/inverse
+* 
+*    (defn teenager? [age] (and (>= age 13) (< age 20)))
+*    (def non-teen? (complement teenager?))
+*    
+* compose functions (works right to left)
+* 
+*    (defn times2 [n] (* n 2))
+*    (defn minus3 [n] (- n 3))
+*    ; Note the use of def instead of defn because comp returns
+*    ; a function that is then bound to "my-composition".
+*    (def my-composition (comp minus3 times2))
+*    (my-composition 4) ; 4*2 - 3 -> 5
+*    
+* partial applies fixed params to a function
+*    
+*    ; Note the use of def instead of defn because partial returns
+*    ; a function that is then bound to "times2".
+*    (def times2 (partial * 2))
+*    (times2 3 4) ; 2 * 3 * 4 -> 24
+
+* Memoization
+*    => example doesn't work
+*    
+Java
+* Importing
+*    (import
+*      '(java.util Calendar GregorianCalendar)
+*      '(javax.swing JFrame JLabel))
+*   
+* Constants
+*    (. java.util.Calendar APRIL)
+*    java.util.Calendar/APRIL
+*    
+* Static methods
+*    (. Math pow 2 4) ; -> 16.0
+*    (Math/pow 2 4)
+
+* Constructor
+*    (import '(java.util Calendar GregorianCalendar))
+*    (def calendar (new GregorianCalendar 2008 Calendar/APRIL 16))
+*    OR
+*    (def calendar (GregorianCalendar. 2008 Calendar/APRIL 16))
+*    
+* Instance methods
+*    (. calendar add Calendar/MONTH 2)
+*    (. calendar get Calendar/MONTH) ; -> 5
+*    (.add calendar Calendar/MONTH 2)
+*    (.get calendar Calendar/MONTH) ; -> 7
+
+* Chaining
+*    (. (. calendar getTimeZone) getDisplayName) ; long way
+*    (.. calendar getTimeZone getDisplayName) ;
+*    
+*    also a .?. macro in the clojure.contrib.core namespace that stops and 
+*    returns nil if any method in the chain returns null. 
+*    This avoids getting a NullPointerException. 
+*    
+*  memfn macro allows Java method to be used as a 1st class function
+*  
+Conditional processing
+* if
+* 
+* when
+* when-not
+* ; No else part for when
+* 
+* ; Conditional assignment
+* if-let
+* when-let
+* 
+* condp ; like switch
+* 
+* (condp = value
+*    1 "one"
+*    2 "two"
+*    3 "three"
+*    (str "unexpected value, \"" value \")))
+* 
+* (cond
+*    (instance? String temperature) "invalid temperature"
+*    (<= temperature 0) "freezing"
+*    (>= temperature 100) "boiling"
+*    true "neither")))
+*    
+Iteration
+* ; iterates from 0 - n, passing n as arg name to form body
+* 
+* (dotimes [card-number 3]
+*   (println "deal card number" (inc card-number))) ;
+*   
+* while
+* 
+* List comprehension (for doseq)
+*    They support iterating through multiple collections (rightmost collection fastest) and optional filtering using :when and :while expressions.
+*    
+*    The for macro takes a single expression body and returns a lazy sequence 
+*    of the results. 
+*    
+*    The doseq macro takes a body containing any number of
+*    expressions, executes them for their side effects, and returns nil. 
+*    
+*    (def cols "ABCD")
+*    (def rows (range 1 4)) 
+*    
+*    (println "for demo")
+*    (dorun
+*      (for [col cols :when (not= col \B)
+*            row rows :while (< row 3)]
+*        (println (str col row))))
+*    
+*    (println "\ndoseq demo")
+*    (doseq [col cols :when (not= col \B)
+*            row rows :while (< row 3)]
+*      (println (str col row)))
+*      
+*    (dorun
+*      (for [col cols row rows ]
+*        (println (str col row))))
+*        
+* Recursion
+*    The loop/recur idiom turns what looks like a recursive call into a loop
+*    that doesn't consume stack space. 
+*    
+*    The loop special form is like the let special form in that they both
+*    establish local bindings, but it also establishes a recursion point that
+*    is the target of calls to recur
+*    
+*    The bindings specified by loop provide initial values for the local
+*    bindings. 
+*    
+*    Calls to recur cause control to return to the loop and assign new values
+*    to its local bindings. 
+*    
+*    The number of arguments passed to recur must match the number of bindings
+*    in the loop.
+*    
+*    recur can only appear as the last call in the loop. 
+*    
+*    (defn factorial-1 [number]
+*      "computes the factorial of a positive integer
+*       in a way that doesn't consume stack space"
+*      (loop [n number factorial 1]
+*        (if (zero? n)
+*          factorial
+*          (recur (dec n) (* factorial n)))))
+*    
+*    (println (time (factorial-1 5)))
+*    
+*    You can also use recur inside defn
+*    
+*    Another way is to use a more functional (but less efficient) style:
+*    
+*    (defn factorial-2 [number] (reduce * (range 2 (inc number))))
+*    
+Predicates
+* class?, coll?, decimal?, delay?, float?, fn?, instance?, integer?, isa?, keyword?, list?, macro?, map?, number?, seq?, set?, string? and vector?. Some non-predicate functions that perform reflection include ancestors, bases, class, ns-publics and parents.
+
+* Predicate functions that test relationships between values include <, <=, =, not=, ==, >, >=, compare, distinct? and identical?.
+* 
+* Predicate functions that test logical relationships include and, or, not, true?, false? and nil?
+* 
+* Predicate functions that test sequences, most of which were discussed earlier, include empty?, not-empty, every?, not-every?, some and not-any?.
+* 
+* Predicate functions that test numbers include even?, neg?, odd?, pos? and zero?. 
+* 
+Sequences
+* Logical view of a collection
+* 
+* lazy sequence: sequence whose items can be the result of function calls that aren't evaluated until they are needed. A benefit of creating a lazy sequence is that it isn't necessary to anticipate how many items in it will actually be used at the time the sequence is created.
+* 
+*    eg
+*    cache-seq, concat, cycle, distinct, drop, drop-last, drop-while, filter, for, interleave, interpose, iterate, lazy-cat, lazy-seq, line-seq, map, partition, range, re-seq, remove, repeat, replicate, take, take-nth, take-while and tree-seq. 
+*    
+* (map #(println %) [1 2 3]) ; outputs nils returned from map
+* 
+* (dorun (map #(println %) [1 2 3]))
+* (doseq [i [1 2 3]] (println i))
+* 
+* (dorun (map #(println %) [1 2 3])) ; -> nil
+* (doall (map #(do (println %) %) [1 2 3])) ; -> (1 2 3)
+* 
+I/O
+* STDIN & friends: *in*, *out* and *err*
+* 
+* (binding [*out* (java.io.FileWriter. "my.log")]
+*   ...
+*   (println "This goes to the file my.log.")
+*   ...
+*   (flush))
+*   
+Destructuring
+* Destructuring can be used in the parameter list of a function or macro to extract parts of collections into local bindings.
+* 
+* (defn approach1 [numbers]
+*   (let [n1 (first numbers)
+*         n3 (nth numbers 2)]
+*     (+ n1 n3)))
+* ; OR
+* (defn approach2 [[n1 _ n3]] (+ n1 n3))
+* 
+* ; The ampersand character can be used with destructuring to capturing the remaining items in a collection. For example:
+
+* (defn name-summary [[name1 name2 & others]]
+*   (println (str name1 ", " name2) "and" (count others) "others"))
+
+* The :as keyword can be used to retain access to the entire collection that is being destructured.
+* 
+* (defn summer-sales-percentage
+*    ; The keywords below indicate the keys whose values
+*    ; should be extracted by destructuring.
+*    ; The non-keywords are the local bindings
+*    ; into which the values are placed.
+*    
+*    ; You can simplify this to {:keys [june july august] :as all} 
+*    [{june :june july :july august :august :as all}]
+*       (let [summer-sales (+ june july august)
+*          all-sales (apply + (vals all))]
+*          (/ summer-sales all-sales)))
+* 
+*          
+* (def sales {
+*    :january   100 :february 200 :march      0 :april    300
+*    :may       200 :june     100 :july     400 :august   500
+*    :september 200 :october  300 :november 400 :december 600})
+* 
+* (summer-sales-percentage sales)
+* 
+Namespaces
+* (require 'clojure.contrib.str-utils)
+* (clojure.contrib.str-utils/str-join "$" [1 2 3])
+* 
+* (alias 'su 'clojure.contrib.str-utils)
+* (su/str-join "$" [1 2 3]) 
+* 
+* The refer function makes all the symbols in a given namespace accessible in the current namespace without namespace-qualifying them.
+* 
+* (refer 'clojure.contrib.str-utils)
+* (str-join "$" [1 2 3])
+* 
+* require + refer:
+* (use 'clojure.contrib.str-utils)
+
+* The ns macro, mentioned earlier, changes the default namespac
+* 
+* (ns com.ociweb.demo
+*   (:require [clojure.contrib.str-utils :as su])
+*   (:use [clojure.contrib.math :only (gcd, sqrt)])
+*   (:import (java.text NumberFormat) (javax.swing JFrame JLabel)))
+
+* (create-ns 'com.ociweb.demo)
+* (intern 'com.ociweb.demo 'foo 2) ; defines a symbol in a given namespace
+* 
+* (ns-interns 'clojure.contrib.str-utils) ; show all symbols in ns
+* 
+* See also
+*    ns-aliases, ns-imports, ns-map, ns-name, ns-publics, ns-refers, ns-unalias, ns-unmap and remove-ns. 
+*    
+Metadata
+* (meta reverse)
+* 
+Macros
+* Add a new construct to the language
+* 
+* While functions always evaluate all their arguments, macros can decide which of their arguments will be evaluated. This is important for implementing forms like (if condition then-expr else-expr)
+* 
+* ; The Reader expands calls to the around-zero macro into a call to the let special form
+* ; That contains a call to the cond function whose arguments are its conditions and return values
+* (defmacro around-zero [number negative-expr zero-expr positive-expr]
+*    
+*    ; The back-quote (aka syntax quote) at the beginning of the macro definition prevents everything inside from being evaluated unless it is unquoted
+*    ; This means the contents will appear literally in the expansion, except items preceded by a tilde (in this case, number, zero-expr, positive-expr and negative-expr)
+*   `(let [number# ~number] ; so number is only evaluated once
+*     ; The let special form is used here for efficiency in the event that the first parameter, number, is passed as an expression instead of simple value
+*     ; It evaluates number once and then uses its value in two places within the cond
+*     
+*     (cond
+*       ; The auto-gensym number# is used to generate a unique symbol name so there is no chance the binding name can conflict with that of another symbol
+*       (< (Math/abs number#) 1e-15) ~zero-expr
+*       
+*       ; When a symbol name is preceded by a tilde inside a syntax quoted list, its value is substituted
+*       ; Bindings in syntax quoted lists whose values are sequences can be preceded by ~@ to substitute their individual items
+*       (pos? number#) ~positive-expr
+*       
+*       true ~negative-expr)))
+*       
+* Macro names cannot be passed as arguments to functions. For example, a macro name such as and cannot be passed to the reduce function. A workaround is to define an anonymous function that calls the macro. For example, (fn [x y] (and x y)) or #(and %1 %2). 
+* 
+Concurrency
+* All data is immutable unless explicitly marked as mutable by using the reference types Var, Ref, Atom and Agent. 
+* 
+* The future macro runs a body of expressions in a different thread using one of the thread pools (CachedThreadPool) that are also used by Agents (described later). This is useful for long running expressions whose results aren't needed immediately. The result is obtained by dereferencing the object
+* returned by future
+* 
+*    (println "creating future")
+*    (def my-future (future (f-prime 2))) ; f-prime is called in another thread
+*    (println "created future")
+*    (println "result is" @my-future)
+*    (shutdown-agents)
+*    
+* Reference types are mutable references to immutable data. There are four references types in Clojure: Vars, Refs, Atoms and Agents. They have many things in common:
+*    They can hold any kind of object.
+*    
+*    They can be dereferenced to retrieve the object they hold with the deref function or the @ reader macro.
+*    
+*    They support validators which are functions that are invoked when the value changes. If the new value is valid, they return true. Otherwise they either return false or throw an exception. If they simply return false, an IllegalStateException with the message "Invalid reference state" will be thrown.
+*    
+*    They support watchers which are Agents. When the value of a watched reference changes, the Agent is notified. For more detail, see the "Agents" section.
+*    
+* Var   synchronous changes to a single, thread-local value
+* Ref 	synchronous, coordinated changes to one or more values
+* Atom 	synchronous changes to a single value
+* Agent asynchronous changes to a single value

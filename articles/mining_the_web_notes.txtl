@@ -1,0 +1,173 @@
+---
+title: Mining the web reading notes
+tag:   reading notes
+date:  Dec 12 2011
+---
+
+Part 1, Infrastructure
+------------------------------------------------------------------
+
+= Skim
+
+= Questions
+
+Is erlang a good choice for web crawling?
+- yes for a scalable server
+- might be too much to learn a new language & IR concepts
+
+What is a good starter project? 
+- Ruby search
+- Search github for rubyists
+- Job search
+
+Should I build a scalable crawler or proof of concept?
+- proof of concept in ruby would be better for learning
+- although a new language might be fun (job opportunity)
+
+Should I create a corpus or use an existing one?
+- create a corpus from crawler
+
+What is recall, presicion & average precision?
+What is the vector space model?
+What is IDF?
+
+Omit probabalistic search?
+Omit relevance feedback (or use click through instead)?
+
+= Read
+
+Simple crawler
+
+The central function of a crawler is to fetch many pages at the same time, in
+order to overlap the delays involved in
+1. Resolving the hostname in the URL to an IP address using DNS
+2. Connecting a socket to the server and sending the request
+3. Receiving the requested page in response
+
+Find anatomy of a large-scale crawler diagram
+
+Because a single page fetch may involve several seconds of network latency, it
+is essential to fetch many pages (typically hundreds to thousands) at the same
+time to utilize the network bandwidth available.
+
+Many simultaneous fetches are possible only if the DNS lookup is streamlined
+to be highly concurrent, possibly replicated on a few DNS servers.
+
+Multiprocessing or multithreading provided by the operating system is not the
+best way to manage the multiple fetches owing to high overheads. The best
+bet is to explicitly encode the state of a fetch context in a data structure and
+use asynchronous sockets, which do not block the process/thread using it, but
+can be polled to check for completion of network transfers.
+
+Care is needed to extract URLs and eliminate duplicates to reduce redundant
+fetches and to avoid “spider traps”—hyperlink graphs constructed carelessly
+or malevolently to keep a crawler trapped in that graph, fetching what can
+potentially be an infinite set of “fake” URLs.
+
+a canonical URL is formed by the following steps:
+1. A standard string is used for the protocol (most browsers tolerate Http, which
+should be converted to lowercase, for example).
+2. The hostname is canonicalized as mentioned above.
+3. An explicit port number is added if necessary.
+4. The path is normalized and cleaned up, for example, /books/../papers
+/sigmod1999.ps simplifies to /papers/sigmod1999.ps.
+
+It is easiest to start building a crawler with a core whose only responsibility is to
+copy bytes from network sockets to storage media: this is the Crawler class. The
+Crawler’s contract with the user is expressed in these methods:
+
+class Crawler {
+* void setDnsTimeout(int milliSeconds);
+* void setHttpTimeout(int milliSeconds);
+* void fetchPush(const string& url);
+* virtual boolean fetchPull(string& url); // set url, return success
+* virtual void fetchDone(const string& url,
+* const ReturnCode returnCode, // timeout, server not found, ...
+* const int httpStatus,
+* // 200, 404, 302, ...
+* const hash_map<string, string>& mimeHeader,
+* // Content-type = text/html
+* // Last-modified = ...
+* const unsigned char * pageBody,
+* const size_t pageSize);
+};
+
+Implementation of the Crawler class. 
+We will need two helper classes called DNS and Fetch. Crawler is started with a fixed set of DNS servers.
+For each server, a DNS object is created. 
+
+Each DNS object creates a UDP socket with its assigned DNS server as the destination. 
+The most important data structure included in a DNS object is a list of Fetch 
+contexts waiting for the corresponding DNS server to respond
+
+class DNS {
+* list<Fetch*> waitForDns;
+}
+
+Crawler::start()
+
+while event loop has not been stopped do
+* if not enough active Fetches to keep system busy then
+*    try a fetchPull to replenish the system with more work
+*    if no pending Fetches in the system then
+*       stop the event loop
+*    end if
+* end if
+* 
+* if not enough Http sockets busy and there is a Fetch f in waitForHttp whose server IP address busyServers then
+*    remove f from waitForHttp
+*    lock the IP address by adding an entry to busyServers (to be polite to the server)
+*    change f.state to STATE_HTTP_SEND
+*    allocate an Http socket s to start the Http protocol
+*    set the Http timeout for f
+*    set httpSockets[s] to the Fetch pointer
+*    continue the outermost event loop
+* end if
+* 
+* if the shortest waitForDns is “too short” then
+*    remove a URL from the head of waitForIssue
+*    create a Fetch object f with this URL
+*    issue the DNS request for f
+*    set f.state to STATE_DNS_RECEIVE
+*    set the DNS timeout for f
+*    put f on the laziest DNS’s waitForDns
+*    continue the outermost event loop
+* end if
+* 
+* collect open SocketIDs from dnsSockets and httpSockets
+*    also collect the earliest deadline over all active Fetches
+*    perform the select call on the open sockets with the earliest deadline
+* as timeout
+* 
+* if select returned with a timeout then
+*    for each expired Fetch record f in dnsSockets and httpSockets do
+*       remove f
+*       invoke f.fetchDone(...) with suitable timeout error codes
+*       remove any locks held in busyServers
+*    end for
+* else
+*    find a SocketID s that is ready for read or write
+*    locate a Fetch record f in dnsSockets or httpSockets that was waiting on s
+*    
+*    if a DNS request has been completed for f then
+*       move f from waitForDns to waitForHttp
+*    else
+*       if socket is ready for writing then
+*          send request
+*          change f.state to STATE_HTTP_RECEIVE
+*       else
+*          receive more bytes
+*          if receive completed then
+*             invoke f.fetchDone(...) with successful status codes
+*             remove any locks held in busyServers
+*             remove f from waitForHttp and destroy f
+*          end if
+*       end if
+*    end if
+* end if
+end while
+
+
+= Recite
+
+= Review

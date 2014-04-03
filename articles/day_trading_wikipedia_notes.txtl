@@ -1,0 +1,172 @@
+---
+title: Day trading wikipedia reading notes
+tag:   reading notes
+date:  Jul 07 2012
+---
+
+Day trading is the pratice of buying & selling financial products such that all
+positions are closed before the market closes.
+
+Scalping is an intra-day technique that usually has the trader holding a position for a few minutes
+
+Shaving is a method which allows the trader to jump ahead by a tenth of a cent, and a full round trip (a buy and a sell order) is often completed in under one second. Instead of bidding $10.20 per share, the scalper will jump the bid at $10.201, thus becoming the best bid and therefore the first in line to be able to purchase the stock. When the best "Offer" is $10.21, the shaver will again jump first in line and sell a tenth of a cent cheaper at $10.209 for a profit of 0.008 of a dollar. The profits add up when using 10,000 share lots each time and the combined earnings from Rebates (read below) for creating liquidity.
+
+A day trader is actively searching for potential trading setups (that is, any stock or other financial instruments that, in the judgment of the day trader, is in a tension state, ready to accelerate in price in either direction, that when traded well has a potential for a substantial profit). The number of trades one can make per day is almost unlimited, as are the profits and losses.
+
+Day traders focus on: 
+* short term trading (volume discouts may be available)
+* price momentum 
+* technical patterns
+* 
+Margin trading means borrowing money to trade
+
+day trading can be very risky, especially if any of the following is present while trading:
+* trading a loser's game/system rather than a game that's at least winnable,
+* trading with poor discipline (ignoring your own day trading strategy, tactics, rules),
+* inadequate risk capital with the accompanying excess stress of having to "survive",
+* incompetent money management (i.e. executing trades poorly).[2]
+
+Trend following, a strategy used in all trading time-frames, assumes that financial instruments which have been rising steadily will continue to rise, and vice versa with falling.
+
+The contrarian trader buys an instrument which has been falling, or short-sells a rising one, in the expectation that the trend will change.
+
+Range trading, or range-bound trading, is a trading style in which stocks are watched that have either been rising off a support price or falling off a resistance price.
+> Define: support & resistance
+
+Scalping is a trading style where small price gaps created by the bid-ask spread are exploited. It normally involves establishing and liquidating a position quickly, usually within minutes or even seconds.
+
+Scalping highly liquid instruments for off-the-floor day traders involves taking quick profits while minimizing risk (loss exposure). 
+
+* It applies technical analysis concepts such as over/under-bought, support and resistance zones as well as trendline, trading channel to enter the market at key points and take quick profits from small moves. 
+* 
+* The basic idea of scalping is to exploit the inefficiency of the market when volatility increases and the trading range expands.
+* 
+The News playing strategy is to buy a stock which has just announced good news, or short sell on bad news.
+* Determining whether news is "good" or "bad" must be determined by the price action of the stock, because the market reaction may not match the tone of the news itself
+* 
+* -> Could this be automated/data mined? This strategy sounds error prone
+* -> See last chapter of Collective Intelligence
+* 
+price action traders who are a form of technical traders that rely on technical analysis but do not rely on conventional indicators
+* rely on a combination of price movement, chart patterns, volume, and other raw market data
+* 
+* this is seen as a "simplistic" and "minimalist" approach to trading but is not by any means easier than any other trading methodology.
+* 
+* requires a sound background in understanding how markets work and the core principles within a market
+
+* Should work in any market as is relies on fundamental analysis (based on 
+* reality)
+* 
+Spread
+
+The numerical difference between the bid and ask prices is referred to as the bid-ask spread. Most worldwide markets operate on a bid-ask-based system.
+
+* The ask prices are immediate execution (market) prices for quick buyers (ask takers) while bid prices are for quick sellers (bid takers). 
+* 
+* If a trade is executed at quoted prices, closing the trade immediately without queuing would not cause a loss because the bid price is always less than the ask price at any point in time.
+* 
+* Buyers ASK (purchase), Sellers BID (sales)
+* 
+* eg
+*    a: 100
+*    b: 99
+*    
+* If a trade is executed at quoted prices, closing the trade immediately without queuing would not cause a loss because *the bid price is always less than the ask price at any point in time*
+* 
+* The spread can be viewed as trading bonuses or costs according to different parties and different strategies. On one hand, traders who do NOT wish to queue their order, instead paying the market price, pay the spreads (costs).
+* 
+* On the other hand, traders who wish to queue and wait for execution receive the spreads (bonuses). Some day trading strategies attempt to capture the spread as additional, or even the only, profits for successful trades.
+* 
+> Need a better understanding the bid-ask spread
+
+= Price action trading
+
+Price action is simply how prices change - the action of price. 
+observed in markets where liquidity and price volatility are highest
+
+The trader observes the relative size, shape, position, growth (when watching the current real-time price) and volume (optionally) of the bars on an OHLC bar or candlestick chart, starting as simple as a single bar, most often combined with chart formations found in broader technical analysis such as moving averages, trend lines or trading ranges
+
+-> are these the so-called chartists?
+
+There is no evidence that these explanations are correct even if the price action trader who makes such statements is profitable and appears to be correct. 
+
+-> does this violate your "based on reality" criterion?
+
+Survivorship bias is the logical error of concentrating on the people or things that "survived" some process and inadvertently overlooking those that didn't because of their lack of visibility. 
+-> reminds me of DHH & fellow blow-hards
+
+-> Is chartism merely a way for traders to build up a mental model and train
+their pattern matching ability? The lack of theoretical proof would suggest this.
+
+
+= Scalping
+arbitrage of small price gaps created by the bid-ask spread.
+quick momentum trades triggered by order flow reading setups
+
+A market maker is a company, or an individual, that quotes both a buy and a sell price in a financial instrument or commodity held in inventory, hoping to make a profit on the bid-offer spread,
+
+* aims to make money by:
+* - buying stock at a lower price than the price at which they sell it
+* - selling the stock at a higher price than they buy it back. 
+* 
+* Ordinarily they can make money in both rising or falling markets, by taking advantage of the difference between "bid" and "offer" prices.
+* 
+To make the spread means to buy at the Bid price and sell at the Ask price, in order to gain the bid/ask difference. 
+* This procedure allows for profit even when the bid and ask don't move at all, as long as there are traders who are willing to take market prices. 
+* 
+* It normally involves establishing and liquidating a position quickly, usually within minutes or even seconds.
+
+The numerical difference between the bid and ask prices is referred to as the spread between them. 
+* The ask prices are immediate execution (market) prices for quick buyers (ask takers); bid prices for quick sellers (bid takers). 
+* 
+* If a trade is executed at market prices, closing that trade immediately without queuing would not get you back the amount paid because of the bid/ask difference.  
+* 
+* > What does this mean?
+* traders who do NOT wish to queue their order, instead paying the market price, pay the spreads (costs). 
+* On the other hand, traders who wish to queue and wait for execution receive the spreads (bonuses).
+* 
+Lower exposure, lower risks - Scalpers are only exposed in a relatively short period. They do not hold overnights. As the period one holds decreases, the chances of running into extreme adverse movements, causing huge losses, decreases.
+
+scalpers look to capturing smaller moves which happen most of the time, as opposed to larger ones.
+
+need to trade large in order to add up the profits. Suitable for small-capital traders seeking to move smaller volumes more often
+
+Scalper must have very strict risk management never allowing a loss to accumulate.
+
+You'll need access to Level II quotes to track bids and asks throughout the trading session
+
+What Does Arbitrage Mean?
+The simultaneous purchase and sale of an asset in order to profit from a difference in the price. It is a trade that profits by exploiting price differences of identical or similar financial instruments, on different markets or in different forms.
+Many traders have computerized trading systems set to monitor fluctuations in similar financial instruments. Any inefficient pricing setups are usually acted upon quickly and the opportunity is often eliminated in a matter of seconds.
+
+a scalper in a highly liquid market (for example, a market maintaining a one-penny spread) may take 10,000 shares to make a 3 cent gain ($300), a scalper in an illiquid market (for example, a market with a 25 cent spread) may take 500 shares for a 60 cent gain ($300). While there is theoretically more profit potential in a liquid market, it is also a "poker game" with many more professional players which can make it more difficult to anticipate future price action.
+
+scalpers like stable or silent products. Imagine if its price does not move all day, scalpers can profit all day simply by placing their orders on the same bid and ask, making hundreds or thousands of trades. They do not need to worry about sudden price changes.
+
+> WTF? how does this work?
+
+Scalper may operate in the sub 60 second range (what brokers provide low latency api's ?)
+
+Bid-Ask spread
+
+Supply refers to the volume or abundance of a particular item in the marketplace, such as the supply of stock for sale. Demand refers to an individual's willingness to pay a particular price for an item or stock.
+
+The spread is the difference between the bid and ask for a particular security.
+
+ABC: purchase 1,000 shares of FooCorp stock @ $10
+XYZ: sell 1,500 shares of FooCorp stock  @ $10.25
+
+Spread: 0.25
+
+You must honor your offers (obviously)
+
+Market Order - A market order can be filled at the market or prevailing price. By using the example above, if the buyer were to place an order to buy 1,500 shares, the buyer would receive 1,500 shares at the asking price of $10.25. If he or she placed a market order for 2,000 shares, the buyer would get 1,500 shares at $10.25 and 500 shares at the next best offer price, which might be higher than $10.25.
+
+Limit Order - An individual places a limit order to sell or buy a certain amount of stock at a given price or better. Using the above spread example, an individual might place a limit order to sell 2,000 shares at $10. Upon placing such an order, the individual would immediately sell 1,000 shares at the existing offer of $10. Then, he or she might have to wait until another buyer comes along and bids $10 or better to fill the balance of the order. Again, the balance of the stock will not be sold unless the shares trade at $10 or above. If the stock stays below $10 a share, the seller might never be able to unload the stock.
+
+Day Order - A day order is placed with a specialist or market maker and is only good for that trading day. If it is not filled that day, the order is canceled.
+
+Fill or Kill (FOK) - An FOK order must be filled immediately and in its entirety or not at all. For example, if a person were to put a fill or kill order in to sell 2,000 shares at $10, a buyer would take in all 2,000 shares at that price immediately, or refuse the order, in which case it will be canceled.
+
+Stop Order - A stop order is an order that goes to work when the stock passes a certain level. For example, suppose an investor wants to sell 1,000 shares of XYZ stock if it trades down to $9. In this case, the investor might place a stop order at $9 so that when it does trade to that level, the order becomes effective as a market order. To be clear, it does not guarantee that the order will be executed at $9. However, it does guarantee that the stock will be sold. If sellers are abundant, the price at which the order is executed might be much lower than $9.
+

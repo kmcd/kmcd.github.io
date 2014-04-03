@@ -1,0 +1,77 @@
+---
+title: Android reading notes
+tag:   reading notes
+date:  Dec 12 2012
+---
+
+= Glossary
+
+An activity is a user interface screen. Each user interface screen is represented by an Activity class
+An application is one or more activities plus a Linux process to contain them
+
+An intent is a mechanism for describing a specific action, such as “pick
+a photo,” “phone home,” or “open the pod bay doors.”
+
+A service is a task that runs in the background without the user’s direct
+interaction, similar to a Unix daemon.
+
+A content provider is a set of data wrapped up in a custom API to read
+and write it. This is the best way to share global data between appli-
+cations. For example, Google provides a content provider for contacts.
+
+A resource is a localized text string, bitmap, or other small piece of
+noncode information that your program needs
+
+Access to certain critical operations are restricted, and you
+must specifically ask for permission to use them in a file named Android-
+Manifest.xml. 
+=> Check manifest permissions for new app ideas
+
+= Questions
+
+In app payments? Take a credit card payment from app screen.
+
+
+
+App Widgets and Live Folders
+➤ Control the update rate of your widgets by setting the minimum refresh rate or using Intents
+* and Alarms.
+➤ Update the UI of your widgets using Remote Views.
+➤ Create and register a Live Folder for your application’s Content Provider.
+➤ Add a projection to your Content Provider to provide a Live Folder schema.
+➤ Create and use Live Wallpaper.
+➤ Add search to your application and surface search results to the Quick Search Box.
+
+
+= App ideas
+* Billable calls tagger
+* Create an SMS using voice recoginition
+* Record this phone call
+* Backup SIM / contacts / address book
+* xkcd (random) viewer
+* Game
+* Texas Holdem
+* Beta test my Android app (cloud)
+* Android analytics
+* Android activation
+* Audio book app (record with festival & up-sell real voice over)
+* Project Gutenburg reader
+* Football scores/data
+* 
+= Business models
+* Off-line upsell
+* Paid
+* Freemium (in app upgrade)
+* Ads
+* Android dev tools
+* Adnroid consulting
+
+= Notes
+* How to prevent piracy? Activation token?
+* Check out BeanShell
+* What part of the process can I offload / automate ?
+*    Core Java
+*    Android Java
+*    Marketing
+*    Graphic design
+*    Customer support

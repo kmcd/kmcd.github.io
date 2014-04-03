@@ -1,0 +1,203 @@
+---
+title: Joy of clojure reading notes
+tag:   reading notes
+date:  Jun 06 2012
+---
+
+= Questions
+
+What are protocols & multimethods ?
+
+How much do I need to get going?
+* ch 4-11
+* 
+What is the default project structure?
+* See leiningen
+* 
+Any good screen casts?
+* Dont bother - you learn more quickly from reading & experimenting
+
+= Action points
+
+Read the source code for stockings
+
+Find out how to use leiningen
+
+= Notes
+
+Exponent notation:
+* 366e-1 => 36.6
+* 
+Rationals
+* 22/7 => 22.7
+* 100/5 => 20 (simplified if they leave a whole number)
+* 
+Lists
+* '(1 2 3)  ;; need quote to create a list
+* 
+Vectors
+* evaluated in order
+* [1 2 3]
+* 
+Maps
+* like hash/dictionary/associative array
+* doesn't like single quotes
+* 
+* { 1 "one", 2 "two" }
+* 
+Sets
+* #{}
+* 
+Functions
+*   [anon func]        [args]
+* ( (fn [x y] #{x y})   1 2)
+
+* 
+* The way to denote variable arguments is to use the & symbol followed by a symbol.
+* 
+* (defn make-a-set
+*    "Takes either one or two values and makes a set from them"
+*    ([x]
+*       #{x})
+*       ([x y] #{x y}))
+*       
+* Pass arg to anon func:
+* (def make-list #( list %1 ) )
+* 
+* Pass optional args to anon func:
+* (def make-a-list3+ #(list %1 %2 %3 %&))
+
+Variables
+* (def x 42)
+* 
+* other threads will view the same root binding (for x var) by default
+* 
+* immutable vars:
+* 
+* (let 
+*    [r 5
+*    pi 3.1415
+*    r-squared (* r r)]
+*    
+*    (println "radius is" r)
+*    (* pi r-squared))
+*    
+Loops
+* Use tail recursion
+* 
+* (defn print-down-from [x]
+*    (when (pos? x)
+*    (println x)
+*    (recur (dec x))))
+*    
+* the reasons to use when are:
+*    No else-part is associated with the result of a conditional.
+*    You require an implicit do in order to perform side-effects.
+  
+* inverse is true for if statement
+  
+* A recur always loops back to the closest enclosing loop or fn
+* 
+*    (defn sum-down-from [initial-x]
+*       (loop [sum 0, x initial-x]
+*       (if (pos? x)
+*       (recur (+ sum x) (dec x))
+*       sum)))
+
+  
+* The recur form can only appear in the tail position of a func-
+* tion or loop.
+* 
+*    (defn absolute-value [x]
+*       (if (pos? x)
+*          x ; "then" clause
+*          (- x))) ; "else" clause
+
+*    The if form is in the function’s tail position because whatever it returns, the whole
+*    function will return.
+*    
+*    But the x in the “else” clause is not in the function’s tail position because the value of x
+*    is passed to the - function, not returned directly.
+
+quote special form prevents its argument, and all of its sub-
+forms, from being evaluated.
+
+Java
+* java.util.Locale/JAPAN
+* (Math/sqrt 9)
+* java.util.Locale/JAPAN
+* 
+* (new java.util.HashMap {"foo" 42 "bar" 9 "baz" "quux"})
+* abbrev:
+*    (java.util.HashMap. {"foo" 42 "bar" 9 "baz" "quux"})
+*    
+* Access intance properties:
+*    (.x (java.awt.Point. 10 20))
+
+* Pass additional args:      
+*    (.divide (java.math.BigDecimal. "42") 2M)
+* 
+* Set instance properties
+*    (let [origin (java.awt.Point. 0 0)]
+*       (set! (.x origin) 15)
+*       (str origin))
+
+* Method chaining
+*    new java.util.Date().toString().endsWith("2010")
+*    
+*    (.endsWith (.toString (java.util.Date.)) "2010")
+*    OR:
+*    (.. (java.util.Date.) toString (endsWith "2010"))
+
+* Init instance with propset mutators:
+* 
+*    (doto (java.util.HashMap.)
+*       (.put "HOME" "/home/me")
+*       (.put "SRC" "src")
+*       (.put "BIN" "classes"))
+
+Namespaces
+* (ns joy.req
+*    (:require clojure.set))
+*    
+* (ns joy.req-alias
+*    (:require [clojure.set :as s]))
+*    
+* (s/intersection #{1 2 3} #{3 4 5}
+* 
+* Using :require indicates that you want the clojure.set namespace loaded, but you
+* don’t want the mappings of symbols to functions in the joy.req namespace.
+
+* (ns joy.use-ex
+*    (:use [clojure.string :only [capitalize]]))
+*    
+* (map capitalize ["kilgore" "trout"])
+
+* The :use directive indicates that only the function capitalize should be mapped in
+* the namespace joy.use-ex. 
+
+* (ns joy.exclusion
+*    (:use [clojure.string :exclude [capitalize]]))
+*    
+* :refer directive that works almost exactly like :use except
+* that it only creates mappings for libraries that have already been loaded:
+* 
+*    (ns joy.yet-another
+*       (:refer joy.ch1))
+
+*    (ns joy.yet-another
+*       (:refer joy.ch1 :rename {hello hi}))
+
+* Importing Java classes:
+* 
+*    (ns joy.java
+*       (:import [java.util HashMap]
+*       [java.util.concurrent.atomic AtomicLong]))
+*       
+*    (HashMap. {"happy?" true})
+
+Every object is “true” all the time, unless it’s nil or false.
+
+ Destructuring allows us to positionally bind locals
+based on an expected form for a composite data structure. 
+

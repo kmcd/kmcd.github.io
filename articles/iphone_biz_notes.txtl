@@ -1,0 +1,183 @@
+---
+title: Iphone biz reading notes
+tag:   reading notes
+date:  Apr 04 2012
+---
+
+= Market research
+
+Fulfilling a need
+* Pinpoint a need or issue that is currently not being addressed by existing apps.
+* mobile experience significantly easier than performing the same tasks on a desktop computer?
+* what feature(s) can you add that would solve the needs not currently addressed by your competitors?
+
+take a look at your own needs and interests.
+
+What interests do you have outside of technology? 
+
+try turning to your friends and family. See what specific needs and interests they 
+have that might be well suited for a mobile app
+
+
+don’t discount the ease of flipping through the pages of the latest magazines
+
+Bump enhances the mobile experience by greatly simplifying the exchange of contact information
+between two people.
+
+“Our primary goal when designing Bump was to create a simple, fun, and intuitive way
+to connect two phones,” says David Lieb, cofounder and president of Bump
+Technologies, Inc. “The accelerometer and location services allow us to do that: Bump
+monitors the output of the accelerometers and sends the output of the accelerometers
+up to the global Bump servers whenever a physical bump is felt. The servers then match
+up any pair of phones that felt the same bump at the same time in the same location.
+This allows connections to be made between any two phones with just a simple bump of
+the hands.”
+
+= Promotion
+
+Staying on top of what your competitors are doing is one of your primary jobs as a
+developer. 
+
+Try to keep your app name to 12 characters or less
+
+Encourage users to rate your app with a built-in custom prompt.
+
+ include a Tell A Friend button in your app,
+ 
+
+= Freemium
+
+* Offer a free “lite” version of your app to help drive sales for the paid
+* version, or utilize a “freemium” model with premium features available
+* through In-App Purchase.
+
+Lite Version vs. In-App Purchase
+
+Securing Market Share: Give It Away Now, Up-Sell Later
+
+= Testing and Usability
+
+Have you let anyone else test-drive your app? If not, then it’s imperative that you do!
+Recruiting beta testers to evaluate your app is one of the most effective ways to unearth
+hard-to-find bugs and other critical issues
+
+Including an in-app mechanism for customers to easily send you feedback directly can
+help alleviate many of those negative app store postings.
+
+For most mobile apps, if a manual is required to explain how to use even the most basic
+functions, then you should seriously consider rethinking your current interface design.
+
+Planting Knowledge Seeds with On-Screen Tips
+
+Interactive demo
+
+Convertbot includes a very effective demo, placing the main interface on autopilot, showing you how
+to use the unique UI elements with pop-up balloon descriptions.
+The only drawback to this approach is that it requires you to spend the time and energy
+to construct an effective in-app demo.
+
+Even more important than your own testing in the iPhone Simulator and on an actual
+device is having multiple people test your app. After performing extensive tests of your
+own, it’s highly recommended that you round up a group of volunteers who are willing to
+beta-test your application before release in the App Store. 
+
+Analytics
+
+= Prerelease Buzz
+
+Marketing Requires an Audience, So Invest the Time to Find Yours
+
+If you don’t yet have a Twitter account, a Facebook fan page, or a good rapport with
+high-profile bloggers and journalists, then it’s never too soon to get the ball rolling. How
+early should you start? It usually takes a few months to acquire a decent number of
+followers on Twitter and Facebook, so you should dive into the social media sea at least
+three months before you plan on submitting your app to the App Store. 
+
+No one likes an over-zealous, aggressive salesperson
+who clutters their Twitter streams and email inboxes with too much marketing noise. It’s
+all about gently stoking the fire, building anticipation and interest. Simply whet their
+appetite, leaving them wanting for more...be a tease!
+
+elevator pitch, 
+
+No matter what kind of products you develop, you should always have a high-resolution
+version of your logo available, just in case the press request it.
+
+Like your company logo, you should also have a high-resolution icon and logo for your
+iPhone app. 
+
+Having a few good screenshots of your app in action 
+
+ScreenCast (optional) 
+
+if you do plan on creating a video trailer for your app, then I definitely
+recommend completing it before your app is released so that it can help boost
+awareness from the very beginning
+
+Record the emulator instead of videoing the app live
+
+Dedicated web site (domain + posterous)
+
+SEO( title, desctiption & keywords meta tags, keyword rich text, clean keyword URLS, sitemap?)
+
+Mockup site (app?) in Balsamiq OR paper
+
+Could be an image intensive activity -> outsource/offload
+
+Follow on FB, Twitter, Share links
+
+free email newsletter can really benefit your prerelease
+marketing efforts. Interested site visitors can subscribe, and then a month later after
+they’ve forgotten about your app, you can send them an email announcing its availability
+
+Gaining Followers on Twitter
+
+Who you follow matters
+Follow your fans
+Quality content is king!
+
+Retweet! If someone posts something that you feel your audience
+would enjoy, then retweet it. Twitter is built on the spirit of karma.
+What goes around comes around. Spend the time promoting other
+people’s tweets more than you promote yourself, and you’ll cultivate a
+deeper bond with your followers. They may even retweet your posts
+more often to return the favor.
+
+Auto-update FB, Twitter & more with Posterous (beware low SEO from duplicate
+content).
+
+Collecting Prerelease Press and Testimonials
+* Contact tech journalists / sites
+* 
+Post-release Buzz
+
+You should be prepared to set aside the first two weeks to focus on nothing
+but promoting your new iPhone app.
+
+Request reviews, publicize your app on Twitter and
+Facebook, set up media interviews, post blog articles, submit your app for awards, and
+the list goes on.... Once your marketing efforts start to pay off with an increase in sales
+and/or a rise in the App Store charts, then you can gradually ease back into your normal
+work life with only a couple hours a day spent on app marketing.
+
+If you’re not able to dedicate the necessary hours to post-release marketing, then it’s in
+your best interest to hire a third-party company to handle this job.
+
+Google Alerts( track your app & competitors )
+
+Press Release pg 350
+
+Issuing Promo Codes: Soliciting App Reviews on Influential Blogs and Review Sites
+* elevator pitch
+* Three to five screenshots
+* screen cast
+* App web site URL
+* App icon & download link
+* Promo code
+* 
+* “After receiving a new press release or app review inquiry, how long
+* does it typically take for an article or review to be written and posted
+* online?”
+* “If I don’t receive a response, may I check back with you in a week or
+* two?”
+

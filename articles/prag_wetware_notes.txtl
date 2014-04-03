@@ -1,0 +1,57 @@
+---
+title: Prag wetware reading notes
+tag:   reading notes
+date:  Jan 01 2013
+---
+
+== Notes from pragmatic wetware
+
+Test-driven learning: test your knowledge of a subject at increasing intervals.
+
+We tend to forget things along an exponential curve, so spacing out
+your quizzing reinforces material much more effectively.
+
+Your brain understands by recalling NOT reading.
+
+Create mind map
+- re-draw after 1st draft
+- use colors & symbols
+- write the topic in the center
+- write the main themes radiating from the center
+- emphasise relationships between ideas
+
+Use mind maps to clarify your thoughts
+
+Problem Solving with George Pólya
+To solve a problem, ask yourself these questions:
+• What are the unknown aspects?
+• What do you know? What data do you have?
+• What constraints and what rules apply?
+
+Then make a plan, execute it, and review the results. Some of the techniques
+Pólya suggests might sound familiar:
+• Try to think of a familiar problem having the same or similar unknowns.
+• Draw a picture.
+• Solve a related or simpler problem; drop some constraints or use a subset of the data.
+• Were all the data and constraints used? If not, why not?
+• Try restating the problem.
+• Try working backward from the unknown toward the data.
+
+Be aware when you are in a "hack-spin" loop; instead sit back and really
+understand the problem.
+
+Pressure kills cognition; instead create failure permitted zones, eg prototyping
+different solutions to the same problem
+
+You can improve your performance—whether you’re playing a violin, debugging code, 
+or designing a new architecture—by imagining that you’ve already done so 
+successfully.
+
+• The adult learner is motivated to learn if learning will satisfy their own interests and needs.
+• Units studied should be real-life situations, not just isolated subjects.
+
+• Survey: Scan the table of contents and chapter summaries for an overview.
+• Question: Note any questions you have.
+• Read: Read in its entirety.
+• Recite: Summarize, take notes, and put in your own words.
+• Review: Reread, expand notes, and discuss with colleagues.

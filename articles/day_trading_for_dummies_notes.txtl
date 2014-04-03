@@ -1,0 +1,206 @@
+---
+title: Day trading for dummies reading notes
+tag:   reading notes
+date:  Mar 03 2013
+---
+
+= Questions
+
+Stocks generally trade in blocks of 100. Does this mean to avoid having more than
+5% of your a/c in play you can only buy stocks below a certain level? eg
+* a/c               5,000
+* 5% trade limit    250
+* max stock price   2.5
+* 
+* You can buy stocks in blocks of less than 100, however xtn costs may be
+* prohibitive
+* 
+Is the bid-ask spread cleanly explained?
+* 
+
+How long to achieve statistical significance with xtesting?
+* Not covered
+* 
+= Action points
+
+Use xtesting to calculate the win/loss probability 
+* see performance report from complete guide notes
+
+= Notes
+
+Liquidity is the ability to buy or sell an asset in large quantity without affect-
+ing the price levels.
+
+* Volume is the total amount of a security that trades in a given time period. The
+* greater the volume, the more buyers and sellers are interested in the security,
+* and the easier it is to get in there and buy and sell without affecting the price.
+* 
+* Another measure of liquidity is frequency, or how often a security trades.
+* 
+* The more frequently a security trades, the more opportunities you'll have to
+* identify the short-term profit opportunities that make day trading possible.
+* 
+The volatility of a security is how much the price varies over a period of time.
+* 
+* standard deviation
+* 
+* The higher the standard deviation, the higher the volatility, the higher the
+* volatility, the more a security's price is going to fluctuate, and the more profit —
+* and loss — opportunities there are for a day trader.
+* 
+Stocks generally trade in round
+lots, which are orders of at least 100 shares. If you want to buy a stock worth
+$40 per share, you need $4,000 in your account.
+
+* No one will stop you from buying a smaller amount than the usual round lot
+* in any given security, but you'll probably pay a high commission and get
+* worse execution for your order. 
+
+Evaluating performance
+
+In backtesting, a trader specifies the strategy that he or she would use and
+then runs it through a database of historic securities prices to see whether
+the strategy would have made money. The test includes assumptions about
+commissions, leverage, and position size.
+
+Start with a hypothesis
+
+Past performance is not indicative of future results. A strategy may test per-
+fectly, but that doesn't mean it will continue to work. Backtesting is an impor-
+tant step to successful day trading, but it is only one step.
+
+Paper trading does not take into a/c the effect of the placing your trade
+
+It's better to do good simulation for months than to lose thousands of real 
+* dollars in hours.
+
+Profit & Loss statement (what time frame - daily, weekly?)
+
+Technical analysis
+
+Fundamental analysis can actually hurt you in day trading, because you may
+start making decisions for the wrong reasons. 
+
+A pivot point is the average of the high, low, and close price for the day. If the
+next day's price closes above the pivot point, that sets a new support level,
+and if the next day's price is below the pivot point, that sets a new resistance
+level.
+
+moving average. It's calculated by averaging the closing prices for a given
+time period
+* whats your time period?
+* 
+* A crossover occurs whenever the price crosses the moving
+* average line. Usually, it's a good idea to buy when the price crosses above the
+* moving average line and to sell when the price crosses below it.
+
+* To use convergence and divergence in analysis, the trader looks at moving
+* averages from different time periods, such as 5 days, 10 days, and 20 days.
+* 
+* When two or three of the moving average lines converge (come together),
+* that means that the trend may be ending. That often makes it a good time to
+* buy if the trend has been down — and a good time to sell if the trend has
+* been up. If two or three of the moving average lines split up and diverge, that
+* means that the trend is likely to continue. That means that it's probably a
+* good time to buy if the trend is up and sell if the trend is down.
+
+* A moving average is a lagging indicator. It sums up trading activity in the last
+* 5, 10, 30, or 60 days. 
+* 
+Phases of a trend
+* Accumulation: This is the first part of the trend, where traders get
+* excited about a security and its prospects. They start new positions or
+* add to existing ones.
+* 
+* ߜ Main phase (also called continuation): Here, the trend moves along
+* nicely, with no unusual price action. The highs get higher on an uptrend,
+* and the lows get lower on a downtrend. A trader might make money, but
+* not big money, following the trend here.
+* 
+* ߜ Consolidation (also called congestion): This is a sideways market. The
+* security stays within the trend, but without hitting higher highs or lower
+* lows. It just stays within the trading range. A consolidation phase is
+* good for scalpers, who make a large volume of trades in search of very
+* small profits. It can be boring for everyone else.
+* 
+* ߜ Retracement (also called correction or pullback): This is a secondary
+* trend, a short-term pullback away from the main trend to the support
+* level. Retracements create buying opportunities, but they can also kill
+* day traders who are following the trend.
+* 
+* ߜ Distribution: In the distribution phase, traders don't think that the
+* security can go up in price any more. Hence, they tend to sell in large
+* volume.
+* 
+* ߜ Reversal: This is the point where the trend changes. It's time to sell if
+* you had been following an uptrend and buy if you had been following a
+* downtrend. Many reversals follow classic patterns, which are discussed
+* later in this chapter.
+* 
+* 
+Momentum
+* If the rate of change on the trend is going up, then rising prices are likely to occur.
+
+* To calculate momentum, take today's closing price for a security, divide that
+* by the closing price ten days ago, and then multiply by 100.
+* 
+* > What are other momentum calculations?
+* 
+* Momentum is a leading technical indicator. It tells you what is likely to
+* happen in the future, not what has happened in the past.
+* > Proof?
+* 
+* A breakout occurs when a security price passes through and stays above —
+* or below — the resistance or support line, which creates a new trend with
+* new support and resistance levels. 
+* 
+*    A one-time breakout may just be an anomaly, what technicians sometimes call a false breakout
+
+* The exact amount of momentum that a security has can be measured with
+* indicators known as momentum oscillators.
+*    A classic momentum oscillator
+*    starts with the moving average of closing prices for a past time period 
+*    day's moving average is plotted below the price line
+*    when positive, traders say that the security is overbought; 
+*    when it is negative, they say that the security is oversold
+
+A tick is an upward or downward price change
+
+arbitrage comes from the French word for judgment
+* suitable for automation because it requires fast work
+* You sell as much
+* of the high-priced asset in the high-priced market as you can, borrowing shares
+* if you need to, and then you immediately turn around and buy the low-priced
+* asset in the low-priced market.
+* 
+* -> dont do it: too complex!
+* 
+Scalping
+* especially active in the commodity markets
+* 
+* scalpers look to take advantage of changes in a security's bid-ask spread.
+* 
+* difference between the price that a broker will buy a security for from those 
+* who want to sell it (the bid) and the price that the broker will charge to 
+* purchase (ask)
+* 
+* If the spread between the bid and the ask is wider than usual, then the
+* ask is higher and the bid is lower than it should be. That's because
+* slightly more people want to buy than sell, so the brokers charge the
+* buyers higher prices. The scalper uses this as a sign to sell.
+* 
+* if the spread between the bid and the ask is narrower than usual, then
+* the ask is lower and the bid is higher than it would normally be
+* That happens if there are slightly more sellers than buyers, and the broker
+* wants to find buyers to pick up the slack. 
+* The scalper would be in there buying and hoping that the selling pressure is short lived.
+
+* You'll need a low trade cost structure
+* 
+* He also has to be sure that the price changes
+* aren't driven by real information, because that will make market prices too
+* volatile to make scalping profitable. Scalping is “picking up nickels in front of
+* a steamroller,” some traders say, because of the risk of focusing on small
+* price changes when bigger changes are underway.
+
+

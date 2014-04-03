@@ -1,0 +1,81 @@
+---
+title: Jquery reading notes
+tag:   reading notes
+date:  Oct 10 2011
+---
+
+= peepcode jQuery ajax
+
+Load a result from a web page & filter by CSS selector:
+- request made as a post
+
+.load("/report.html table.td.result");
+
+.load("/report.html table.td.result", {query: 200});
+
+.ajaxStart() fired before all requests fired (success or error), use it for error handling, eg spinner
+
+.ajaxError()
+
+Global Ajax Event handlers
+
+$form instantiates a jQuery objects
+
+$form.show("slide", { direction: 'up' })
+
+Stop a form from being submitted
+form.submit(function(e) { e.preventDefault(); }
+
+compare without coercion: === 
+
+Seperation of concerns:
+I dont like ANY html or css in js. Create all markup & styles beforehand. Test them in the browser to see if they look correct. Then hide them with css display none. Subsequently all you have to do in js is activate the dom objects. 
+
+= jQuery in action 2nd edition
+
+What are the key chapters?
+
+What is the jQuery selector syntax standard -> xpath3 ?
+
+You can handle collections/wrapped set like an array (get, first, last ...)
+
+Is there a clean way to build html/css? Pre-create & activate (seperation of concerns) or use a builder library?
+
+event handlers are where the action is! Looks like this is the chapter to work through in detail.
+
+How to I add a method to a jQuery wrapped set?
+
+What are some cool toy apps I could work on to brush up on my javascript & jQuery skills? 
+- countdown timer
+- drop down pre-populator
+- orbitz interview question
+- tile slider game
+
+Scriptaculous style effects are available using show('', {effect: 'type'}) 
+
+Utility functions are like ActiveSupport extensions, String#trim, Array#map and friends.
+
+jQuery UI:
+
+Effects—Enhanced effects beyond those provided by the core library
+Interactions—Mouse interactions, such as drag and drop, sorting, and the like
+Widgets—A set of commonly needed controls, such as progress bars, sliders, dialog boxes, tabs, and so on
+
+Can you call jQuery UI effects based on CSS classes, eg if the element has a class 'effect-pulsate', then use that effect
+
+What is the state of the Rails jQuery plugin? Does it use RJS or is it unobtrusive?
+
+What is the state of js testing? Geoff Grosenback used the jasmine library in the coffeescript peepcode screencast.
+
+What is the 80/20 effect for js? eg I think that the jQuery UI tabs widget could just as easily be created in html & css.
+
+Is ruby, sinatra, haml, sass, jquery & coffee script the ultimate protyping stack?
+
+
+
+
+
+
+
+
+

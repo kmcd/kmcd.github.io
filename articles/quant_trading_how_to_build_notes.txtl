@@ -1,0 +1,382 @@
+---
+title: Quant trading how to build reading notes
+tag:   reading notes
+date:  Oct 10 2011
+---
+
+= Questions
+
+What infrastructure do you need?
+- back testing
+- paper trading
+- real time evaluation
+- promotion scaling
+
+What are the best websites?
+- epchan
+- blue owl
+- see ch. 2 section
+* www.TradingMarkets.com
+* www.SeekingAlpha.com
+* www.TheStreet.com
+* www.TheKirkReport.com
+* www.aleablog.com
+* www.AbnormalReturns.com
+* www.brettsteenbarger.com
+* epchan.blogspot.com
+
+How much math do you need?
+- undergrad stats, financial, algorithmic
+
+Who should you talk to?
+- Peter Gardner
+- Niall
+
+What is your strategy? (the simplest)
+- day trading scalping
+- stat arb
+- mean revert
+- stat infer
+- etf correllation/surrogate
+- seasonal sectors
+
+Is 1%/day realistic - how do you find out?
+- go on day trade forums
+- ask around
+
+What chapters can you omit (2&6 look key)
+
+What is the Sharpe ratio?
+- a measrure of the profiablity of a strategy compared to a benchmark
+
+Does your DMA broker provide:
+- real time data
+- clean historical data
+- fundamental (company financial) data
+
+What are limit orders? Need to re-read pp 23
+
+What area of math deals with time series data?
+
+What ~exactly~ is statistical arbitrage?
+- exploiting a price discrepancy, eg one stock with different prices on different 
+* exchanges
+
+= Action points
+
+Find your day trading strategy.
+
+Your backtesting & execution platform should be identical. Use excel / matlab /
+google docs for basic analysis, initial hypothesis testing.
+
+Check out TradeStation brokerage (they offer backtesting & order submission)
+
+Re-read ch. 4 when you can actaully understand what the financial terms mean.
+
+Thoroughly investigate stop loss
+
+= Ch. 1
+
+statistical arbitrage trading deals with the simplest finan-
+cial instruments: stocks, futures, and sometimes currencies.
+
+Author has a physics Phd., worked at IBM TJ Watson research lab & many top tier
+financial instutions. When he tried complex strategies they all failed!
+
+Use the simpliest strategy possible
+
+It is important not to have a need for immediate profits to sustain your
+daily living, as strategies have intrinsic rates of returns that cannot
+be hurried
+
+You should hope to have steadily increasing profits, but most likely it won’t be 
+200 percent a year
+
+Some fund managers spend 1 day a month monitoring reports & news, setting up the
+days trades.
+
+Author spends 2 hours in the morning reading reports & preparind days trading.
+> I'm looking for a 100% automated system
+
+you will need to spend time doing research and backtesting on new strategies.
+
+The Nonnecessity of Marketing
+* the business of quantitative trading
+* allows you to focus exclusively on your product (the strategy and
+* the software), and not on anything that has to do with influencing
+* other people’s perception of yourself. 
+* > This is HUGE!
+
+How do you find the right
+strategy to trade? How do you recognize a good versus a bad strat-
+egy even before devoting any time to backtesting them? How do you
+rigorously backtest them? If the backtest performance is good, what
+steps do you need to take to implement the strategy, in terms of both
+the business structure and the technological infrastructure?
+
+= ch. 2 Fishing for Ideas
+
+Many academic strategies are too complex, out of date or expensive to test.
+
+many traders’ forums or blogs may suggest simpler strategies that are equally profitable
+strategies from traders’ forums may have worked only for a little while, or they
+work for only a certain class of stocks, or they work only if you
+don’t factor in transaction costs.
+
+the difficulty is not the lack of ideas. The difficulty is to de-
+velop a taste for which strategy is suitable for your personal circum-
+stances and goals, and which ones look viable even before you de-
+vote the time to diligently backtest them
+
+Low capital a/c's (YOU)
+
+With a low-capital account, we need to find strategies that can
+utilize the maximum leverage available. (Of course, getting a higher
+leverage is beneficial only if you have a consistently profitable
+> Leverage = risk
+
+Capital availability also imposes a number of indirect con-
+straints. It affects how much you can spend on various infrastructure, data, & 
+software.
+
+Author uses Interactive Brokers
+
+Backtesting data with surviourship bias may be acceptable to test Intra day 
+strategies
+
+> Intra day scalping seems to be the strategy for me
+
+the
+more regularly you want to realize profits and generate income, the
+shorter your holding period should be.
+
+Sharpe ration is: 
+average exces Returns / std dev excess
+where excess = portfolio - benchmark
+or how consistently does the portfolio perform
+
+Bollinger bands: every time the price exceeds plus or minus
+2 moving standard deviations of its moving average, short or buy, re-
+spectively.
+
+What are your transaction costs (see IB api)
+
+A historical database of stock prices that does not include stocks
+that have disappeared due to bankruptcies, delistings, mergers, or
+acquisitions suffer from the so-called survivorship bias, because
+only “survivors” of those often unpleasant events remain in the
+database.
+
+This is especially true if the strategy has a “value” bent; that is,
+it tends to buy stocks that are cheap.
+
+it is very likely that you can optimize parameters in such a way that
+the historical performance will look fantastic. It is also very likely
+that the future performance of this strategy will look nothing like
+its historical performance and will turn out to be very poor.
+
+Every time a carefully constructed model that seems to work marvels
+in backtest came up, they inevitably performed miserably going forward. The
+main reason for this seems to be that the amount of statistically independent
+financial data is far more limited compared to the billions of independent con-
+sumer and credit transactions available
+
+The AI strategies that work for me are usually characterized by these properties:
+* based on a sound econometric or rational basis, and not on random discovery of patterns.
+* few parameters that need to be fitted to past data.
+* linear regression only, and not fitting to some esoteric non-linear functions.
+* conceptually simple.
+* All optimizations must occur in a lookback moving window, involving no future 
+* unseen data. And the effect of this optimization must be continuously demonstrated using this future, unseen data.
+
+look for those strategies that fly under the radar of most institutional investors
+* have very low capacities because they trade too often, 
+* trade very few stocks every day, 
+* have very infrequent positions (such as some seasonal trades in commodity 
+*    futures described in Chapter 7).
+*    
+* Those niches are the ones that are likely still to be profitable because
+* they have not yet been completely arbitraged away by the gigantic
+* hedge funds.
+
+Parametersless trading:  all parameters are dynamically optimized in a moving 
+lookback window
+
+Benchmark model on a test & training set.
+* eg IS: 1985 - 2005, OOS: 2006-2011
+
+Backtesting is about conducting a realistic historical simulation of
+the performance of a strategy. The hope is that the future perfor-
+mance of the strategy will resemble its past performance
+
+Data: Split/dividend adjustments, noise in daily high/low, and
+survivorship bias.
+
+Performance measurement: Annualized Sharpe ratio and maxi-
+mum drawdown.
+
+Look-ahead bias: Using unobtainable future information for past
+trading decisions.
+
+Data-snooping bias: Using too many parameters to fit historical
+data, and avoiding it using large enough sample, out-of-sample
+testing, and sensitivity analysis.
+
+Transaction cost: Impact of transaction costs on performance.
+Strategy refinement: Common ways to make small variations on
+the strategy to optimize performance
+
+= ch. 4 Setting up your business
+
+Minimising transactions costs
+
+To cut down on commissions, you can refrain from trading low-
+price stocks. Typically, institutional traders do not trade any stocks
+with prices lower than $5. Not only do low-price stocks increase
+your total commissions costs (since you need to buy or sell more
+shares for a fixed amount of capital), percentage-wise they also have
+a wider bid-ask spread and therefore increase your total liquidity
+costs.
+
+In order to minimize market impact cost, you should limit the
+size (number of shares) of your orders based on the liquidity of the
+stock. One common measure of liquidity is the average daily volume
+(it is your choice what lookback period you want to average over).
+As a rule of thumb, each order should not exceed 1 percent of the
+average daily volume.
+
+Often, the moment you start paper trading you will realize that
+there is a glaring look-ahead bias in your strategy—there may just be
+no way you could have obtained some crucial piece of data before
+you enter an order! If this happens, it is “back to the drawing board.”
+
+You should be able run your ATS, execute paper trades, and then
+compare the paper trades and profit and loss (P&L) with the theoret-
+ical ones generated by your backtest program using the latest data.
+If the difference dais not due to transaction costs (including an ex-
+pected delay in execution for the paper trades), then your software
+likely has bugs. 
+
+If you are able to run a paper trading system for a month or
+longer, you may even be able to discover data-snooping bias, since
+paper trading is a true out-of-sample test.
+
+traders usually pay less and less attention to the performance of a paper trading
+system as time goes on, since there are always more pressing issues
+(such as the real trading programs that are being run). This inatten-
+tion causes the paper trading system to perform poorly because of
+neglect and errors in operation. So data-snooping bias can usually
+be discovered only when you have actually started trading the sys-
+tem with a small amount of capital.
+
+Regime shifts refer to the situation when the financial market
+structure or the macroeconomic environment undergoes a drastic
+change so much so that trading strategies that were profitable be-
+fore may not be profitable now.
+ 
+eg decimalization of stock prices. Prior to early
+2001, stock prices in the United States were quoted in multiples of
+one-sixteenth and one-eighteenth of a penny. Since April 9, 2001, all
+U.S. stocks have been quoted in decimals. 
+
+= ch. 6 Money & Risk management
+
+Every optimization problem begins with an objective.
+
+Kelly formula (optimal leverage for a trading strategy)
+
+true (geometric) random walk, by which
+I mean there is a 50–50 chance that the stock is going up 1 percent or
+down 1 percent every minute.
+you will lose money, at the rate of 0.005 percent (or
+0.5 basis point) every minute! This is because for a geometric random walk,
+the average compounded rate of return is not the short-term (or one-period)
+return m (0 here), but is g = m − s 2 /2. 
+
+it is extremely helpful to
+have a collaborator or consultant to duplicate your backtest results
+independently to ensure their validity. This need to duplicate results
+is routinely done in scientific research and is no less essential in
+financial research.
+> IndieQuant.org
+
+“representativeness bias”—people tend to put too much weight on
+recent experience and underweight long-term average 
+
+We must remember that we are operating in a probabilistic
+regime: No system can avoid all the market vagaries that can result
+in losses.
+
+start with a small portfolio and gradually gain psychological preparedness, 
+discipline, and confidence in your models.
+
+In order to proceed slowly and cautiously, it
+is helpful to have other sources of income or other businesses to
+help sustain yourself either financially or emotionally (to avoid the
+boredom associated with slow progress). It is indeed possible that
+finding a diversion, whether income producing or not, may actually
+help improve the long-term growth of your wealth.
+
+Position entry signals: decide when to buy
+Exit strategy: when to sell
+* A fixed holding period
+* A target price or profit cap
+* The latest entry signals
+* A stop price
+* 
+* One of the most intuitive commodity seasonal trades is the
+gasoline future trade: Simply buy the gasoline future contract that
+expires in May near the middle of April, and sell it by the end
+of April. This trade has been profitable for the last 11 years, as
+of this writing in April 2008. (See the sidebar for details.) It ap-
+pears that one can always depend on approaching summer driv-
+ing seasons in North America to drive up gasoline futures prices in
+the spring.
+> This is an example of the kind of stategy you should employ: 
+* based on economic reality
+* easy to understand
+
+HIGH-FREQUENCY TRADING STRATEGIES
+
+The reason why these strategies have Sharpe ratio is simple:
+Based on the “law of large numbers,” the more bets you can place,
+the smaller the percent deviation from the mean return you will
+experience.
+
+aim to exploit tiny inefficiencies in the market
+
+inefficiencies and need for liquidity persist
+day to day, allowing consistent daily profits to be made. Further-
+more, high-frequency strategies typically trade securities in mod-
+est sizes. Without large positions to unwind, risk management for
+high-frequency portfolios is fairly easy: “Deleveraging” can be done
+very quickly in the face of losses, and certainly one can stop trad-
+ing and be completely in cash when the going gets truly rough. The
+worst that can happen as these strategies become more popular is a
+slow death as a result of gradually diminishing returns. Sudden dras-
+tic losses are not likely, nor are contagious losses across multiple
+accounts.
+
+Though successful high-frequency strategies have such numer-
+ous merits, it is not easy to backtest such strategies when the
+average holding period decreases to minutes or even seconds.
+Transaction costs are of paramount importance in testing such
+strategies. Without incorporating transactions, the simplest strate-
+gies may seem to work at high frequencies. As a consequence, just
+having high-frequency data with last prices is not sufficient—data
+with bid, ask, and last quotes is needed to find out the profitability
+of executing on the bid versus the ask. Sometimes, we may even
+need historical order book information for backtesting. Quite often,
+the only true test for such strategies is to run it in real-time unless
+one has an extremely sophisticated simulator.
+
+High-speed execution may account for a large part of the actual profits or losses.
+
+(To recap: Capacity is the amount of equity a strat-
+egy can generate good returns on.) It is far, far easier to generate
+a high Sharpe ratio trading a $100,000 account than a $100 million
+account. There are many simple and profitable strategies that can
+work at the low capacity end that would be totally unsuitable to
+hedge funds. This is the niche for independent traders
+
+

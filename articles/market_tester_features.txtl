@@ -1,0 +1,22 @@
+---
+title: Market tester features
+tag:   reading notes
+date:  Jan 01 2013
+---
+
+UI 1st (paper prototyping book & domain driven design)
+- sketch all screens
+- static html,css for all screens (graphic designer)
+
+Dev (app skeleton 1st, outsource non-working screens)
+landing page CRUD
+Adwords campaign(s) CRUD
+Market test CRUD
+Adwords campaign(s) results/report
+
+Login
+Signup (inc. payment details)
+Take payments
+Customer report (payments, signups, logins)
+Error handing, newrelic, heroku
+Backups

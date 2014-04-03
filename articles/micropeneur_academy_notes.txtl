@@ -1,0 +1,231 @@
+---
+title: Micropeneur academy reading notes
+tag:   reading notes
+date:  Sep 09 2011
+---
+
+= Changing your time mindset
+
+Currently billing £43.75 ($80/) at £350/day.
+
+Should outsource:
+- web/market research
+- graphic design
+- non-core development (a/c managment, billing)
+- app monitoring
+- writing some blog articles
+- ppc campaigns
+
+Should not outsource
+- market testing
+- UI design
+- core domain development
+- customer support
+
+Always take action notes. No input without an output.
+
+= Revenue model
+
+Talk to customers first!
+Use recurring
+
+= Should you build your product
+
+Estimate size
+
+= Market research
+
+A web search for related magazines and websites
+Tracking down their advertising rate cards
+Reviewing their circulation (for magazines), visitor statistics (for websites), and rates
+Entering websites without rate cards into compete.com (video demo) to check traffic levels
+
+= Buying a product
+
+You always want to be the second buyer in business - the person who buys the hotel or golf course or the shopping mall after the first owner has gone bankrupt and its assets are being sold by the bank at ten cents on the dollar.
+
+You may not realize it, but the secondary market for software and websites is deeply discounted since it’s based almost entirely on monthly revenue. If a product took 500 hours to build but it only brings in $300 each month, odds are you’ll be able to buy it for between $2k and $4k.
+
+One of my most recent acquisitions had a 3-1/2 month payback: www.cmsthemer.com paid back its purchase price in the 4th month I owned it. This is the shortest payback I’ve achieved with a website acquisition.
+
+= Sales page
+Check out BlogJet
+
+you want to keep your time to market - meaning the time from the day you
+start development until the day you begin selling your product - to less than 6 months, and ideally less than 4 months.
+
+A good goal to shoot for is a time to market of 4 months, traffic ramp-up of 1-2 months and a 2-4 week sales cycle.
+
+You want to sell a new product to your existing audience or an existing product to a new audience, but you want to avoid selling a new product to a new audience.
+
+= Purchasing an app
+
+You can adding value by: improving the product, marketing or process.
+
+Lessons from purchase of DotNetInvoice
+- spend alot of time working with the code
+- Contact current customers.
+- Fix bugs quickly to earn customer trust
+- Clean up around the edges (docs, install)
+- Investigate revenue and expenses for the previous 6 months. 
+Look back as many months as you can. If a month is not available assume it was terrible and adjust your offer accordingly. Take the average monthly revenue from the previous 6-12 months to eliminate seasonal or “new version” peaks. If the product is relatively new, assume revenue will drop after the first 2-3 months. If there’s a lack of information, assume the worst. As a general guide, products like this tend to sell for between 12 and 24 months of revenue.
+
+= Sales site 
+
+In a nutshell: use WordPress + listed plugins
+
+TemplateMonster.com is good for static templates costing $65.
+Also http://andreasviklund.com/templates/commercial has themes for $30
+
+WooThemes available free on Micropeneur Academy! 
+The CMS themes are the most suitable for your sales site
+
+Do not launch without a testimonials page. (social proof)
+
+Required Pages
+Home
+Tour
+Testimonials
+Contact Us
+Pricing & Purchase
+
+Optional Pages
+Demo
+Forum
+Landing Page(s)
+
+Home page
+The #1 goal of your home page is to convince your visitors to click 1 link. That’s all you have to do to convince them not to leave is click a single link.
+The key metric with home pages is abandonment rate 
+-> A simple home page with very few options, and large, clickable buttons.
+
+If you choose to have an image for your home page, choose one that shows the result of your product. For example, a home loan website should show people living in a house; a backpacking website should show people on top of a mountain, and an online proposal tool should show an image of a completed proposal.
+
+-> Just emulate BaseCamp
+
+Contact us
+Kall8.com for four years and it’s an ideal “virtual PBX” service for a Micropreneur. Their toll free numbers are $2/month plus low usage fees.
+
+Voice mails are recorded as MP3s and emailed to you as attachments
+
+Landing pages
+
+Landing pages have a single goal. Convert, convert, convert. A landing page is not designed to usher someone into your website for a look around. If they wind up doing that, great. But the real goal is to convince them that you are worthy of their email address, typically accomplished using a large email sign-up form where you offer an irresistible white paper or other bonus.
+
+Once they’ve provided their email you can send them to your free trial page, but if you want ROI on your advertising investments, offer something great in exchange for their email before you do so.
+
+Landing pages must perform quickly. This means use huge fonts and no paragraphs. No one will read. Using a video or large image as the focal point of the page will work wonders for conversion rates.
+
+You need to build credibility very quickly. This means having a professional design and well-honed copy.
+
+Include testimonials. Nothing works better for building credibility than testimonials.
+
+Remove your header navigation. You don’t want your prospect wandering off into your website without providing their email. Move your header navigation into the footer.
+
+Make the landing page an extension of your ad. If you used specific verbiage in your ad, include include it in the landing page header. If you used a specific color scheme or look and feel, use it on the landing page. You want the visitor to feel immediately comfortable, as if this is what they are looking for.
+
+Sales Copy Guidelines
+Rule #1: Act small.
+Rule #2: Value sincerity over hype.
+Rule #3: Tell a story
+Rule #4: Provide the most important information 
+Rule #5: Headlines are crucial. Think hard about every page headline. A headline’s first responsibility is to engage the reader; its second is to include SEO keywords.
+Rule #6: Use large fonts, bulleted lists and sub-headings. Never include paragraphs of text on a sales website. Be brief. Edit sentences from your copy like a samurai warrior.
+Rule #7: Emphasize the second person, which means using the words you and your a lot. This forces you to talk about benefits, not features of your product.
+Rule #8: Include a call to action
+
+http://www.amazon.com/gp/product/0814413048?ie=UTF8&tag=softwarbyrob-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0814413048
+
+= Payment processing
+
+For SaaS applications, if you’re using Ruby, use the SaaS Rails Kit. It will save you tons of time and it’s well worth the $249.
+
+With SaaS, off-site processors become a bit trickier.
+For recurring and one-time payments using PayPal you’ll want to create an IPN page and when a request comes through, mark that customer’s record as paid in your database. I’m assuming you allowed them to create their account in your system before forwarding them to PayPal for payment, and that their user account is initially marked as unpaid. Then only allow paid accounts to login to your application.
+
+For recurring and one-time payments using 2Checkout, when the customer is redirected back to the success page on your website, check the return parameters to confirm payment was successfully processed and mark the customer’s account as paid.
+
+Note: In your PayPal IPN script you’ll also want to monitor for canceled subscriptions and disable accounts accordingly, since these requests will come from PayPal anytime a subscription is canceled.
+
+What about sassy?
+
+= PPC
+-> Use lesson 5.2 to run your own ad campaign
+
+= SEO
+Find the the max ROI for your efforts.
+
+Does it boil down to content research, creation & publicising (including link building) ?
+
+You don’t have to be the best at SEO; you just have to be better than the other webmasters in your niche.
+
+Getting Started
+If you’ve just launched your website, get a link to it from any non-spam site and it will be indexed in about a week. 
+
+If you have an existing website drop a link in the sidebar or footer, add your site to one of the free directories mentioned in the next lesson, or add a link to it on delicious, Digg or Reddit (as long as it’s relevant).
+
+Alternatively, you can submit your site manually to the big three search engines:
+Google - Submit your URL
+Yahoo! - Submit your URL
+Bing (formerly MSN) - Submit your URL
+
+= Analytics
+
+1. Is traffic growing, declining, or staying the same? Determined by the number of visits compared to the previous month.
+2. How useful is your site (according to your visitors)? Average number of page views per visit, the time each visitor spends on your site, and your bounce rate (the number of single-page visits).
+3. Who are your visitors? Determined by their location, language and whether they are new or returning.
+4. Which content is most popular? Determined by page views for each page.
+5. Where do most visitors land first? Top landing pages.
+6. Where do most visitors exit? Top exit pages.
+7. What are your top traffic sources? Referrers, search engines and direct traffic.
+8. What is your overall conversion rate? Determined by the percentage of visitors who complete one of your conversion goals. Remember, you can (and should) have multiple conversion goals.
+9. Which traffic has the highest conversion rate? Determined by the number of conversions segmented by where a visitor came from
+
+Core Strategy #1: Tracking Conversions Using Goals
+In Google Analytics, a “goal” is a desired visitor action. Examples include:
+Signing up for your email list
+Submitting your contact form
+Trying your online demo
+Signing up for a trial account
+Making a purchase
+In Analytics, goals are nothing more than specially marked page views.
+
+Core Strategy #2: Tracking AdWords & AdSense Clicks
+
+Advanced Strategy #3: Excluding Internal Traffic
+
+= A/B testing aka conversion optimisation
+
+It's easier to optimise for existing traffic than to get more traffic.
+
+a typical website converts 1-4% of visitors
+
+During the first optimization especially, 20-40% conversion rate improvements are my expectation. In subsequent tests I expect that percentage to slowly decrease as the page becomes more optimized, with 10% being a typical second and third test result, and 2-5% improvements after that.
+
+A/B testing is one of the highest ROI Micropreneur activities
+
+Things to test:
+Headline or Prominent call to action
+Look & feel of the page (color scheme, etc...)
+Bonus (for purchasing, signing up, etc..)
+Location, size and color of buttons
+Prominent image or video
+In a web form - adding or removing fields (removing one field tends to have a huge positive impact on form submissions )
+In an email - (yep, you can test emails against one another) - time of day, day of week, subject line, body text, and call to action
+In an AdWords campaign (we looked at this in 5.1) - change the ad headline, body text and URL
+
+-> visit ABtests.com
+
+A/B testing can only be used when a page/email/ad has a single goal. 
+It doesn’t tell you what your visitors are thinking. While A/B testing does show you what users are doing, it doesn’t tell you why
+A/B testing is not a substitute for talking to users, usability testing, or thinking. 
+
+A/B testing is an advanced technique; it may take 1-4 weeks to get a result.
+ 
+You must use Google Optimizer (or similar) to randomly serve content sections.
+
+Every 100 conversions or so, try a major change to the page.
+
+To start A/B testing you want around 20 conversions per week. The general rule is to test 100 conversions (50 per page variation) so you can do the math on how long that test will take. With that said, you will often see trends earlier than 100 conversions and you will often end experiments early. As a Micropreneur, this typically means you’ll want to test email sign-up conversions, since few of us make 20 sales per week. And you can also test simple click-through rates, such as asking “which version of the home page caused more people to click at least one link?”
+
+-> watch A/B test videos

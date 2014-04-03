@@ -1,0 +1,87 @@
+---
+title: Debug it reading notes
+tag:   reading notes
+date:  Mar 03 2013
+---
+
+The Core Debugging Process
+
+Reproduce:
+	Find a way to reliably and conveniently reproduce the problem on
+	demand.
+Diagnose:
+	Construct hypotheses, and test them by performing experiments
+	until you are confident that you have identified the underlying
+	cause of the bug.
+Fix:
+	Design and implement changes that fix the problem, avoid intro-
+	ducing regressions, and maintain or improve the overall quality of
+	the software.
+Reflect:
+	Learn the lessons of the bug. Where did things go wrong? Are there
+	any other examples of the same problem that will also need fixing?
+	What can you do to ensure that the same problem doesn’t happen
+	again?
+
+
+Find a reproduction before doing anything else.
+	• Ensure that you’re running the same version as the bug was
+	reported against.
+	• Duplicate the environment that the bug was reported in.
+	• Determine the input necessary to reproduce the bug by:
+	– Inference
+	– Recording appropriate inputs via logging
+	• Ensure that your reproduction is both reliable and convenient
+	through iterative refinement:
+	– Reduce the number of steps, amount of data, or time
+	required.
+	– Remove nondeterminism.
+	– Automate.
+
+Scientific method:
+	1. Examine what you know about the software’s behavior, and con-
+	struct a hypothesis about what might cause it.
+	2. Design an experiment that will allow you to test its truth (or oth-
+	erwise).
+	3. If the experiment disproves your hypothesis, come up with a new
+	one, and start again.
+	4. If it supports your hypothesis, keep coming up with experiments
+	until you have either disproved it or reached a high enough level
+	of certainty to consider it proven.
+
+One Change at a Time
+
+Keep a Record of What You’ve Tried & periodically review
+
+Binary chop
+
+Favour tests to debugging sessions
+
+Know what assumptions you’re making, and examine them critically.
+
+Pair programming, ask for help. If no-one esle is available, write down the
+scenario and re-read it to yourself.
+
+If you find yourself getting frustrated or thrashing (lots of action but
+little forward progress), that can be a sign that you need to take a break.
+Work on a different problem for a while, make a cup of tea, take a walk,
+practice your juggling for a while—anything that will take your mind off
+the problem.
+
+When the stroke of genius arrives out of nowhere, write it down. If a
+pen and paper isn’t available, send yourself an SMS or tell whoever you
+happen to be with—there’s nothing more frustrating than being unable
+to recall your insight the following day.
+
+Construct hypotheses, and test them with experiments.
+	– Make sure you understand what your experiments are going to tell you.
+	– Make only one change at a time.
+	– Keep a record of what you’ve tried.
+	– Ignore nothing.
+• When things aren’t going well:
+	– If the changes you’re making don’t seem to be having an effect, you’re not changing what you think you are.
+	– Validate your assumptions.
+	– Are you facing multiple interacting causes or a changing underlying system?
+• Validate your diagnosis.
+
+

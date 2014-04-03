@@ -1,0 +1,601 @@
+---
+title: Kanban reading notes
+tag:   reading notes
+date:  May 05 2012
+---
+
+Kanban, David Anderson
+
+= Skim 
+
+= Questions
+
+What chapters should I omit? 
+1, 13, 14, 16 - 20 (advanced)
+
+What are the key / most applicable chapters?
+6, 7, 10, 11, 12, 15
+From steps to implement, ch 6 & 7 are mentioned repeatedly
+
+Can I summarise with the takeaways sections only? Yes
+
+Kanban will reveal opportunities for improvement that do not involve
+complex changes to engineering methods. 
+-> What are the low cost, high return activities?
+
+How to measure the current system?
+-> raw data from lighthouse api
+-> model current workflow using value stream
+-> model kanban pull system using a card board
+-> WIP, thoughput, % billable time (key metric), total time from request to invoice
+
+How long to see changes take effect?
+-> review & make changes at monthly ops meeting
+-> original implementation took 15 months for max improvement
+
+Can we use WIP limits on number of tickets per client release to enforce pair
+programming?
+-> Dont impose policies, instead suggest solutions to problems as they arise
+
+What are MS work item types?
+-> support (admin/config) request
+-> bug
+-> feature (load failure)
+-> new feature
+-> UI change (including text chunk)
+
+How can we perform a demand analysis of work item types using LightHouse api?
+Yes, for items that have a ticket. This does not measure time spend on phone calls,
+interruptions to current work, investigating issues on production.
+
+What is the absolute minimum we can do to improve?
+Visualise workflow
+Limit WIP
+Measure cycle time
+Start to focus on quality
+
+Do we need a kanban board or can we manage soley with an electronic tool?
+Still don't know the answer to this. Probably not.
+
+What are the classes of service?
+-> based on delivery time & work item type
+-> expidited   1 day
+-> feature     15 days
+-> bug         5 days
+-> support     2 days
+
+
+= Notes
+
+== ch 2, What is a Kanban method?
+
+Kanban (signal card)
+- represents a unit of capacity in a system
+- signalling mechanism, eg plane ticket (provides direction/instruction)
+
+Imperial Palace Gardens admission tickets (effective, low cost solution)
+
+use a kanban system to:
+- limit a team’s work-in-progress
+- set capacity
+- balance the demand against the throughput of delivered work. 
+- enforce a sustainable pace of development
+- ensure work versus personal life balance.
+
+== ch 3, Recipe for success
+
+Goldratt, Theory of contraints:
+
+1.	 Visualize Workflow
+2.	 Limit Work-in-Progress
+3.	 Measure and Manage Flow
+4.	 Make Process Policies Explicit
+5.	 Use Models to Recognize Improvement Opportunities
+
+excessive defects are the biggest waste in software development
+
+Focus on quality
+* pair programming / TDD / refactoring
+* Code inspection (every day for 30 mins)
+* Collaborative team analysis and design modeling sessions (Scott Ambler, Agile modelling)
+* Code metrics tools
+* Automated acceptance testing
+* Server monitoring
+* Automation
+
+Reduce Work-in-Progress and Deliver Often
+* Frequent Releases Build Trust
+* 
+Balance Demand against Throughput
+* set the rate at which we accept new requirements into our software development 
+* pipe to correspond with the rate at which we can deliver working code
+* 
+* create slack
+* 
+* You need slack to enable continuous improvement. In order to have slack, you 
+* must have an unbalanced value stream with a bottleneck resource. Optimizing 
+* for utilization is not desirable. (Queing theory, road traffic)
+
+ 
+== ch 15, Starting a Kanban change initiative
+
+Steps to Get Started
+1.	 Agree on a set of goals for introducing Kanban.
+2.	 Map the value stream 
+3.	 Define some point where you want to control input. Define what is
+*    upstream of that point and who the upstream stakeholders are (explained
+*    in chapter 6). For example, do you wish to control requirements arriving
+*    to the design team pre-production? The upstream stakeholders might be
+*    product managers.
+4.	 Define some exit point beyond which you do not intend to control. Define
+*    what is downstream of that and who the downstream stakeholders are
+*    (explained in chapter 6). For example, maybe you don’t need to control
+*    the delivery fulfillment of the product.
+5.	 Define a set of work item types based on the types of work requests that
+* come from the upstream stakeholders (explained in chapter 6). Do you
+* have some item types that are time-sensitive and others that are not? If so,
+* then you may require some classes of service (explained in chapter 11).
+6.	 Analyze the demand for each work item type. Observe the arrival rate
+* and variation. Is the variation seasonal or event-driven? What risks are
+* associated with this type of demand? Should the system be designed to
+* cope with average or peak demand? What is the tolerance for late or unre-
+* liable delivery of this type of work? Create a risk profile for the demand.
+* (Explained in chapter 6.)
+7.	 Meet with the upstream and downstream stakeholders—this might be
+* one big meeting, or it might be lots of little meetings. (Explained in more
+* depth later in this chapter.)
+*    a.	 Discuss policies around capacity of the piece of the value stream you want
+*    to control and get agreement on a WIP limit (explained in chapter 10).
+*    b.	 Discuss and agree on an input-coordination mechanism, such as a
+*    regular prioritization meeting, with the upstream partners (explained
+*    in chapter 9).
+*    c.	 Discuss and agree on a release/delivery-coordination mechanism,
+*    such as a regular software release, with the downstream partners
+*    (explained in chapter 8).
+*    d.	 You may need to introduce the concept of different classes of service
+*    for work requests (explained in chapter 11).
+*    e.	 Agree on a lead-time target for each class of service of work items.
+*    This is known as a service-level agreement (SLA), and is explained in
+*    chapter 11.
+8. Create a board/card wall to track the value stream you are controlling
+*    (explained in chapters 6 and 7).
+9. Optionally, create an electronic system to track and report the same
+*    (explained in chapters 6 and 7).
+10.Agree with the team to have a standup meeting every day in front of the
+*    board; invite up- and downstream stakeholders but don’t mandate their
+*    involvement (explained in chapter 7).
+11. Agree to have a regular operations review meeting for retrospective analy-
+*    sis of the process; invite up- and downstream stakeholders but don’t man-
+*    date their involvement (explained in chapter 14).
+12. Educate the team on the new board, WIP limits, and the pull system.
+*    Nothing else in their world should have changed. Job descriptions are
+*    the same. Activities are the same. Handoffs are the same. Artifacts are the
+*    same. Their process hasn’t changed, other than your asking them to accept
+*    a WIP limit and to pull work based on class-of-service policy rather than
+*    receiving it in a push fashion.
+
+WIP limits
+- prevent multi-tasking
+
+rules for that game must be agreed upon by consensus among all the stakeholders.
+
+“Yes, we’d love to accept this new work, as we realize it is very important to
+you. Equally, you know and understand that we have an agreed-upon WIP limit.
+You were part of that decision, and you understand why we made it. We want to
+be able to process requests reliably and in a timely manner. In order to take on your
+request, we will need to put something else aside. Which one of the current items in
+progress would you prefer that we drop in order to start your new item?”
+
+Prioritization
+- aka queue replenishment
+- slots available
+- drop current work
+
+Lead Time and Classes of Service
+
+Recipe for success:
+1. learn to build high-quality code
+2. reduce the work-in-progress
+3. shorten lead times, and release often. 
+4. balance demand against throughput, limit work-in-progress, and create slack to free
+up bandwidth, which will enable improvements. 
+
+Then, with a smoothly functioning and optimizing software development capability,
+improve prioritization to optimize value delivery.
+
+Reduce variablity to improve predictabilty
+- reduce batch sizes
+- even out the arrival of work
+
+== ch 4 XIT case study
+
+neither the PSP/TSP method nor the CMMI rating of the
+vendor were likely to be the root cause of their problems. In fact, the team produced
+pretty much what was asked of them, and with very high quality
+
+Visualise the work flow
+- Requests were arriving uncontrollably.
+
+More than 90 percent of the lead time was queuing, or other forms of waste.
+
+estimation effort alone was consuming around 33 percent of
+capacity, and on a bad month it could be as much as 40 percent.
+
+No estimation
+Limit WIP to 1 request per developer
+
+Establishing an Input Cadence
+weekly meeting “Which three items from the backlog would you most like delivered next?”
+
+offer a “guaranteed” delivery time of 25 days from acceptance into
+the input queue. This 25 days was considerably greater than the 11 days of aver-
+age engineering time required to complete the job.
+
+customers were being asked to give up ROI calculations and inter-department
+budget transfers based on estimated effort per request. In exchange, they were being
+offered unprecedented short delivery times and reliability. 
+
+To get around the accounting issues, they were asked to accept that all requests 
+took, on average, 11 days of engineering. They were asked to accept that costs 
+were essentially fixed.
+
+guaranteed that each of the product managers would get a fair allocation of capacity
+
+A simple, weighted round-robin scheme
+Or dedicate an amount of time per release
+
+Any item older than six months was purged from backlog.
+
+ROI not needed: If something was important and valuable, it was selected for the 
+input queue from the backlog; if it wasn’t, then it wasn’t selected.
+
+team reduced the lead time to an average of 14 days against an 11-day engineering time
+
+
+== ch 6 Mapping the value stream
+
+Define work item types (bug, feature, refactoring, infrastructure)
+
+Card wall (new, open, hold, resolved)
+
+Demand Analysis
+If you have historical data, use it to make a quantitative study. If you do not,
+then an anecdotally derived subjective analysis will suffice.
+
+Allocate work items based on demand analysis
+eg 60% feature, 10% Maintainance, 30% UI change
+
+
+== ch 7 Coordination
+
+Daily Standup Meetings
+- focus on flow of work (rather than 3 questions)
+- impediments / blockers / hold
+
+Release planning
+
+- Which items in the system are (or will be) ready for release?
+- What is required to actually release each item to production?
+- What testing will be required post-release to validate the integrity of produc-
+tion systems?
+- What risks are involved?
+- How are these risks being mitigated?
+- What contingency plans are required?
+- Who needs to be involved in the release and present during the push to produc-
+tion (or other delivery mechanism)?
+- How long will the release take?
+- What other logistics will be involved?
+
+Triage: assessing and classifying into categories for priority of attention
+
+Issue Log Review and Escalation
+
+When work items in the Kanban system are impeded, they will be marked as such
+and an issue work item will be created. The issue will remain open until the imped-
+iment is removed and the original work item can progress through the system.
+
+Reviewing open issues, therefore, becomes vital to improving flow through the
+system.
+
+Issue-log review should happen frequently and regularly.
+
+Create a 'blocked' ticket state, or just use 'hold' ?
+
+When the telecommuter completed an item and changed its electronic status, they
+would contact their sticky buddy by instant message, email, or phone and ask them 
+to update the physical board.
+
+Synchronizing across Geographic Locations
+- electronic system
+- keep physical card walls synchronized, at the very least, on a daily basis.
+
+Holding regular meetings reduces the coordination cost
+
+Prioritization and release planning should be done independently and
+should have independent cadence.
+* 
+Daily standup meetings should be used to discuss issues, impediments and flow
+
+Grooming the backlog with regular triage to reduce its size improves
+the effectiveness and efficiency of prioritization meetings.
+
+Issue management, escalation, and resolution is a core discipline in improving 
+performance
+
+Escalation paths and policies should be clearly defined.
+
+
+== ch 8 Delivery cadence
+
+Kanban dispenses with the time-boxed iteration and instead decouples the ac-
+tivities of prioritization, development, and delivery.
+
+Kanban also decouples the prioritization cadence from both the lead time through
+the system and from the delivery cadence.
+
+Coordination Costs of Delivery
+- how much does it cost to deploy?
+
+* cost-only model. We must consider the total costs incurred between
+* releases. Often this is a known amount—the burn rate of the organization. If we
+* release once per month and our burn rate is $1.3 million per month, our costs are
+* at least $1.3 million per release
+* 
+* MS burn rate £30k per month
+* 
+* Delivery Efficiency% = 100% x (Total Cost – (Coordination Cost + Transaction Cost) ) / Total Cost of Software Release
+* 
+* 100 * ( 30000 - ) / 30000
+* 
+* reducing of waste by reducing coordination and transaction costs in order to
+* make the batch size efficient—in this case, to make the time between releases 
+* efficient.
+
+=> In our case is the best option is to deploy every 2 weeks?
+
+
+== Chapter 9  ❖  Establishing an Input Cadence
+
+“Prioritization cadence” means an agreed-upon regular interval between
+meetings to prioritize new work into the input queue for development.
+
+Prioritization of new work requests such as user stories involves coordi-
+nation of many people from various functions. All of this coordination
+has a measurable cost.
+
+Estimation to facilitate prioritization decisions represents the transac-
+tion costs in both time and money associated with prioritization. These
+costs can be determined and tracked.
+
+Prioritization cadence can be established by encouraging those involved
+in prioritization decision making to meet as regularly as is reasonable
+based on the transaction and coordination costs involved.
+Efficiency and cadence of prioritization can be increased by focusing
+on reducing its transaction and coordination costs.
+Frequent prioritization meetings build trust.
+Scheduling regular prioritization meetings reduces coordination costs
+and is particularly useful in lower-maturity organizations
+
+
+== ch 10 WIP limits
+
+Get buy in from all stakeholders
+
+the tension created by imposing a WIP limit across
+the value-stream is positive tension. This positive tension forces discussion about
+the organization’s issues and dysfunctions. The dysfunctions generate impediments
+to flow and result in sub-optimal productivity, lead time, and quality. The discus-
+sion and collaboration invoked by the positive tension of a WIP limit is healthy. It
+is the mechanism that enables the emergence of a continuous-improvement culture.
+Without WIP limits, progress on process improvement is slow.
+
+Capacity allocation allows us to guarantee service for each type of work received
+by the kanban system. The allocation should generally be made in response to the
+comparative demand observed for each type of work. Hence, it is important to
+complete some demand analysis to facilitate reasonable allocation of WIP limits on
+swim lanes for each type of work.
+
+
+== Chapter 11  ❖  Establishing Service Level Agreements
+
+Customers who pay more or who spend money with the airline on a regular
+basis enjoy a better class of service.
+
+High severity, high priority defects
+are fixed immediately. They receive a different, higher, class of ser-
+vice than other work. To fix a high-severity production defect, we
+put other work aside, pull in as many people as we require
+
+
+Classes of service provide us a convenient way of classifying work to provide ac-
+ceptable levels of customer satisfaction at an economically optimal cost. By quickly
+identifying the class of service for an item, we are spared the need to make a detailed
+estimate or analysis.
+
+The Expedite (or “Silver Bullet”) 
+- ASAP
+1- Manufacturing companies often create policy to limit the number of expedite re-
+quests that hit a factory.
+
+Fixed date
+
+Standard
+
+Intangaible (eg devliverable dates far in the future, refactoring)
+
+offering a target lead time coupled with a due-date performance metric is an 
+alternative to treating each item individually and having to estimate and commit 
+to a delivery date for each item.
+
+The service-level agreement allows us to avoid costly activities, such as
+estimation; low-trust activities, such as making commitments; and to spread risk by
+aggregating a large collection of requests and promising only aggregate performance
+in the form of a percentage due-date performance.
+
+important to communicate that the target lead time in the
+Standard class of service is just that, a target!
+
+The Expedite and Fixed Delivery Date classes of service were ensuring that im-
+portant items were always on time. 
+
+Due Date Performance (percentage) should be monitored for target lead times.
+
+If classes of service are used properly and combined with a regular deliv-
+ery cadence, very few complaints are likely to be received, even if a sig-
+nificant portion of items miss their target lead time.
+
+
+== ch 12 Metrics
+
+WIP (cumulative flow, or use board)
+
+Lead time
+- against each class of service
+
+Due Date Performance
+- for fixed date items
+
+Throughput
+- number of items—delivered in a given time period, such as one month.
+- should increase
+- indicator of how well the system is performing, demonstrate continuous improvement. 
+
+Issues and Blocked Work Items
+cumulative-flow diagram of
+reported impediments overlaid with a graph of the number of work-in-progress
+items that have become blocked,
+
+Flow Efficiency
+- lead time vs. time spent actually working on work item
+- not particularly useful day to day
+
+Initial Quality
+- number of escaped defects as a percentage against the total WIP and throughput
+- bugs per feature
+
+Failure Load, how many work items:
+- we process because of earlier poor quality—
+- are production defects / new features to overcome to mitigate existing shortcoming 
+- causes inclucde poor usability or a failure to anticipate user needs properly.
+- shows capacity left on the table that could be used for new, value-added features.
+
+
+== ch 14, Operations review
+
+Objective, data-driven retrospective on the organization’s performance. Sets an
+expectation of objective, data-driven, quantitative management
+
+Should be performed monthly. Can it be held in 1 hour?
+
+Need to prepare data. Can the charts be generated automatically?
+
+
+== ch 18 economic model
+
+Waste can be classified into three main abstract categories: transaction
+costs, coordination costs, and failure load.
+
+To determine if an activity is truly wasteful ask, “Would we do more of
+this if we could?” If the answer is no, then the activity is some form of
+waste.
+
+Transaction costs come in two types: setup activities and cleanup, or delivery activities.
+
+Coordination costs are activities that are performed in order to assign
+people to tasks, schedule events, or coordinate the work of two or more
+people toward a common outcome.
+
+Failure load 
+* is new value-added work that is generated because of some
+* earlier failing, such as a defect in the software, or a poor design or imple-
+* mentation that led to lack of customer adoption, a failure to realize a
+* target payoff function, or a significant rise in help desk calls or service
+* requests.
+
+* uses capacity that could be used for new, innovative, additional customer-valued, and revenue-generating features.
+* 
+* demand generated by the customer that might have been avoided through higher quality delivered earlier.
+
+* eg help desk calls
+* 
+* adds value that should have been there already
+
+
+= Review
+
+= Recite (blog articles)
+
+= MS notes
+
+15 days per week
+30 days per fortnight
+60 days per month
+
+30 days / 5 clients (inc FlexShop) = 6 days per client per fortnight
+
+2 people work for 3 days then release?
+
+How many per release?
+
+Can we use the LightHouse search & CSV exports for metrics?
+
+Instead of calculating the time spent on each client - allocate time & dont exceed.
+
+Triage & limit ticket backlog per client 12 days/month, 36 days/
+
+Action plan:
+1. Agree a set of goals
+2. Map the value stream
+3. Define a set of work item types based on the types of work requests
+4. Analyze the demand for each work item type
+5. Meet with the upstream and downstream stakeholders—this might be
+* one big meeting, or it might be lots of little meetings. (Explained in more
+* depth later in this chapter.)
+*    a.	 Discuss policies around capacity of the piece of the value stream you want
+*    to control and get agreement on a WIP limit (explained in chapter 10).
+*    b.	 Discuss and agree on an input-coordination mechanism, such as a
+*    regular prioritization meeting, with the upstream partners (explained
+*    in chapter 9).
+*    c.	 Discuss and agree on a release/delivery-coordination mechanism,
+*    such as a regular software release, with the downstream partners
+*    (explained in chapter 8).
+*    d.	 You may need to introduce the concept of different classes of service
+*    for work requests (explained in chapter 11).
+*    e.	 Agree on a lead-time target for each class of service of work items.
+*    This is known as a service-level agreement (SLA), and is explained in
+*    chapter 11.
+6. Stand up at card wall.
+* Nothing should change in work arrangements apart from:
+* - accept WIP limit
+* - pull work based on class-of-service policy
+7. Monthy ops meeting
+
+WIP is code not deployed to production; the corollary of which is that to reduce
+WIP you must increase the frequency of production deployments.
+
+Allocate work based on demand analysis
+- UI changes (10%)
+- Bug (50%)
+- Feature (30%)
+- Support request (10%)
+
+How to perform a demand analysis?
+- Fetch 1,000 random tickets from LightHouse
+- Categorise based on tag (foc, bug, post deploy issue)
+
+Limit number of open tickets by client
+replenish Q at weekly meeting
+* (requires a single point of contact between customer and client manager)
+* may also need a developer on-hand
+
+Board wall
+
+*       | backlog | started | staging | production 
+Support  |
+Bug      |
+Feature  |
+UI       |
+
+Or use client instead of class of service?
+
+Move all new ticket creation to weekly client meeting

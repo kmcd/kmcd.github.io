@@ -1,0 +1,32 @@
+---
+title: Technical analysis for short term traders reading notes
+tag:   reading notes
+date:  Feb 02 2012
+---
+
+= Questions
+
+What is the disadvantage of placing stop loss at current price?
+
+= Action points
+
+= Notes
+
+Technical analysis assumes that prices move in trends.
+
+Look for the weight of the evidence;
+* (several indicators, to indicate a reversal.)
+
+In technical analysis we are dealing in probabilities, never certainties.
+
+Placing stops
+* disadvantage is that locals and market makers can "go" for your stop.
+* 
+* order is executed immediately the price is touched - no opportunity to second guess.
+
+* A correctly placed stop is usually executed at a better price.
+* 
+* For liquidation of long positions, the best point to place a sell stop is below
+* support and for covering a short one above resistance.
+
+* 

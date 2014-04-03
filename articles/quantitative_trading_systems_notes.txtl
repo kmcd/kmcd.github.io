@@ -1,0 +1,369 @@
+---
+title: Quantitative trading systems reading notes
+tag:   reading notes
+date:  Apr 04 2013
+---
+
+= Questions
+
+What is a stock split?
+
+What is a Donchian breakout?
+* sell at 50d high, buy at 20d low
+* 
+What are the Wilder/Chaikin volatilty indicators?
+
+What is the stochastic oscillator?
+
+= Action points
+
+Find other volatility measures, eg VXO, VXN
+
+Compare the Sharpe & Treynor ratio
+
+= Notes
+
+Quantitative analysis is the application of mathmatically based trading system
+models to financial data
+
+Fundamental data is unusable due to its subjective nature
+based on the premise that a security has an intrinsic underlying value
+
+Technical analysis
+* we can discover price patters
+* those patterns will persist
+* 
+Quantitative analysis
+* removes judgement with chart patterns
+* defines mathmatical indicators
+* requires no indicator or signal may change once computed
+* uses math/stat models
+* applys stat validation to trading models
+
+Patterns must
+* precede changes in price large enough to be profitable
+* lead by enough time that you can act
+* repeat with enough regularity to be statistically significant
+* continue to act in the future as the past
+
+Financial time series are difficult to model because trading systems affect the
+market in which they operate. The market learns about a trading
+system and adapts to negate the effect of that system.
+
+Data
+* A single trade is called a tick
+* The series of trades that occcurs over a period of time (1,5,15 mins) is called
+* a bar
+* You need high quality data
+* 
+* Data sources (20 min live delay)
+*    Google
+*    Yahoo
+*    Reuters
+*    MSN money
+*    market watch
+*    Fund estimate
+
+Trading system overview
+* financial markets are non-stationsary time series
+* designed to recognise then exploit patterns that precede profitabvle trading
+* opportunities
+* failed trading systems may never work again
+* all systems eventaully fail, therefore you will always be creating new models
+* must pass validity test
+* 
+* Select an objective function to measure the system
+* > 1.5% profit per day
+* 
+* Decide on the frequency and style of orders
+* > Day trading (with stop loss and perhaps profit cap)
+* 
+* Intraday trading has a large barrier to entry for many aspiring traders;
+*    it must become your day job
+*    higher costs for data & commissions
+*    
+* Positions: long only for day trading (trade in the direction of the market)
+* 
+* Issue selection: stocks (brokerage a/c implications)
+* 
+* Risk
+*    % of a/c on any one position (2-5)
+*    50k a/c, 10k order with 500 stop loss is 1% risk
+*    calculate max drawdown
+*    
+* In sample data is used for development
+* 
+* Out of sample data is used for objective evaluation
+*    If the system fails with OOSD, DO NOT put it into production
+*    
+* If you are using market-on-open or market-on-close orders, the price you pay
+* will be close to the historical data
+* 
+* Limit orders will be filled at your price with no slippage
+* 
+* Stop orders will be filled at the next price after your stop price has been hit
+* -> This could be alot worse than your stop price!
+* 
+* Take a standard position size (day 5% of float: 2,000 * 0.05 = 100)
+* -> Maxium positions: 25%
+* -> Therefore, you can only hold 5 concurrent positions
+* 
+* Optimisation
+*    Should you restrict this to long term stock selection & how to know the
+*    best stocks to choose from past experiece?
+*    
+*    defined as the organised, automated search for the best set of values for
+*    the arguments of a trading system
+*    
+* Curve fitting: optimising your model for your in-sample data set
+* 
+* Should you limit the number of exchanges you trade on?
+* 
+* Symbol space
+*    Find the symbols for which your model is most profitable
+*    Is there a relationship between these symbols? Same sector, indicators ...
+*    Or is it just random
+* 
+* Why trading systems fail and may never work again
+*    As long as the trading system is not well known & few are following its signals,
+*    it will continue to be profitable
+*    When a model is widely followed, the volume of trades based on its signals increases
+*    & it becomes harder to hake a profit
+*    The trades whio contunues toi make a profit are the earlies oness to recongnise the signals
+*    and have the lowest firctional cosets.
+*    Also, it may be that another trading system removes the inefficiency that your
+*    trading system recognized
+* 
+Measureing Success
+* Objective function
+*    consistent daily profit
+*    minimal drawdown
+*    % winning trades
+*    average profit per trade
+*    holding period
+*    
+* Expentancy is the average profit per trade taken over all trades
+*    (% winning trades * average % won per trade) + (% losing trades * average % lost per trade)
+*    
+*    MUST be positive (good metric to monitor)
+*    
+Issue selection
+* Sufficient data to model behavior
+* Reasonable historical Price
+* Sufficient liquidity
+* Matches your comfort level (holding period, drawdown)
+* Profit potential
+* Works with a quant system
+* 
+Entries & exits
+* Order types
+*    limited by the exchange & broker offer
+*    
+*    market               buy/sell @ current price
+*                         
+*    stop                 becomes a market order to buy/sell once specified price attained or breached
+*                                                                                                         
+*    stop limit           becomes a limit order once specified stop price attained or breached (?)
+*                         
+*    trailing stop        sets a stop price a fixed amount below the market price (for a sell order) 
+*                         If the market price rises, the stop loss price rises by
+*                         this amount, if the price falls it remains the same
+*                         Reverse for a buy                                                                
+*                               
+*    Market if touched    buy/sell above/below the market (?) 
+*                         order is held in the system until the trigger price is touched,
+*                         whereupon it becomes a market order.
+*                            
+*    Market on close      execute as close to the closing price as possible
+*    
+*    Market on open       executed at the opening of trading at the market price
+*    
+*    Limit                Buy/sell at specified price or better
+*    
+*    Limit if touched     order held in system until trigger price touched, 
+*                         then submitted as a limit order
+*                         
+*    Limit on open/close  if open/closing price >= submitted price
+*                         otherwise cancel     
+*                         
+*    One cancels all      execute only one of a group of orders and canel remainder
+*              
+* Stop orders
+*    Your fill price could be different from your stop price
+*    May suffer slippage
+*    
+* Limit orders
+*    an order to buy placed below the  best offer, or an offer to sell above 
+*    the best bid hopes to improve the execution price relative to a market
+*    order.
+*    
+*    When your order is filled, it will be at your price or better - no slippage
+*    
+*    If try to use a limit order below market price to buy, and the market rises,
+*    your order will not be filled (until the prices decline)
+*    
+*    When using a limit order to enter you guarantee all losing trades but not
+*    all winning.
+*    
+* Beware of long only systems, especially if they keep trying to buy in a declining
+* market
+* 
+* A buy signal without a specified price, executes at the current market price
+* 
+* Designing entries
+*    type I error: hypothesis rejected incorrectly (missed opportunity)
+*    type II error: hypothesis accpeted incorrectly (losing trade)
+*    
+*    Usually decreasing one type of error increases the other
+*    
+* Watch out for future leaks, ie info that the trading system cannot possibly 
+* use in real time
+* 
+Trending systems
+* based on the premise that prices often contiunue to move in one direction 
+* for a long enough period of time so that a trader can recognise that a trend 
+* has begun, take a position in the direction of the trend & make a profit by
+* following the trend.
+* 
+* mean reversion is anti-trend, ie the prices should revert to the average 
+* eventually
+* 
+* breakout systems have a 30% success rate
+*    probably becuase they have been in use since the 70's
+*    eg Bollinger band: buy when abouve top band, sell when price returns to BB
+*    
+* Many trend following systems are marginal for stocks, ok for commodities
+* 
+* Donchian breakout
+*    buy strength, short weakness
+*    buy when price > previous 20d high
+*    sell when low < previous 10d low
+*    
+Mean reversion systems
+* based on the premise that prices tend to oscillate above & below some level
+* of equilibrium with some degreee of regularity
+* 
+* When prices are too far from equilibrium, take a position that will profit
+* from a return to equilibrium
+* 
+* MACD is a mean reverting system
+* 
+* They fail when the the tradeable in trending because they are dessigned to 
+* take positions against the trend. (market is sideways)
+* 
+Portfolio
+* working with a group of issues instead of one
+* could be one trading system with a number of issues (applied to one or all)
+* or several strategies
+* eg buy oil & gas producers when oil reaches a new high
+* 
+Filters
+* indicators created to permit or prohibit trades
+* 
+* -> are a/c balance, stop the line, drawdown max examples of filters?
+* 
+* could be performance of the system through an equity curve feedback
+* 
+* Use good modelling technique: one set for development, one for out-of-sample
+* evaluation
+* 
+* eg dont buy an oil & gas stock if the price of oil is tanking
+* 
+* > probably dont need as many of these as you could use, reality should be 
+* reflected in the prices; eg if oil prices are tanking, the oil & gas producers
+* prices will also fall. In this case you should ensure that no entry signals 
+* are generated
+* 
+In/out of sample
+* You can only evaluate your system with unseen/used data
+* 
+* eg for day trading test & develop with Sept 2011, Evaluate with Aug 2011
+* 
+* long in-sample periods have ~less~ risk of curve fitting
+* 
+* Use a short in-sample & long out-of-smaple data periods
+*    eg for day trading         in-sample: 1d, out-of-sample: 19d
+*    eg for symbol selection    in-sample: 20d, out-of-sample: 230d
+* 
+* Optimisation
+*    oganised search over parmater with a range of values
+*    
+*    eg 15 MA periods & 20d holding durations -> 15 * 20 = 300 combinations
+*    
+*    could also test equality (>= vs >) or symbol space
+*    
+* Dont use dummy data! (ecept for unit testing)
+* 
+* Your system doesn't have to do well in all conditions. However it must be 
+* able to recognise when (un)favourable trading conditions are present
+*    
+*    modify stop losses when conditions are unfavourable
+*    
+*    track system performance & scale back during draw-downs
+*    
+*    add a favourable/unfavourable filter
+*    
+* The more complex a model is, the less likely out-of-sample results will exceed
+* in-sample results
+* 
+Statistical tests
+* z score: sqrt( var1/N1 + var2/N2 )
+*    represents #errors of the mean where mean 2 > mean 1
+*    1 being the null hypothesis
+* 
+* You can compare your trading system to a baseline (random positions/market)
+* 
+* Chi-squared test: discrepeancy between observed & expected frequencies
+*    larger value = larger discrepeancy
+*    degrees of freedom (v): # categories - 1
+* 
+* eg coin tossing
+*    H0: failr coin
+*    
+*    expected(100 heads, 100 tails)
+*    observed(110 heads, 85 tails)
+*    
+*    X2 = 4.5
+*    v = 1
+*    
+*    95% X2 = 3.84, 99% X2 = 5.02
+*    
+*    95% chance it is fair, 99% chance its NOT fair
+*    
+* In-sample data is useless for evaluation, they are by design always optimal
+* 
+* Minium of 30 for statistical tests
+*    the transition for stat distributions
+*    dont need to adjust for smaller populations
+*    
+Walk forward testing
+* Test the objective function over varying lengths of time
+* If the results vary widely, the system is unstable & probably unreliable
+* 
+* Or you could run your performance report with statistical verification
+* 
+Survivor bias
+* NYSE stocks are less volative than NASDAQ
+* 
+Monte Carlo analysis
+* repeatedly samples possible results from a change process & analyses results
+* 
+* eg run your simulation, take the a/c balance from a random time & keep a
+* running total.
+*    The final running total balance should match your expected balance
+*    
+* A stop loss order is NOT guaranteed! The price may crash & your order could
+* be filled at a significantly lower price
+* 
+* See Ralph Vince for calculating risk for many open positions
+* 
+* There is only one way to enter a trade: buy signal = immediate market order
+* 
+* Exit signals:
+*    sell signal (eg MACD cross-over)
+*    profit target
+*    holding period
+*    trailing stop
+*    maximum loss stop (worst case - try to fire the 1st 4 signals instead)
+*    
+* Stops hurt all systems

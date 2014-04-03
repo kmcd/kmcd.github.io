@@ -1,0 +1,235 @@
+---
+title: Complete guide to day trading reading notes
+tag:   reading notes
+date:  Jul 07 2011
+---
+
+= Questions
+
+What are MACD, Stochastics ?
+* Moving average correllation/deviation
+* Non-deterministic (ie not governed by inputs)
+
+How many weeks of the year are tradeable, eg christmas, holidays etc.
+* say 48
+
+Why not set a 0% stop loss on every trade?
+* because the market could slightly downtrend
+* 
+Can you build an incremental system, ie earn 100 then stop, earn 200 then stop.
+* yes
+* 
+How long to achive statistical significance for back,paper testing ?
+* 
+How can you identify the trending markets?
+* with a number of input signals (MACD, RSI, Bollinger bands)
+
+= Action points
+ 
+Get a trading journal (or keep a blog)
+- why do you want to trade?
+
+Confirm that the $25k NYSE pattern rule does not apply to:
+- ftse
+- non-margin (cash) a/c's
+
+= Notes
+
+Don’t set daily targets when you trade. In order to make
+money, two conditions have to be met:
+1.) YOU have to be ready to trade.
+2.) THE MARKET must be ready to be traded.
+
+There will be days when YOU are not at your best (sickness, emotional
+stress, no time because of an emergency, etc.), and there will be days
+when the market is not ready to be traded (e.g. holidays, including the
+days before and after holidays, days before a major news release, like the
+Federal announcement regarding interest rates or the unemployment re -
+port, etc.).
+
+It’s important to start small and set a weekly goal for only ONE contract,
+or 100 shares. This goal should be LOW, very low, so that it is easy for
+you to reach it.
+Then keep raising the bar
+> like it: incremental learning
+
+You can't avoid losses
+
+STOP TRADING when you've reached your target!
+
+If you have a stop loss 50% of your profit target, you only need to succeed in 
+50% of trades.
+> Does this mean if you have a stop loss of 25% you only need to win 1 trade out
+of 4?
+
+Daily targets create psycological pressure
+> is this relevant to a FATS?
+
+full-service brokers offer advice & reports, discount brokers just fulfill orders
+
+Developing a Trading strategy
+* Selecting a Market
+* Selecting a Timeframe
+* Selecting a Trading Style
+* Defining Entry Points
+* Defining Exit Points
+* Evaluating Your Trading Strategy
+* Improving Your Trading Strategy
+* 
+
+start with small capital and then move up to larger capital when
+you’re comfortable enough with the market.
+
+When trading a market, we want to ensure that we receive
+quick and accurate fills for our orders, and also that a large
+order placed by a market-maker or broker does not move the
+market in an erratic way.
+
+It’s easier to trade a market that’s either going up or going down.
+
+Currently there are more than 10,000 stocks available on U.S. stock exchanges.
+* Around 900 stocks have an average
+* daily volume of more than 2,000,000 shares traded, 
+* and more than 600 of them are traded with over 3,000,000 shares
+* per day. 
+* If you focus on these stocks then you won’t have a
+* problem with market manipulation or slippage.
+
+Stock markets are volatile:
+* DJI avg movement of 1-2%
+* stock prices can vary from 2-8% on the day
+* 
+Futures are standardized contracts among buyers
+and sellers of commodities that specify the amount of a commodity, the
+grade/quality, and the delivery location.
+
+Stock option: the right - but not the obligation -– to
+buy (call) or sell (put) a specific underlying asset at a prearranged price
+on or before a given date.
+* Low volume (liquidity)
+* option prices are NOT subject to market manipula -
+* tion since the value of an option is not determined by supply and
+* demand, but by a mathematical formula created by Black and
+* Scholes.
+* significant spread between the bid and the ask
+Very high volatility
+
+Day trading stock options is extremely risky and difficult, and not for the novice trader.
+-> AVOID: 
+
+However, when selecting a very small timeframe like 1-minute, 3-
+minute, or 5-minute, you might experience a lot of “noise” that is cause
+by hedge funds, by scalpers, and by automated trading.
+*                
+Recommends 15 min charts to avoid algo & scalping noise
+> Does this contradict his video advise to use movement charts
+
+Selecting a trading approach
+
+Fundamental analysis aims to study the CAUSE of market movement
+
+technical analysis: use of charts, trendlines, support and
+resistance levels, mathematical analysis tools, to predict future movements in a 
+stock's price, and to help identify trading opportunities
+
+Charts
+
+opening price (O), 
+closing price (C), 
+absolute high price of the day (H)
+absolute low price of the day (L)
+
+Strategy: 
+- identify an uptrend (from input signals)
+- buy with stop loss + profit target/cap
+
+When should I enter?
+- when there's an uptrend
+- at/near the top bollinger band (std dev from MA)
+- macd + 30
+- RSI + 70
+
+When should I exit?
+- when you've achived your profit target
+
+support level is the low point in any chart pattern (hourly, weekly, or annually)
+resistance level is the high or the peak point of the pattern.
+*                                                                                       
+Trend indicators
+
+Moving averages: 
+* average price at a point of time over a defined period  
+* reflect the latest average, while adhering to the same time measure.
+* they lag the market, so they do not necessarily signal a change in trends. 
+* to avoid too long a lag, use shorter period, such as a 5- or 10-day moving average
+
+MACD (Gerald Apple) shows the relationship between two moving averages of prices
+* eg difference between a 26-bar exponential moving average (EMA) and the 12-bar
+
+Williams %R (Larry Williams)
+* compares a stock's close to the high-low range over a certain period of time.
+* 0-100
+* if prices are trading at the high of the high-low range (indicator reading close to 100),
+*    then the market is overbought,
+* 
+RSI (Welles Wilder)
+* overbought/oversold indicator
+* compares the magnitude of a stock's recent gains to the magnitude of its recent losses and
+* turns that information into a number which ranges from 0 to 100.
+* single parameter – the number of time periods – to use in the calcula -
+* tion. In his book, Wilder recommends using 14 periods.
+* 
+One of the most important skills of a trader is being able to identify the 
+direction of the market. 
+
+Bollinger Bands: 
+* 1 std dev ABOVE moving average & 1 std dev BELOW moving average
+
+Make SURE to cancel your orders, or use so-called “bracket orders,” or
+“one-cancel-other (OCO) orders” for your profit target and stop loss.
+* If your stop loss is too low, the market can dip below your SL on an uptrend
+
+the key to trading success: small profits, consistently.
+
+Back testing:
+* testing your strategy with historical data
+* 
+How long you backtest depends on the number of trades per day; more trades/day,
+the shorter the testing period
+
+While testing your trading strategy, you should keep detailed records of
+the wins and losses in order to produce a performance report.
+* Total trades
+* Total profit
+* Avg. profit per trade
+* Winning %
+* Avg. winning trade
+* Avg. losing trade
+* Profit factor (Gross Profit / Gross Loss)
+*    how many £ you'll win for every one you lose
+* Max drawdown
+
+Optimisation
+
+Don't over optimise: find a simple system & stick with it.
+
+1. Identify all the parameters in your system
+
+For each parameter variation:
+* 2. Back test
+* 3. Paper trade
+* 4. Trade at low volume
+* 5. Trade at normal volume
+
+Might need taguchi or stats to simplify optimisation
+
+Once your system is optimised: STOP
+
+Principles of successfull trading strategies
+* use few rules
+* make it easy to understand
+* The higher your trading frequency, the smaller your chances of having a losing month.
+* start small and grow big.
+* Automate Your Exits
+* chose a valid back testing period
+* 

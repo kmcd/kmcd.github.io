@@ -1,0 +1,113 @@
+---
+title: Clojure web reading notes
+tag:   reading notes
+date:  Apr 04 2013
+---
+
+Rifle oriented programming
+http://thinkrelevance.com/blog/2009/08/12/rifle-oriented-programming-with-clojure-2.html
+
+Collections themselves act as functions. 
+They take an argument which is the key/index to look up:
+
+([:a :b :c :d :e] 2)
+; -> :c
+
+({:name "Stu" :ext 101} :name)
+; -> "Stu"
+
+Encapsulation   
+Clojure accomplishes the purposes of encapsulation in three ways: closures, namespaces, and immutability.
+
+A closure closes over (remembers) the environment at the time it was created. For example, the function `make-counter` below closes over the initial value passed via `init-val`:
+
+(defn make-counter [init-val] 
+   (let [c (atom init-val)] #(swap! c inc)))
+
+; `defn` defines a new function, named `make-counter`, that takes a single argument `init-val`.
+
+; The `let` binds the name `c` to a new `atom`.
+
+; The `atom` creates a threadsafe, deadlock-proof mutable reference to a value.
+
+; The octothorpe (`#`) prefix introduces an anonymous function
+
+; The call to `swap!` updates the value referenced by `c` by calling `inc` on it.
+
+; The value of the let is the value of its last expression. This `let` returns a function that increments a counter, which is then the return value of `make-counter`. 
+
+(def c (make-counter))
+
+(c)
+-> 1
+
+(c)
+-> 2
+
+(c)
+-> 3
+
+(defn make-counter [init-val] 
+   (let [c (atom init-val)] 
+      {:next #(swap! c inc)
+      :reset #(reset! c init-val)}))
+      
+(def c (make-counter 10))
+
+((c :next))
+-> 11
+
+((c :next))
+-> 12
+
+((c :reset))
+-> 10
+
+Polymorphism
+(defmulti fly class)
+(defmethod fly Bird [b] (flap-wings b))
+(defmethod fly Airplane [a] (turn-propeller a))
+
+(defmulti interest :type)
+(defmethod interest :checking [a] 0)
+(defmethod interest :savings [a] 0.05M)
+
+(defmulti service-charge 
+(fn [acct] [(account-level acct) (:tag acct)]))
+
+(defmethod service-charge [::Basic ::Checking]   [_] 25)
+(defmethod service-charge [::Basic ::Savings]    [_] 10)
+(defmethod service-charge [::Premium ::Checking] [_] 0)
+(defmethod service-charge [::Premium ::Savings]  [_] 0)
+
+The double-colon prefix resolves a keyword in a namespace. This prevents name collisions among keywords, just as object-oriented langauges use namespaces to prevent name collisions between type names.
+
+No direct inheritance
+
+Use methods instead of types
+(defn indexed [coll] (map vector (iterate inc 0) coll))
+  
+(defn index-filter [pred coll]
+   (when pred 
+      (for [[idx elt] (indexed coll) :when (pred elt)] idx)))
+   
+(index-filter #{\a \e \i \o \u} "Lts f cnsnts nd n vwel")
+
+The expression above finds the index of the first vowel in the string "Lts f cnsnts nd n vwel", that is, 20.
+  
+1. `index-filter` returns all the matches, not just one.
+
+(index-filter #{\a \e \i \o \o} "The quick brown fox")
+-> (2 6 12 17)
+
+2. `index-filter` works with any sequence, not just a string of characters. For example, the call below works against a range of integers:
+
+(index-filter #{2 3 5 7} (range 6))
+-> (2 3 5)
+
+3. `index-filter` works with any predicate, not just a test against a character array. In the example below, the predicate is an anonymous function that tests for strings longer than three characters:
+
+(index-filter #(> (.length %) 3) ["The" "quick" "brown" "fox"])
+-> (1 2)
+
+

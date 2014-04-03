@@ -1,0 +1,224 @@
+---
+title: Appel technical analysis reading notes
+tag:   reading notes
+date:  Mar 03 2012
+---
+
+= Questions
+
+What are the key chapters?
+* ch 3, MA
+* ch 8, MACD
+* ch 9, MA trading channels
+
+What are the different types of moving average (eg EMA) and what are their
+significance ?
+
+What are the most effective MA long range timeframes (50/200 day) ?
+* Long term not as useful for day trading, 5d MA is best
+
+= Action points
+
+Calculate 10 day, 5 day, 5 min MACD for all NASDAQ stocks in Sep/Aug 2011.
+
+Find stocks above their long term (10-30) week MA
+* how many stocks on average?
+* how long do they stay above their long term MA?
+
+What are your long term entry signals?
+* Gainers/MACD/MA ?
+* 
+= Notes
+
+Moving averages
+* a series of diminishing upside pulses suggests the end of a trend
+* 
+* a series of increasing upside pulses suggest further advances
+
+* stock markets are described as bullish when they are above their 30 week MA
+* 10 or 20 week time periods may
+* 
+* Market stages: transition, rising, topping, declining, basing.
+* 
+Rate of change indicator
+* Momentum (golf ball driven off the tee metaphor)
+* 
+* Should be positive during an uptrend
+* 
+* Overbought/sold means momentum is out of normal range
+* 
+* > Not sure how useful momentum is for predicting price action
+* 
+the weekly breadth impulse signal is based upon the princi-
+ple that strong initial impulses in market advances--the rapid development of over-
+bought, or extended to the upside momentum readingsare actually more IikeIy to
+be the precursor to further advances than to downside market reversals.
+
+* EMA of issued shares, # advancing/declining, differential
+* 
+* Daily-Based Breadth Impulse Signal generates buy signals when it rises to or above
+* 61.5%; such signals are cancelled when the indicator declines to or below 49%. Signals occur
+* infrequently but have been very reliable historicall
+
+* Only 26 signals generated in 34 years! Is this still the case?
+* 
+MACD
+* subtracting a longer-term exponential moving average
+* from a shorter-term exponential moving average of prices or other measure
+
+* generally rises if shorter-term trends are gaining strength and
+* generally declines if shorter-term trends are losing strength
+
+* Downtrends are below 0 OR above 0 and falling
+* Uptrends are above 0 and rising
+* 
+* Long term average is 2-3x the shorter MA
+* 
+* MACD signals are more likely to prove reliable if shorter-term MACD signals an
+* confirmed by longer-term trends in the stock market, perhaps reflected by longer
+* term MACD patterns. 
+* 
+* the signal line is an exponential average of MACD levels, not of
+* the price of the investment vehicle or index that is being tracked. 
+*    created employing three-day to nine-day exponential averages of MACD lines. 
+*    the shorter the average is, the more sensitive the signal line will be.
+
+* crossings of MACD from below to above its signal line can
+* be taken as confirmations of buy signals originally indicated when changes in
+* direction have taken place in MACD from down to up.
+
+* signal line crossings take place after MACD lines change direction
+* but usually before MACD limes have crossed the 0 line.
+
+* greater net gains generally occur if
+* reversals in MACD (especially slower-moving combinations) are employed for buy-
+* ing and selling rather than crossings of signal lines.
+* > is this because its not a strong uptrend util it crosses the 0 line? 
+*    (crossing the signal line could merely be downtrend rally)
+* 
+* Buy signals are much more reliable when the MACD has crossed from above to
+* below 0 at some time since the most recent sell signal. 
+*    The MACD does not
+*    have to be below 0 at the time of the buy signal, but it should have been below
+*    0 at some time since the start of the recent decline.
+
+* Negative divergences are said to take place when price levels of the investment in
+* question reach new highs, but measures that reflect upside market momentum fail
+* to reach new positive areas.
+* 
+* Positive divergences are said to take place when price levels of the investment in
+* question fall to new lows for the cycle, but measures that reflect downside market
+* momentum fail to decline to more negative areas.
+
+*    Divergences suggest a more or less imminent market reversal ahead, 
+
+*    aka Down/Up ward rally
+*    
+* more accurate MACD buy and sell signals can often be secured by
+* using more sensitive MACD combinations for buying purposes and less sensitive MACD
+* combinations for selling purposes.
+
+* Stock prices decline at more rapid rates than they rise
+
+* You should maintain at least two MACD combinations: a faster one for buying
+* and a slower one for selling.
+* 
+* When market trends are very positive, buy very fast and sell very slow. You can
+* employ the 6-19 combination for buying, or you can employ the somewhat more
+* reliable 12-26 combination. The 19- to 39day combination is used for selling.
+* 
+* the use o f a slower MACD combination oroduced more time-oly sell signals than
+* if the mbre rapid MACD combination, excellent for buying during this period,
+* was used for selling as well.
+
+* Exit signals
+*    The stock market must be in an uptrend that can be defined by a rising 50-day
+*    moving average. A slow MACD combination is employed for selling.
+*    
+* MACD does encounter occasional difficulty in dealing with
+* steadily trending, narrow-channeled market advances or declines.
+
+* Intraday price ranges are often fairly narrow, so it i more important in day
+* trading than in position trading to establish positions as early as possible.
+* > Should you buy ~below~ the 0 line? This should be tested!
+* 
+* ability to define market re-entry junctures following serious intermediate- and long-
+* term market declines
+* 
+* Recommended time frames:
+*    1, 5, 20 days
+*    5, 30, 6 mins
+* 
+* Signal lines will usually be six- to
+* nine-unit exponential moving averages of the MACD lines. Shorter-term signal lines
+* will often produce more timely signals but will also be more prone to false signals
+* and whipsaws.
+* 
+* maintain an appropriatetrend-defining moving average. The 50-unit moving average tends to work well
+
+MA trading channels
+* moving averages are tools for smoothing price data that
+* clarify the direction and strength of underlying market trends by removing noise
+* associated with short-term price fluctuations
+
+* The longer the term of the moving
+* average is, the longer the trend it will reflect, and the smoother and slower changes
+* will be in direction of the average.
+
+* Uses +/- 8% instead of std dev Bollinger bands
+* 
+* Uses Relative Strength Indicator (RSI), a measure of market momentum
+* 
+* If a market top or market low indicated by the action of price move-
+* ment within the moving average trading channel is confirmed by supporting
+* technical indicators, the odds of a trend reversal taking place increase. A syner-
+* gistic approach to trading bands is definitely useful.
+
+* > Can you use RSI as a confirming sell signal?
+* 
+* 20 day MA = approx. 40 day trend
+* 
+Putting it all together
+* Identify long term trend (eg 200d MA)
+
+
+Lessons learned after 40 years
+* The news/media are usually the last to know
+* Attend meetups/conferences but ~work~ alone
+* Keep results private
+* 
+* traders often tend to close out their stron-
+* gest positions too early (locking up the profit) and maintain their weakest
+* positions for too long
+
+* even the best timing models tend to be profitable only a
+* certain percentage of the time, but their winning trades are much larger, on
+* average, than their losing trades
+
+* The name of the game is to make a good (but not unreasonably good) return
+* for your time and capital, not to feel "smart."
+* 
+* Don't confuse rising stock prices with being a financial genius
+
+* For most people, in-and-out trading will not be as profitable as well-considered
+* intermediate-term trading, . It is not easy to overcome the additional costs in
+* transaction expenses and bid-ask spreads involved in day trading and very
+* short-term trading
+
+* It is better to miss a profit than to take a loss
+
+* it is probably best not to operate at the market opening.
+
+* Do not enter into an invested position without an exit plan.
+
+* It is much better to trade with no more capital than you can comfortably risk
+
+* Make note of your losing transactions. Have you violated some basic rules of
+* trading or investing because of some emotional reason? There will be losses.
+* Not every losing trade is a mistake. The stock market, at best, is a game of
+* probabilities.
+
+* There is no need to be invested in the stock market at all times. If mat-
+* ters appear unclear or if you are less certain than usual (there's no such thing as
+* certainty regarding stocks), be free to simply stand aside until matters clarify.
+

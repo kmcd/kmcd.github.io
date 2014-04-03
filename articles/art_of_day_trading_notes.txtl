@@ -1,0 +1,24 @@
+---
+title: Art of day trading reading notes
+tag:   reading notes
+date:  Sep 09 2011
+---
+
+= Questions
+
+= Action points
+Find the top 50 ETF's with average (high - low)/opening > 1.75%
+
+
+= Notes
+
+5 rules for developing a day trading system:
+* Long test periods, eg 10 years
+* Wide range of variable values generate good results, otherwise you're probably
+* optimising for the noise
+* Limited number of rules
+* Real time & out-of-sample testing
+* Walk-forward testing
+* 
+look for the market that has the largest price range; it should be the best candidate for day-trading
+

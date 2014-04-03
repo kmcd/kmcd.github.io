@@ -1,0 +1,52 @@
+---
+title: Advanced rails reading notes
+tag:   reading notes
+date:  Feb 02 2012
+---
+
+== Questions
+How useful is the Ruby C level class model intro? => Not obvious
+What is the output - blog material ?
+
+Diamond problem -> last included modules methods are called
+
+class Foo
+  include Bar
+  include Baz
+end
+
+Proc.new { return :foo } # returns from calling function
+
+Closure:  each gets a separate instance of the variable 
+
+def make_counter(i=0)
+* lambda { i += 1 }
+end
+
+x = make_counter
+x.call # => 1
+x.call # => 2
+
+y = make_counter
+y.call # => 1
+y.call # => 2
+
+Check out generate_read_method
+
+A binding is the set of variables and methods that are available at a 
+particular (lexical) point in the code.
+
+ObjectSpace#each_object(klass)
+
+Method chaining
+
+If you want to over-ride an existing method using an included module, you must 
+use class_eval and alias_method_chain:
+
+C.class_eval { alias_method_chain :test_method, :module }
+
+Higher-order functions are functions that operate on
+other functions. Higher-order functions usually either take one or more functions as
+an argument or return a function.
+
+

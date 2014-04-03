@@ -1,0 +1,118 @@
+---
+title: Productive programmer reading notes
+tag:   reading notes
+date:  Jun 06 2012
+---
+
+= Acceleration
+
+application launchers, eg alt-f2
+search rather than browsing
+clipboard manager
+shell history
+pushd/popd
+text editor keyboard shortcuts
+text editor super abbreviations
+text editor macros
+Spend a little time each day to become more productive
+
+= Focus
+
+kill all distractions
+create quite time
+
+finding
+* find . -regex ".*Db\.java"
+* 
+* find . -name "*.java" -exec grep -n -H "new .*Db.*" {} \;
+*     -exec         like piping to xargs
+*     grep -n -H    show numbers & filenames
+*     {}            place holder for file
+*     \;            end of find terminator
+*     
+= Automation
+
+Use open source tools
+Cache dev dox locally
+Use RSS instead of browsing
+Use rake, eg lauch apps for a presentation
+Use selenium for repetitive web tasks, ie step 4 of a wizard
+
+Use bash to harvest exception counts:
+
+for X in $(egrep -o "[A-Z]\w*Exception" log_week.txt | sort | uniq) ;
+do
+* echo -n -e "processing $X\t"
+* grep -c "$X" log_week.txt
+done
+
+Performing simple, repetitive tasks squanders your concentration.
+
+SQL splitter:
+
+SQL_FILE = "./GeneratedTestData.sql"
+OUTPUT_PATH = "./chunks of sql/"
+line_num = 1
+file_num = 0
+Dir.mkdir(OUTPUT_PATH) unless File.exists? OUTPUT_PATH
+file = File.new(OUTPUT_PATH + "chunk " + file_num.to_s + ".sql",
+File::CREAT|File::TRUNC|File::RDWR, 0644)
+done, seen_1k_lines = false
+
+IO.readlines(SQL_FILE).each do |line|
+* file.puts(line)
+* seen_1k_lines = (line_num % 1000 == 0) unless seen_1k_lines
+* line_num += 1
+* done = (line.downcase =~ /^\W*go\W*$/ or line.downcase =~ /^\W*end\W*$/) != nil
+* 
+* if done and seen_1k_lines
+*    file_num += 1
+*    file = File.new(OUTPUT_PATH + "chunk " + file_num.to_s + ".sql",
+*    File::CREAT|File::TRUNC|File::RDWR, 0644)
+*    done, seen_1k_lines = false
+* end
+end
+
+This little Ruby program reads lines from the original source file until it has read 1,000 lines.
+Then, it starts looking for lines that have either GO or END on them. Once it finds either of
+those two strings, it finishes off the current file and starts another one.
+
+Would take 10 mins by hand and 1 hour to automate.
+
+Justifying automation is about return on investment and risk mitigation.
+
+Timebox speculative development & dont shave yaks!
+
+= Canonicality
+
+Sync jEdit macros (github)
+Use VM for OS setup / states
+Use a wiki for up to date info/doc
+
+= Practice
+
+TDD
+Use source analysis tools, eg reek, flog
+Maximize work on essential complexity; kill accidental complexity.
+
+Law of Demeter says that for any object and method, the only methods
+that should be invoked are the following:
+• The methods of the object itself
+• Parameters of the method
+• Any objects created within the method
+
+2006 OOPSLA Anti-objects:
+
+The “obvious” solution to the Pac Man problem builds intelligence into the ghosts. 
+Yet, the much simpler solution builds the intelligence into the maze (cell smells).
+That is the anti-object approach: flip the computational foreground and background.
+
+Composed method FTW
+
+SLAP (single level of abstraction):
+
+you shouldn’t have a method in which part of it deals with low-level database
+connectivity, another part with high-level business code, and another with web service
+plumbing.
+
+Learn your editor inside & out (pip for jEdit)

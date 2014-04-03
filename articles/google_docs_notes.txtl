@@ -1,0 +1,56 @@
+---
+title: Google docs reading notes
+tag:   reading notes
+date:  Mar 03 2013
+---
+
+= Google docs notes
+
+distilled.co.uk
+importfeed(A1)
+importxml(A1, "//xpath")
+needs xpath
+filter: if(find())
+
+app script
+alchemy api (keyword/text extraction from web pages, strips out ads)
+hunch recommendation service
+google social graph api (eg input twitter handle, find FB a/c, posterous etc.)
+
+How did Jeremy McAnally use a google spreadsheet form for lead gen?
+
+AppScript looks good! It can email (MailApp.sendEmail)
+
+Use AppScript Triggers
+- time driven
+- on spreadsheet open
+
+eHow (keyword rich articles) demo
+- used for seo research
+
+Use CONCATENATE 
+
+Anytime eHow ranks highly for a keyword, it must be easy to rank highly for
+those keywords.
+
+Assign a script to a button
+
+3rd party rank checkers are available
+
+topsy.com site query > top tweeted links from a URL
+
+knocked out prototype in 5 mins!
+
+importxml to import data from any page
+fetch apis/json
+understand google scripts
+understand triggers
+check out google forms (landing page)
+
+automate repetitive tasks
+fetch api/data
+fetch data for an infographic
+
+Insert google gadget (eg map)
+
+automateanalytics.com -> fetches your analytics data & stores in google docs

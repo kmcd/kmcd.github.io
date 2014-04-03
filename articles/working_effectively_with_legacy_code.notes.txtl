@@ -1,0 +1,48 @@
+---
+title: Working effectively with legacy code reading notes
+tag:   reading notes
+date:  Apr 04 2013
+---
+
+Create a seperate branch for annotation & refactoring
+
+Understanding code techniques
+* Notes / sketching
+* Code comments
+* Experimental refactoring (moving around, raising)
+* Delete unused code
+* 
+The Legacy Code Change Algorithm
+* Identify change points.
+* Find test points.
+* Break dependencies.
+* Write tests.
+* Make changes and refactor.
+* 
+Breaking dependencies
+* Use fake/mock objects to test dependent code
+* 
+How do I know I'm not breaking things? 
+* "Programming is the art of doing one thing at a time" => limit WIP
+* Hyperaware editing
+* Preserve method signatures
+* 
+Seam
+* a place where you can alter behavior in your program without editing in that place.
+* eg
+* 
+* def foo
+*   puts 'foo'
+*   bar # Seam
+* end
+* 
+* Why not use mocks/stubs instead?
+* 
+Single-Responsibility Principle (SRP)
+* Every class should have a single responsibility: It should have a single 
+* purpose in the system, and there should be only one reason to change it.
+* Similar to SLAP (Single Level of Abstraction Principle)
+* eg method that calculates, formats & prints a report should be decomposed 
+* into calc, format, print methods.
+* 
+Sprout method => composed method

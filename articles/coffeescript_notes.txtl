@@ -1,0 +1,29 @@
+---
+title: Coffeescript reading notes
+tag:   reading notes
+date:  Jul 07 2011
+---
+
+= Asciicast 267
+
+Like js but without punctuation & passing function keyword littered all over the place.
+
+Whitespace sensitive
+
+loop construct: for i in []
+
+has ruby like ranges
+
+inline if then else
+
+no explicit return needed
+
+Javascript: $(function() {
+Coffeescript: jQuery ->  
+
+replace references to this with @, eg this.value becomes @value
+
+
+
+
+

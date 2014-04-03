@@ -1,0 +1,50 @@
+---
+title: Active trader reading notes
+tag:   reading notes
+date:  Sep 09 2011
+---
+
+= Questions
+
+How do you trade an index?
+
+= Action points
+
+Check out the K ratio (Lars Kestner)
+* from Lars Kestner’s book: Quantitative Trading Strategies,
+* 
+Check out the follow up z-score article
+
+Check out the level II articles OR find level II books
+
+
+= Notes
+
+Level II (order book)
+* hard to get data to backtest
+* 
+* See: Level II quotes: Decoding supply and demand
+
+Mean reverting
+* Z-score is a measure of the distance — measured in terms of the number
+* of standard deviations — of any individual data point from the recent aver-
+* age of those data points. 
+* 
+*    The z-score can be calculated for any data series;
+*    here it is applied to the closing price of a series of daily bars.
+*    
+*    A z-score of +1.0 for a particular bar means the closing price for that bar
+*    is 1.0 standard deviations greater than the average of the closing prices,
+*    while a z-score of 0.0 means the closing price is equal to the average.
+
+* 
+Momentum indicators are typically cal-
+culated using the closing price, which
+greatly influences their “message.” For
+any oscillator to keep moving higher, the
+close-to-close price changes must contin-
+ue to increase. If they remain the same,
+the oscillator moves sideways; if they decrease in size (even if
+the changes continue to be positive), the oscillator will
+decline.
+

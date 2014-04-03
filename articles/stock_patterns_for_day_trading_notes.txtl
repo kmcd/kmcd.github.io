@@ -1,0 +1,40 @@
+---
+title: Stock patterns for day trading reading notes
+tag:   reading notes
+date:  Mar 03 2013
+---
+
+= Questions
+
+What are the statistical indicators that your model isn't working now,
+* eg after X loss trades: STOP THE LINE 
+* 
+What other kanban tools can you use?
+
+What time frames can you use to validate an identified trend (2,5, 15 min) ?
+
+= Action points
+
+Calulate your "go home" loss for the day (kanban: stop the line)
+
+= Notes
+
+Never lose more than X ($650)
+Only trade at a time
+Cherry pick only the best trades
+Dont risk more than 0.125% loss per trade
+Lock in your profits
+If you have 4 losses in a row - stop trading
+Be quick to take profit while momentum is in your favour
+Trading is 90% mental discipline
+
+Support & Resistance refer to areas on a chart that have halted past price 
+movement
+
+Congestions / sideways: 
+* prices have no clear direction (usually in between 1 std dev of MA)
+
+Consolidation
+* Prices move in a tight, well defined price range for more than a few bars
+* 
+

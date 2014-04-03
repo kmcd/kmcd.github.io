@@ -1,0 +1,344 @@
+---
+title: Breakthrough advertising reading notes
+tag:   reading notes
+date:  Nov 11 2012
+---
+
+= Breakthrough advertising
+
+== Questions
+
+How can I use this information?
+- Write langing pages
+- Write adwords ads
+- Write blog posts
+- Marketing insight
+
+What will the output be?
+- notes file
+- RoR training landing page
+- RoR training google ad
+
+== Notes
+
+ch 1: It's all about desire
+
+Easier to fulfill existing demand than create new demand.
+
+It's all about desire
+
+Find most powerful desire & acknowledge/Reinforce/Satisfy
+
+Find the ONE dominant benefit
+And make sure it is UNIQUE
+And that is your lead
+Stress Benefits not Features
+
+1. What is the mass desire that motivates your market?  
+2. How much does your market know about your product?  (Their State of Awareness.) 
+3. How many similar products have they been told about before?
+
+ch 2: prospects state of awareness
+
+Wants Benefit; Doesn't Know of Product
+- Focus emotion and give it a goal
+- Crystalize Desire into a catchphrase
+
+Has a Need; Doesn't See connection to product
+- Problem solving ad
+- Connection to Product
+- Name Need/Solution
+- crystalise/dramatise need
+- make product the only solution
+
+ch 3: Market type
+
+First in Market
+- New Technology
+- Repurpose Prod
+- New Medium
+- New Performance/Benefits
+- Be Simple, Be Direct!
+
+What market type am I? Existing (performance enhancement on existing delivery methods)
+
+Mature market
+- New delivery or mechanisms
+
+ch 4: Stronger headlines
+
+=> Use examples of most popular affilliate ads from Adwords book
+
+ch 5: growing headline ideas
+
+Strenghtening your headline
+
+Key Point: Find the ONE Vital Fact - Generality is Death
+
+Motivation/Market Research: Know your prospect intimately - test smaller ideas
+
+(Learn Rails/Be a Rails developer) in (6 hours / one day)
+
+You have now built vour headline.  You now have a means of stopping your
+prospect—of bringing to a momentary halt all the diverse activities of
+his mind—of focussing his attention, at least for a moment, on a single
+thought.  This is the job that you have designed vour headline to do—not
+to sell, or identify your product, or even mention the need or desire that
+your product satisfies—but simply and solelv to flag down your prospect,
+and get him to read your first paragraph.  From that moment on, your body
+copy does the selling. It does this by altering your prospect's vision of
+reality. It creates a new world for your prospect—a world in which your
+product emerges as the fulfillment of the dominant desire that caused this
+man to respond to your headline.
+
+ch 6: Inside your prospects mind
+
+Make them WANT
+Deeper hope & dreams
+Dont try to teach - make your case fit exisiting beliefs (ie dont enter a new market)
+
+ch 7: Intensification - strenghten desire
+
+Present claims
+First present the product or the
+satisfaction it gives directly—bluntly—by a thorough, completely detailed
+description of its appearance or the results it gives.
+
+Put claims into action
+ To show, not only how the
+product looks, and what benefits it gives the reader, hut exactly how it
+does this.
+
+Bring in the reader
+Or, if vour product lends itself to
+this kind of treatment, put your reader right smack in the middle of this
+product-in-action story, and give him a verbal demonstration of icJiat will
+happen to him the first day he owns that product.
+
+Show Him H o w to Test Your Claims 4. But there is still more room to expand
+the image along these lines. Turn the demonstration into a test. Let your
+reader visualize himself proving the performance of your product—gaining
+its benefits immediately—in the most specific and dramatic way possible.
+
+Bring In an Audience 
+Tesimonials 
+Case studies
+Well known people
+
+Show reader testing limits
+
+Show expert approval
+
+Compare, Contrast, Prove Superiority 
+Each new approach suggests others. The
+competition can be carried into contrast. The disadvantages of the old
+product or service can he laid side by side with the advantages of the
+new— throwing these advantages into sharp relief.
+
+Show how easy it is stressing the ease of application, and contrasting it with the 
+tremendous benefits that that application gives you
+
+Guarantee
+
+"I want to do what you do" -> create cool apps, run side businessess, knock out 
+web app quickly
+
+A copy writer's first
+qualifications are imagination and enthusiasm. You are literally the script
+writer for vour prospect's dreams. Your
+job is to show him in minute detail all the tomorrows that vour product
+makes possible for him
+
+
+ch. 8: Identification - fullfill deep desires
+
+Charatcher
+
+Achievement
+
+Here display is vital—because none of these achievements is obvious. Quite
+the opposite, they are immaterial and invisible—mere titles, roles, bundles
+of privilege. But that potential must first be
+translated into physical symbols of success, for everyone around us to see
+
+Take primary product image and multiply by intensifying
+
+the graphic designer
+The job hunter (CV, portfolio) 
+the web developer
+
+Github a/c
+
+Identify with people - YOU (as trainer) and the people you associate yourself 
+with. Get out there and hustle. Attend conference & meetups for Rails/Ruby, 
+business startups, graphic design, usability. Choose who you follow online.
+
+The Roles Your Prospect Desires What, exactly, is this process of Identification? Quite
+simply, it is, first of all, the desire of your prospect to act out certain
+roles in his life.
+=> Seth Godin: 37 signals are not selling software, they're selling rebellion. 
+Targeting unhappy office workers.
+
+And how do you utilize this longing
+for identification when you write your copy? In two ways: First, bv turning
+your product into an instrument for achieving these roles. And second, by
+turning that product into an acknowledgement that these roles have already
+been achieved.
+
+Every product you work on should offer vour prospect two
+separate and distinct reasons for buying it. First, it should offer him the
+fulfillment of a physical want or need. This is the satisfaction your product
+gives him. And second, it should offer him a particular method of fulfilling
+that need, that defines him to the outside world as a particular kind of
+human being
+
+Student/Alumni page => Githib public organisation
+
+How else can people identify with your service? 
+- Public web pages (White Belt alumni)
+- github a/c
+- blog
+- heroku apps
+
+How do you create prestige for your product (ThoughtBot level of prestige), become 
+a Rails contributer, run successfull online businessess, good UI.
+
+Other top flight apps built in Rails.
+
+Dominant image for success -> SUCCESSFUL apps & businesses, achievement, cool, 
+not nerdy, women.
+
+ch. 9: Gradualisation
+
+This process of
+starting with the facts that vour prospect is already willing to accept, and
+leading him logically and comfortably through a gradual succession of more and
+more remote facts—each of which he has been prepared in turn to accept—
+is called Gradualization.
+
+The first of these dimensions is Desire—want, yearning, motivation—with
+specific goals and/or cures in mind—with the prospect begging to be
+shown how to obtain them. It is the copy writer's job to make sure the
+path to these goals goes through the product—and to make sure that the
+prospect can visualize every drop of satisfaction that their achievement
+will give him.  The second dimension is Identification—the need for
+expression and recognition—unformulated, unspoken, at least partially
+unconscious—searching for symbols, definitions and embodiments. It is the
+copv writer's job to crystallize these seldefinitions and emboch' them in his product—so that the product may be used,
+not only as a source of physical satisfaction, but also as a symbolic extension
+of the personality of the prospect for whom it is intended.
+
+The need to believe— and the need for secure
+beliefs—is just as powerful an emotional force as the strongest desire for
+physical satisfaction, or the most urgent search for expression
+
+one fully-believed claim will sell more goods than all the half-questioned
+promises vour competitors can write for all the rest of their days
+
+What are "the facts" or beliefs of your prospects?
+
+ That every claim, everv image, every proof in your
+ad has two separate sources of strength— 
+1. The content of that statement
+itself;
+and 
+2. The preparation vou have made for that statement—either by
+recognizing that preparation as already existing in your prospect's mind,
+or bv deliberately laving the groundwork for that statement in the preceding
+portion of the ad itself. 
+
+And, because of this fact, we can strengthen the power of each of these 
+statements in two separate ways—
+1. Bv increasing
+the intensity of its content—by making greater promises, bv portraying
+more dramatic images, by offering more compelling proof; 
+and/or
+2. Bv changing the place or position or sequence in which that statement occurs
+in the ad—by strengthening the groundwork for belief in that statement
+by the material which precedes it—and therefore increasing the intensity
+of belief given to it— the immediate acceptance of its content, without
+question, when the prospect encounters it in vour ad.
+
+
+New Definition of Awareness We now know that Gradualization is the art of 
+starting your ad with a statement that will be immediately and
+entirely accepted, and then building a chain of subsequent acceptances upon
+this first statement.
+
+The purpose of this chain of acceptances is to lead your
+reader to a goal conclusion, which he will then accept, but which he would not
+as readily or as thoroughly have accepted without the preliminary statements.
+
+This quest for acceptance begins, of course, with vour headline. This
+all-important first statement that you make—this meeting place between your
+story and your prospect—must not only be capable of awakening interest
+and desire, but of being accepted at the very first glance as being true.
+
+Interest and believability—these are the two requirements that determine
+your headline. 
+
+We have already discussed these requirements in Chapter 2,
+on the State of Awareness of our market.  We can now redefine this State of
+Awareness as readiness to accept. 
+
+And we can now say—especially in the
+Fifth Stage of Awareness—that the effectiveness of your headline is as
+much determined by the willingness of your audience to believe what it says,
+as it is by the promises it makes.  This is the reason that you cannot always
+use the most powerful claim in your headline. Or even the very problem that
+your product solves. Because without supporting evidence already existing
+in the mind of your prospect to prepare him for that headline claim, he
+just won't believe it. Either he'll believe that it's exaggerated or false,
+or he just won't believe it applies to him.
+
+This fact—that your most powerful claim does not always
+make vour most powerful headline—is a paradox that many copy writers
+still cannot accept.
+
+Gradualisation -> aka tell a leading story, laying the ground work.
+
+Unlock the power of Rails -> keys to the kingdom
+
+=> What is the appropriate sequence of claims for RailsDojo?
+
+=> What are the existing beliefs for those wishing to learn Rails?
+
+Gradulisation: 
+Start: Learning Ruby is hard?
+Conclusion: I can teach you how to teach yourself.
+
+Address the customers fears:
+- is this course any good
+- what if its not
+- who is this guy
+- will I be any better afterwards
+
+1. To show how the goal-conclusion—the introduction of the product claim
+itself—may be made far more effective if it is delayed till the prospect has
+been prepared to accept it. And 2. To show how this full acceptance—this
+willingness to believe without question-can gradually be built up, layer
+by laver agreement by agreement, by use of the proper structure.
+
+Add Believability By...
+Inclusion Question: "Have you ever...?"
+Detailed Identification:
+Laundry list of problems
+Contradiction: "It's a new world..."
+Logic words: actually,therefore, discovered here's why, proven by, in fact
+Syllogism: Build it up: "You know A is B And that means B is C. But now, C is D!"
+Others: If/then, echo strong proofs, pour on strong proof.
+
+
+Mechanization: how does your product work?
+
+#1—first:
+Here your mechanism is not so well known, or not known at all, and you can't
+simply name it. You have to go into more detail; you have to describe it.
+So you have the classic situation of Promise—Reason Whv.  You build a
+strong, quick promise—and then you follow up with the reason why you can
+deliver that promise.
+
+Ch 11: Mechanization (System)
+Give it a Name
+Describe the System
+Feature the System

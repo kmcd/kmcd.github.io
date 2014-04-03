@@ -1,0 +1,96 @@
+---
+title: Programming clojure reading notes
+tag:   reading notes
+date:  Aug 08 2011
+---
+
+= Questions
+
+What are multi mehtods & why are they useful?
+What chapters can you omit?
+What are the data types?
+How is functional programming ~truly~ side effect free?
+What is lazy evaluation?
+How do agents compare to erlang actors?
+What is a sequence?
+Are there any build tools like rake?
+How do you unit test?
+Why is the current directory not in the java class path (for requiring files)?
+How do you handle regular expressions?
+What can I leave out (macros, multimethods?)
+How do I connect to a web api?
+What is the best order to read the book?
+* exploring
+* sequences
+* functional
+* concurrency
+* in the wild
+
+Why *exactly* do I need to use clojure?
+* Integration with TA-lib
+* Access java tech analysis libs
+* Most finance api's have a java lib
+* 
+Key chapters
+* 2,4,5
+* 
+* Come back to macros, concurrency & Java later
+
+= Action points
+
+Download intraday data from google/yahoo and store it in mysql (useful for
+qtStalker)
+* 
+= Read actively (notes, examples)
+
+#’user/hello. 
+#’ function was stored in a Clojure var
+user is the function namespace
+
+*1, *2, *3 store the last 3 varialbe assignments
+
+*e holds the last exception
+
+#{} is a Set
+
+A def can define functions or data.
+
+References must be updated in a transaction to handle concurrency:
+(dosync & exprs) 
+
+Use the @ symbol to inspect a reference, eg @foo
+
+(require 'clojure.contrib.str-utils)
+maps to clojure/contrib/str-utils.clj
+
+When you require a function, you must refer to the full name space, eg
+(require 'examples.introduction)
+(take 10 examples.introduction/fibs)
+
+You can refer to the function at the top level (without using the namespace 
+prefix) using refer:
+(refer 'examples.introduction)
+(take 10 fibs)
+
+Reload libs:
+(use :reload-all 'examples.introduction)
+
+Use find-doc with a string or regex to search the documentation
+
+use show to enumerate all the Java members (fields and methods) of any Java object:
+*                                   
+you can also use Java’s Reflection API.
+(ancestors (class [1 2 3]))
+
+Division may not execute as expected: could convert to a ration instead:
+* eg 22/7
+* use a decimal to divide
+* 
+Append M to a number to create a BigDecimal for arbitrary precision math
+* BigDecimal is slow
+
+String & Charachter are delegated to Java
+* 
+= Recite (answer qs, mind map)
+
+= Review (blog post)

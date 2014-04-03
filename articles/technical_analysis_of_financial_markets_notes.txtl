@@ -1,0 +1,163 @@
+---
+title: Technical analysis of financial markets reading notes
+tag:   reading notes
+date:  Jul 07 2011
+---
+
+= Questions
+
+What are the key chapters?
+* basic trend
+* volume
+* long term charts
+* moving averages
+* oscilators
+* point & figure charting
+* computer systems
+* money management
+* intermarket analysis
+* Stock market indicators, advanced indicators
+* Checklist, essentials
+* 
+Who are the "Random Walk Theorists" & what do they espouse?
+* 
+= Action points
+
+= Notes
+
+Trend
+* simply the direction of the market
+* 
+* sideways is the absence of up/down trend
+* 
+* catagorised as major, secondary & near term
+* 
+* depends on your timeframe
+* 
+* prices tend to move in a series of peaks & troughs
+* 
+* support / resistance are local min/max values 
+*    -> referred to pivot elsewhere?
+*    
+* for an uptrend to continue 
+*    each successive low MUST BE HIGHER than the preceding low (support level)
+*    each successive high must also be higher
+*    -> is this an up-channel?
+*    -> does a narrowing up-channel annouce the end of a rally?
+*    
+*    if corrective dips below previous low, a reversal may be on the cards
+*    
+* test significance of trendline:
+*    how long has it been intact?
+*    how many times has it been tested?
+*    
+* 50% price retractment is often observed
+*    -> can use % retractment to measure the narrowing of an up channel
+*    
+Volume
+* is secondary to price in indication importance
+* used a confirmation only
+* defined as: number of entities traded for that period
+* 
+* open interest: number of outstanding contracts (long OR short NOT both)
+*    idicates if more more buyers are coming into the market
+*    if buyers == sellers, OI remains unchanged
+*    used mainly in FUTURES
+*    
+* strong market: price rising, volume & OI increasing
+* 
+* VFI looks like a decent indicator (also useful for uptrend confirmation)
+* 
+* an increase in volume may precede a price change
+* 
+Long term charts
+* can provide a perspective that daily charts cannot
+* 
+* if can verfify with another time dimension, why not use it? 
+* You can evaluate the usefullness of different time dimensions during testing
+* 
+* is a daily time series all that's needed?
+*    ie uptrend on the day & uptrending for the last few days
+*    
+* useful to identify a major trend
+* 
+* not suitable for timing entry & exit points, are they useful for day trading
+*    at all?
+*    
+Moving averages
+* much chart analysis is subjective, some suggest it merely helps develop a 
+* mental model for traders & has NO empirical basis.
+* 
+* AM is more easily used in algo trading :)
+* 
+* 10 day average: last 10 days closing averages / 10
+* 
+* can have many paramaters for optimisation
+*    KISS: just stick with the closing price
+* 
+* MA period depends on your trading time frame, eg a day trader might use 3, 5,
+* 10 moving averages
+* 
+* uses the arithmetic mean, exponential has less lag
+* 
+* the simplest, most widely used indicator
+* 
+* double crossover: when the shorter time period (eg 5) crossed over the longer
+* (10)
+*    -> will this always be the case when on the top Bollinger band?
+*    
+* 4-9-18 day MA used in futures trading
+* 
+* Bollinger bands:
+*    2 std dev +/- MA
+*    contains 95% of price data (verification of assumption needed)
+*    pricess are over extended / bought when they touch the upper band
+*    during a period of rising volatility, the bands will expand
+*    during a period of decreasing volatility, the bands will contract
+*       -> how does this feed into a predictive model, do we want more, less or
+*          equal volatility?
+*    best combined with overbought/over sold oscillators
+*    
+* one of the oldest maxims in trading: trade in the direction of the trend
+* 
+* because MA are trend folling, they work best in trending market
+* 
+* dont work so well in a sideways market
+* 
+* ADX indicator (ch 15) tells you whether a market is trending or not
+* 
+* they dont work well for extended periods of time (is this because markets
+* are generally not trending?)
+* 
+* channel breakout and MA strategies came tops in a study of 23 different
+* trading systems [Financial Review, 1990]
+* 
+* -> What is a channel breakout system?
+* 
+* 4 week rule: buy long whenever the price exceeds the high of the previous 4 weeks
+*    needs a trend to be in place
+*    alter the time frame as needed
+*    does not catch tops or bottoms, therefore lock in your profit early
+*    less frequent trades
+*    -> can you add this as a 5 day timeframe to your entry signal
+*    simple breakout system
+* 
+* stock traders rely heavily on the 50 day (10 week) MA
+* 
+* Adapative Moving average (Smarter trading, Perry Kaufman)
+*    automatically adjusts for market volatility
+*    moves slowly when markets are sideways, swiftly when trending
+*    
+Oscillators
+* useful to detect overbought/sold conditions
+* can indicate that a a trend is losing momentum before that is refected in the
+* price
+* secondary indicator, subordinate to trend analysis
+* most useful when at the upper/lower boundry, indicating that trend may ending
+* watch for divergence when oscilators is in an extreme position
+* crossing at zero (mid-point) can give directional indicator
+*    -> how can you calculate this: trig?
+*    
+* momentum measures VELOCITY of price changes rather than the prices levels
+*    latest closing price - closing price X days ago
+* 

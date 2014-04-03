@@ -1,0 +1,373 @@
+---
+title: Learning r basics reading notes
+tag:   reading notes
+date:  Mar 03 2012
+---
+
+= Questions
+* What is a factor (when reading in a string from a file)
+*    A categorical variable, ie like an object you can call methods on it
+*    
+*    Nominal variables are categorical, without an implied order
+*       Diabetes (Type1, Type2)
+*    
+*    Ordinal variables imply order but not amount.
+*       Status (poor, improved, excellent)
+*       
+= Getting Help
+* help(mean) 
+* ?mean
+* args(mean)
+* example(mean)
+* help.start()  => launches local server & html help doc in browser
+* ??solve => searches the help
+* 
+* http://rseek.org
+* http://stackoverflow.com
+* http://stats.stackexchange.com
+* 
+* RSiteSearch("canonical correlation") => launches an r-project.org search in your browser
+* 
+= Reading from files
+* 
+* dfrm <- read.table("statisticians.txt", sep=":")
+* 
+* nasdaq <- read.csv("data/NASDAQ_20110214.csv")
+* 
+* str(nasdaq) => shows internal structure of an object
+* 
+= Vectors
+* 
+* Like an array
+* 
+* creating a vector of vectors flattens & concatenates:
+* 
+* > v1 <- c(1,2,3)
+* > v2 <- c(3,4,5)
+* > c(v1,v2)
+* [1] 1 2 3 3 4 5
+* 
+* Must be all of the same type, R will automatically coerce:
+* 
+* > v1 <- c(1,2,3)
+* > v3 <- c("A","B","C")
+* > c(v1,v3)
+* [1] "1" "2" "3" "A" "B" "C"
+* 
+= Basic stats
+* mean(x) 
+* median(x)
+* sd(x)
+* var(x)
+* cor(x, y)
+* cov(x, y)
+* 
+* The cor and cov functions can calculate the correlation and covariance, respectively,
+* between two vectors:
+* 
+* na.rm=TRUE to permit empty data points
+* 
+= Data frames
+* 
+* Used for column data
+* 
+* Use matrix notation (like array indexing) to select a column by index or name
+* 
+= Intro to R
+* 
+* source("commands.R") => execute from a file
+* sink("session.log") => sends output to file
+* sink => restores output to console
+* 
+* seq(1..10, by=1) => creates a vector (1,2 .. 10)
+* 
+* You can use data frames to work on different problems in the same working 
+* directory
+* 
+* foo <- function(x=1, y=2) {
+* 
+* }
+* 
+= R in a nutshell
+* 
+* > b <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+* > b[7]
+* [1] 7
+* 
+* > b[1:6]
+* [1] 1 2 3 4 5 6
+* 
+* > b[b %% 2 == 0]
+* [1]  2  4  6  8 10 12
+* 
+* An array object is just a vector that’s associated with a dimension attribute
+* a <- array(c(1,2,3,4,5,6,7,8,9,10,11,12),dim=c(3,4))
+* 
+* A matrix is just a two-dimensional array:
+* > m <- matrix(data=c(1,2,3,4,5,6,7,8,9,10,11,12),nrow=3,ncol=4)
+* 
+* > i <- 5
+* > repeat {if (i > 25) break else {print(i); i <- i + 5;}}
+* 
+* > i <- 5
+* > while (i <= 25) {print(i); i <- i + 5}
+* [1] 5
+* [1] 10
+* [1] 15
+* [1] 20
+* [1] 25
+* 
+* for (i in seq(from=5,to=25,by=5)) print(i)
+* 
+* A list is an ordered collection of objects (does not have to be of similar type)
+* 
+* parcel <- list(destination="New York",dimensions=c(2,6,9),price=12.95)
+* 
+* A factor is an ordered collection of items. The different values that the factor can take are called
+* levels. (like an enumerated type)
+* 
+* eye.colors <- factor(c("brown", "blue", "blue", "green", "brown", "brown", "brown"))
+* 
+* Data frames are similar to DB tables
+* 
+* You can create connections to files, URLs, zip compressed
+* files, gzip compressed files, bzip compressed files, Unix pipes, network sockets, and
+* FIFO (first in, first out) objects. You can even read from the system clipboard (to
+* paste data into R).
+* 
+* An environment
+*    is an R object that contains the set of symbols available in a given context, the objects
+*    associated with those symbols, and a pointer to a parent environment. The symbols
+*    and associated objects are called a frame.
+*    
+* sapply() is like map
+* > a <- 1:7
+* > sapply(a, sqrt)
+* [1] 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 2.645751
+* 
+* Anonymous functions (similar to a Ruby block/lambda)
+* > apply.to.three <- function(f) {f(3)}
+* > apply.to.three(function(x) {x * 7})
+* 
+* 
+* 
+* 
+* 
+= OO programming
+* 
+* In R, the places where information is stored in an object are called slots. We’ll name
+* the slots data, start, and end. To create a class, we’ll use the setClass function:
+* 
+* > setClass("TimeSeries",
+*    representation(
+*    data="numeric",
+*    start="POSIXct",
+*    end="POSIXct"
+* ))
+* 
+* my.TimeSeries <- new("TimeSeries",
+*    data=c(1,2,3,4,5,6),
+*    start=as.POSIXct("07/01/2009 0:00:00",tz="GMT",
+*    format="%m/%d/%Y %H:%M:%S"),
+*    end=as.POSIXct("07/01/2009 0:05:00",tz="GMT",
+*    format="%m/%d/%Y %H:%M:%S")
+* )
+* 
+* Create a validation to ensure that the start date is before the end date:
+* 
+* setValidity("TimeSeries",
+*    function(object) {
+*    object@start <= object@end &&
+*    length(object@start) == 1 &&
+*    length(object@end) == 1
+* } )
+* 
+* 
+* Let’s create a function for extracting the data series from a generic object:
+* > series <- function(object) {object@data}
+* > setGeneric("series")
+* [1] "series"
+* > series(my.TimesSeries)
+* [1] 1 2 3 4 5 6
+* 
+* period.TimeSeries <- function(object) {
+*    if (length(object@data) > 1) {
+*       (object@end - object@start) / (length(object@data) - 1)
+*    } 
+*    else {
+*       Inf
+* }
+* 
+= Working with data
+* 
+* > save(top.5.salaries,file="~/top.5.salaries.RData")
+* 
+* You can use URL's!
+* 
+* sp500 <- read.csv(paste("http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC&a=03&b=1&c=1999&d=03&e=1&f=2009&g=m&ignore=.csv"))
+* 
+= Preparing data
+* 
+* The cbind function will combine
+* objects by adding columns. You can picture this as combining two tables horizon-
+* tally. 
+* 
+* The rbind function will combine objects by adding rows. You can picture this as
+* combining two tables vertically.
+* 
+* The paste function allows you to concate-
+* nate multiple character vectors into a single vector. (If you concatenate a vector of
+* another type, it will be coerced to a character vector first.)
+* 
+* > x <- c("a","b","c","d","e")
+* > y <- c("A","B","C","D","E")
+* > paste(x,y)
+* [1] "a A" "b B" "c C" "d D" "e E"
+* 
+* Binning: grouping data into bins, eg every 5 mins
+* 
+* Shingles are a way to represent overlapping time series
+* 
+* The function cut is useful for taking a continuous variable and splitting it into dis-
+* crete pieces
+* 
+* Use subset or bracket notation to select a subset of the data
+* 
+* subset, tapply, agregate could be very useful for data analysis
+* 
+* tabulate => count the number of observations
+* 
+= Stats in R (reference)
+* 
+* Control structures
+* if(...) {
+* ...
+* } else {
+* ...
+* }
+* 
+* Conditional assignment
+* 
+* x <- if(...) 3.14 else 2.71
+* y <- ifelse(x>0, 1, -1)
+* 
+* Iteration
+* 
+* for (i in 1:10) { 
+*    next
+*    break
+* }
+* 
+* while() {}
+* repeat {}
+* 
+* Functions
+* named args (useful when defaults are already provided)
+* 
+* namespace::method
+* 
+* Operators
+* matrix multiplication
+*    %a%
+* 
+* Euclidean divistion
+*    %/%
+*    
+* Modulus
+*    %%
+* 
+* Set membership
+*    17 %in% 1:100
+* 
+* Data structures
+* Vectors
+*    > c(1,2,3,4,5)
+*    [1] 1 2 3 4 5
+*    
+*    > 1:5
+*    [1] 1 2 3 4 5
+*    
+*    > seq(1, 5, by=1)
+*    [1] 1 2 3 4 5
+*    
+*    > seq(1, 5, lenth=5)
+*    [1] 1 2 3 4 5
+*    
+*    Select all except 5-10
+*    x[-(5:10)]
+*    
+*    seq(0,10, length=11, by=0.5)
+*    
+*    Repeat
+*    rep()
+*    
+= R in action
+* 
+* patientID <- c(1, 2, 3, 4)
+* age <- c(25, 34, 28, 52)
+* diabetes <- c("Type1", "Type2", "Type1", "Type1")
+* status <- c("Poor", "Improved", "Excellent", "Poor")
+* patientdata <- data.frame(patientID, age, diabetes, status)
+* 
+* Use attach(data_frame) to call data_frame's attributes at the top level,
+* ie you dont have to use data_frame$column
+* 
+* Or with:
+*    with(data_frame, {
+*       
+*    }
+* 
+* Nominal variables are categorical, without an implied order. Diabetes (Type1, Type2) is
+* an example of a nominal variable. Even if Type1 is coded as a 1 and Type2 is coded
+* as a 2 in the data, no order is implied.
+* 
+* Ordinal variables imply order but not amount.
+* Status (poor, improved, excellent) is a good example of an ordinal variable. You
+* know that a patient with a poor status isn’t doing as well as a patient with an improved
+* status, but not by how much. 
+* 
+* Continuous variables can take on any value within some
+* range, and both order and amount are implied. Age in years is a continuous variable
+* and can take on values such as 14.5 or 22.8 and any value in between. You know that
+* someone who is 15 is one year older than someone who is 14.
+*    
+* Categorical (nominal) and ordered categorical (ordinal) variables in R are called
+* factors.
+* 
+* a list is an ordered collection of objects (components)
+* allows you to gather a variety of (possibly unrelated) objects
+* 
+* You can add extra columns thusly:
+*    mydata <- transform(mydata, sumx = x1 + x2, meanx = (x1 + x2)/2)
+*    
+*    leadership <- within(leadership,{
+*       agecat <- NA
+*       agecat[age > 75]              <- "Elder"
+*       agecat[age >= 55 & age <= 75] <- "Middle Aged"
+*       agecat[age < 55]              <- "Young" 
+*    })
+* 
+* 
+* na.omit(data_frame) => reject all NA rows
+* 
+* Handle date formats
+* strDates <- c("01/05/1965", "08/16/1975")
+* dates <- as.Date(strDates, "%m/%d/%Y")
+* 
+* Sorting
+*    leadership[order(leadership$age),]
+* 
+* Selecting data
+*    names(leadership) %in% c("q3", "q4")
+*    
+*    leadership[which(gender=='M' & age > 30),]
+*    
+*    subset(leadership, age >= 35 | age < 24, select=c(q1, q2, q3, q4))
+*    
+* apply(x, MARGIN, FUN, ...)
+*    where x is the data object, 
+*    MARGIN is the dimension index, 
+*    FUN is a function you specify, 
+*    and ... are any parameters you want to pass to FUN.
+
+* Need to learn more about: aggregate, melt & cast.

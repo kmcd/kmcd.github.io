@@ -1,0 +1,359 @@
+---
+title: Seo warrior reading notes
+tag:   reading notes
+date:  Jul 07 2012
+---
+
+= Preview
+On page (matching score) ranking
+External ranking
+Keyword research
+Link building
+Competitor research
+Content Considerations
+Social Networking Phenomenon
+PPC
+
+= Questions
+Key chapters? 4,5, 11 - 15
+
+Can you solve pagination problems by listing all content on one page which is linked to from the home page?
+Yes, think so.
+
+Again, does it boil down to good content & link building?
+Yes.
+
+How can you find the PageRank of a site?
+Firefox plugins: SeoQuake
+
+What are the expert sites used in the Hilltop algorithm?
+
+= Notes
+
+== ch 4, Internal ranking factors
+ 
+On-page ranking
+- url, title, meta, page, headings, 
+- Keywords in outbound links!
+
+Pagination problems:
+If it takes more than four clicks to get to a page, it is safe
+to say that this page may not see the light of day in the SERPs. 
+(no more than 2 click away, [Krug])
+
+== ch 5, External ranking factors
+
+Find backlinks using 
+- the link:example.org google command
+- yahoo site explorer
+
+Some expert sites (eg wikipedia) have massive link juice due to the Hilltop algorithm. 
+
+== ch 11, Keyword research
+
+Find long tail keywords for competitive terms.
+
+Stemmed terms will return a broad match
+
+So, what is the point of keyword stemming? When you write your page copy, be very descriptive while using word variations (singular, plural, various tenses, etc.), and write more descriptive page copy than your competitors.
+
+Latent Semantic Indexing (LSI) -> Stay on topic/message
+create quality pages, and ensure that you create page copy using your main keywords as well as many related keywords. So, if you are writing copy about cat food, for instance, don’t include information on buying electronics unless you are talking about cat tag IDs.
+
+Find your existing referrers
+
+Find where your site ranks for keywords using Google Webmaster Tools
+
+To find your keyword rankings on other search engines, you can write a script such as the one we will discuss in Chapter 13. You can also use online ranking aggregator services such as those at http://www.url.com/ and http://jux2.com/.
+Graphical tools: UPposition, Web CEO Ltd., and Caphyon
+
+Keyword brainstorming (record in a text file)
+Make use of localized terms, or take different use of language into account
+
+Create additional keywords using stemming.
+
+Continue by finding related keywords. Related keywords can be synonyms (or semantically related keywords). For example, the site we are building (a resume submission service) might also be talking about:
+resume tips
+resume writing
+interview tips
+interview preparation
+recruiter directory
+
+use Google’s ~ operator to find semantically related keywords
+
+we want to know how many pages are targeting the keywords we compiled on our list. The kinds of pages we are looking for are those that contain keywords in the page title, in the page URL, and in the link anchor text.
+
+eg han solo star wars intitle:trading intitle:cards inurl:trading 
+inurl:cards inanchor:trading inanchor:cards 
+
+You want to target keywords that have a relatively low number of indexed URLs—that is, when your keywords are found in the HTML title, the URL path, and the link anchor text in your competitors’ pages.
+
+When it comes to long tail keywords, it may be best to use one- or two-week
+PPC campaigns to get some real numbers.
+
+Utilizing PPC techniques to forecast your SEO conversions can save a lot of time and money, as you can get fast feedback that will allow you to adjust your keyword strategy
+
+Output of KW research: use your keyword list to build your content backlog
+
+== ch 12, Link building
+
+Run a daily, weekly, or monthly email newsletter
+
+Content hooks:
+
+News 
+Providing timely news information on any topic can be the main catalyst for retaining and gaining visitor traffic
+
+Information 
+You can provide information in many different formats, including whitepapers, case studies, research, and various statistics
+
+Gifts, contests, 
+Enticing people with gifts, contests, awards, sales, and discounts are traditional ways to attract awards, sales, attention discounts 
+
+Humor, controversy 
+You can promote your site by using jokes, funny pictures (videos or sounds), and even controversial information
+
+Software and widgets 
+Providing free software and widgets is another way to promote your online assets
+
+Games Online 
+games and multiplayer games can be addicting and can bring visitors back to your site time and again
+
+Before you choose your target directories, see what their PageRanks are for their home pages.
+
+submit your site to all of the first-tier directories, including Dmoz.org, Yahoo! Directory, Business.com, and YellowPages.com.
+
+How to find directories:
+directory "submit a link"
+general directories
+directory of directories
+"general directory"
+site:dmoz.org inurl:directories
+small business "add url"|"add link"
++general +directory add url|link free|paid
+
+examples for various niche markets:
+travel site:dmoz.org inurl:directories
+"insurance broker directory"
+wine producers directory
+electronics manufacturer directory
+jewelry stores directory
+
+If you are struggling to find directories in your niche, simply use the ones you already have and try doing the following:
+related:www.travel-directory.org
+
+You can write articles, submit blog comments, and post to newsgroup and forum messages. What you want to do is leave your URL within any content you create.
+
+Build a complementary site!
+You want to create a complementary content-rich site that targets many other keywords not specifically targeted on your main site.
+
+Niche directory hubs
+Awards websites
+Site review websites
+
+== ch 13, Competitor research
+
+Create a list of 10 to 20 global competitors.
+
+For each competitor URL, run Google’s related: command to find any additional competitors you may have missed. Repeat this process until you have run out of keywords.
+
+For each competitor URL you find, you should do more research to determine the
+URL’s Google PageRank and Alexa rank, the age of the site and the page, the page copy keywords, the meta description, the size of the Google index, and the keyword search volume.
+
+SeoQuake firefox plugin (csv export is useful) from the makers of SEMRush. They provide free & paid competitor intelligence.
+http://www.semrush.com/info/CompetitorURL.com
+SEMRush provides two ways to search for competitor data. You can enter a URL or
+search via keywords.
+
+Alexa provides keywords driving traffic to a particular site. 
+
+free version of Compete gives you the top five keywords based on search volume.
+Hitwise may also be useful.
+(http://www.keywordspy.com)
+(http://www.spyfu.com)
+(http://www.keycompete.com)
+(http://www.hittail.com)
+
+Finding your competitors’ backlinks is one of the most important aspects of competitor analysis. 
+
+link:foo.com
+"www.competitorURL.com"
+inurl:www.competitorURL.com
+inanchor:www.competitorURL.com
+intitle:www.competitorURL.com
+allintitle:www.competitorURL.com
+allintitle:www.competitorURL.com site:.org
+site:.edu inanchor:www.competitorURL.com
+site:.gov inanchor:www.competitorURL.com
+
+(http://siteexplorer.search.yahoo.com/)
+Yahoo! Site Explorer Provides a robust interface with the ability to export the first 1,000 backlinks to a spreadsheet
+
+(http://www.alexa.com/site/linksin/URL)
+Provides a backlink interface with up to 100 backlinks displayed (hint: change the
+“URL” to the actual competitor URL) 
+
+(http:/www.linkdiagnosis.com/)
+Provides an online backlink report; allows CSV export 
+
+(http://www.backlinkwatch.com/)
+Backlink Watch 
+
+Backlink Checker (http://www.iwebtool.com/)
+Provides an online backlink report with several additional features including out-
+bound link counts. Provides basic backlink checker functionality with associated Google PageRank values
+
+It will take some time for you to find what works and what doesn’t (especially with the free tools). Whatever the case may be, make sure you use several tools before drawing your conclusions. 
+
+Estimating Social Networking Presence
+
+(http://technorati.com/) and enter your competi-
+tor’s URL in the search box to see whether your competitor received any blog reactions.
+
+Digg.com (URL history)
+Twitter
+bit.ly
+
+Competitor Tracking
+
+Spreadsheet with:
+keyword, URL, IP address, Yahoo! inlinks, Google
+PageRank, Google index size, AdWords estimated monthly volume, “inurl” index
+count, “intitle” index count, and “inanchor” index count. 
+
+recording the top 10 or 20 competitors for every keyword. You are also
+recording the number of backlinks (BLs) as well as the number of other backlinks
+(OBLs) found on the same backlink page. 
+
+Should you not also:
+- follow on twitter
+- follow on FB
+- setup RSS reader
+
+New competitor detection
+
+you can use custom feeds from Digg.com to monitor newly submitted
+URLs based on any keyword. The general format is:
+http://digg.com/rss_search?s=keyword
+
+= CHAPTER 14 Content Considerations
+
+Predictive SEO
+
+Future events. 
+Many sites are being built today that will see the light of day only when certain events occur in the future. For example, the Winter Olympic Games 
+
+Buying cycles. 
+In the Western world, there are certain known buying cycles throughout the year. For example, the money modifier gift starts to spike from early November. It reaches its peak a few days prior to Christmas, only to go back to its regular level by the end of December.
+
+Buzz information.
+Many sites effectively act as information repeaters. This includes many well-
+respected (big player) media news sites. Some clever sites employ various mashups to look more unique.
+The idea of content mashups is to create content that is effectively better than 
+the original by providing additional quality information or compelling functions. 
+
+the importance of being ready to produce content so that you are one of the first sites to capture any unexpected buzz. You want to catch the first peak, as in this case, so that your content will be unique and fresh and you won’t have to deal with a large number of competitor sites in the same news space. You want to capture the search frenzy at its earliest.
+
+Creating short-term content of expected events (eg Wimbledon) is much easier than doing the same for unexpected events. However, you will be facing a lot more competition for the same storylines.
+
+Use google trends to discern whether terms are short term & cylical (eg Wimbledon) or long term (eg html tutorial)
+
+Long term content is *reference* material.
+
+Submit articles to Google news
+
+== CHAPTER 15 Social Networking Phenomenon
+
+Technorati Media (the Technorati parent company) to post ads
+on participating blog sites and social media sites. Technorati is not the only player when
+it comes to blogs. Other blog directories, blog search engines, and news aggregator sites
+are interested in your blogs. These include Bloglines, Weblogs.com, NewsIsFree, and
+NewsGator. Most of the popular blog software allows you to ping multiple blog di-
+rectories and blog search engines.
+
+You can download the Weblog_Pinger script, which supports
+Technorati and others utilizing XML-RPC services.
+
+If you use photo & video sharing, your site is no longer the canonical reference for that content. Is this a worthwhile trade off for link juice?
+
+Social Bookmarking Sites
+Digg
+StumbleUpon
+
+Companies should almost always use a Facebook Pages account. This type of account
+allows you to build your own branded page on Facebook. Facebook users can become
+fans of your company. Company pages have a similar user interface as regular Facebook user pages. When users search Facebook, they get mixed results with Facebook user links and company (page) links. Companies can post their website links for everyone to see.
+
+The basic public profile page links are indexed and do show up in search results. Sometimes even these basic Facebook profile pages will show up on Google before the principal site links do. For that reason, it is worth creating your Facebook account and placing relevant keywords in your public profile page.
+
+The first is the community-based approach, in which you build, connect, and cultivate relationships. 
+The second type comes in the form of building Facebook applications.
+Lastly, ads
+
+Another potential risk is in wasting your time and resources
+
+Check out OneRiot Real-Time Search
+
+Once you know your site is in order, optimize it for social
+bookmarking. Make it easy for people to share your site by using linkable social bookmarking icons.
+Don’t go overboard, however. Use just a few of the big social bookmarking sites. Expand your campaign by participating in social media sites. Explore the creation and sharing of viral content. Before spending too much time on any particular social net working platform, know your audience. Sites such as http://www.DandyID.com/cmn/
+claimmyname make it easy to reserve your name or brand across multiple social net-
+working sites.
+
+== Chapter 16, PPC
+
+Work backwards from target convertion rate.
+
+AdWords Tips
+The following subsections provide several tips you can use when managing your Ad-
+Words campaigns.
+Observe and track your competition
+Observe the competition. Write a script to track ads of your targeted keyword list.
+Record competitor ads for several weeks. Note changes in ads. Analyze ads that
+changed. If the ads are not changing, this could mean they are working.
+Experiment
+Don’t stop with weeding out the nonworking keywords. Experiment with new key-
+words. Learn of any new competitors. Learn what their keywords are. Don’t be afraid
+to gradually lower your bid prices to see the effects on your CTR.
+Refine your ad copy
+A poor CTR usually means bad ad copy, bad keyword targeting, and bad timing. You
+can easily create several versions of your ads for your campaign. Use that to your ad-
+vantage. Learn which ads are converting and which are not. Learn which words are
+being used in the ads that work and in the ads that do not. In general, the higher your
+CTR, the lower your average cost-per-click will be.
+
+
+= Summary
+
+= Action points
+Tag blogs you like, or link to (ref)
+
+Read & run rankingfactors.pl
+
+Find your existing referrers (analytics)
+
+Create a list of tools to help automate SEO research/content generation/link building
+- find my backlinks
+
+Find out where the SEO community hangs out (Tom Chritchlow)
+
+Find the directories with the top PR
+
+Register keithmcdonnell.net with Google webmaster tools
+
+Automate keyword brainstorming with google docs spreadsheet & appscript
+
+Download the KW research spreadsheet
+
+Create a list of content hooks for personal website & ad text editor website. 
+Then write a plan to market & promote those content hooks.
+
+Find a way (VA/automate) to submit content to many social bookmarking sites.
+
+Write a list of the ways you can use your software skills as your marketing secret weapon.
+
+Build an automated Google rank checker with AppScript
+
+Find out how to put LinkedIn to best use for SEO & biz promotion.
+
+Find out the expert sites used in the Hilltop algorithm?

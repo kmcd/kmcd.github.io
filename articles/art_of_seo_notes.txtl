@@ -1,0 +1,459 @@
+---
+title: Art of seo reading notes
+tag:   reading notes
+date:  Feb 02 2013
+---
+
+= Questions
+
+What new content is offered thats not already covered in SEO warrior?  -
+kw research screen shots are helpful - KW research (5) is better - I prefer
+the presentation (screen shots, structure)
+
+What are the key chapters?  ch. 3, 5, 7, 11, 13
+
+Does the hilltop algorithm imply that you should become a hub & link to as
+many authoroties as possible?
+
+= Notes
+
+== Audience & objectives
+
+Understanding Search Engine Traffic and Visitor Intent As we discussed in
+“The Mission of Search Engines” on page 2 in Chapter 1, searchers enter
+many different types of searches. These are typically classified into three
+major categories of activity:
+
+Navigational query This is a query with the intent to arrive at a specific
+website or page (e.g., the person types in your company name, Acme Device
+Co.).  Informational query This is a search performed to receive an answer
+to a broad or direct question with no specific source in mind (e.g., Celtics
+game score).  Transactional query A person who types in digital camera may
+be looking to buy one now, but it is more likely that she is researching
+digital cameras. This is an example of an initial transactional query, which
+can evolve in stages. For example, here are some other types of transactional
+queries that occur at a later stage in the buying cycle: • The user types
+in buy digital camera. Although there is no information in the query about
+which one she wants to buy, the intent still seems quite clear.  • The
+searcher types in canon powershot G10. The chances are very high that this
+user is looking to buy that particular camera.
+
+What products, services, and types of information and resources does your
+organization have to offer?
+
+Does your company need direct sales, traffic, branding, or some combination
+of these?  
+• Are there specific influencers you’re trying to reach
+with a message?  
+• Is the organization/brand subject to potentially
+negative material that needs to be controlled/mitigated?  
+• Do you have products/services you sell, either directly over the Web or through leads
+established online?
+
+== Keyword research
+
+70% in the long tail
+
+1. Produce a list of key one- to three-word phrases that describe your
+products/services.  
+2. Spend some time coming up with synonyms that your
+potential customers might use for those products and services. Use a
+thesaurus to help you with this process.  
+3. Create a taxonomy of all the
+areas of focus in your industry. It can be helpful to imagine creating a
+directory for all the people, projects, ideas, and companies connected to
+your site. You can also look at sites that are leaders in the industry and
+study their site hierarchy as a way to start your thinking about a taxonomy.
+4. Broaden your list by thinking of higher-level terms of which your products
+or services are a subset.  
+5. Review your existing site, and extract what
+appear to be key phrases from your site. 
+6. Review industry association
+and/or media sites to see what phrases they use to discuss your topic area.
+7. List all your various brand terms.  
+8. List all your products. If your
+site has a massive number of products, consider stepping back a level (or
+two) and listing the categories and subcategories. 
+9. Have your team step
+back and imagine they are a potential customer, and ask them what they would
+type into a search engine if they were looking for something similar to your
+product or service. 
+10. Supplement this by asking some people outside your
+business what they would search for, preferably people who are not directly
+associated with the company.  
+11. Use your web analytics tool to see what
+terms people are already using to come to your site.
+
+(reminds me of Steve Blanks approach)
+
+Competitors 1. Review your competitors’ websites and see what key phrases
+they use for their products and services that compete with yours.  2. Record
+what nonbrand terms they use for their business.  3. Read any articles they
+have written that are published on sites other than their own.  4. Observe
+what the media may have had to say about them.
+
+Search results count (is this data reliable?)  Use related search command
+to come up with terms you may have missed
+
+Using a search with the * character can give you a good idea of what
+terms/phrases commonly precede or follow a given term/phrase. For example,
+using * ringtones can show you phrases that are commonly associated with
+the term ringtone
+
+Using the very cool Google date range operator, shown in Figure 5-5, you
+can determine how many times in the past day, week, month, or year your term
+has appeared.
+
+TABLE 5-1. Google date search operators could be useful for scripting
+
+Traffic estimator != Keyword tool
+
+he AdWords Keyword Tool offers a lot of useful information about your
+keyword campaigns, such as suggestions for similar keywords, an estimate of
+the keyword’s popularity, ad costs and positions, general search volume
+trend information, and keyword campaign suggestions for your site or your
+competitor’s site.
+
+The Traffic Estimator provides a decent estimate of your keyword’s
+click-through rate. Based on the estimated clicks per day, you can get
+a relative idea of which of your keywords are the most popular and can
+potentially bring you the most traffic.
+
+When using the Traffic Estimator for keyword research it is best to enter
+your keywords as “exact match” for direct comparison.
+
+Misspellings Google trends: not applicable to long tail kewywords
+
+Identifying relevant keywords How relevant is the term/phrase to the content,
+services, products, or information on your site?  It is a good idea to
+target keywords that indicate imminent action (e.g., buy cranium board
+game, best prices for honda civic), because searchers are more likely to
+perform the corresponding action on your site when they search for those
+terms than they are for terms such as honda civic or cranium board game.
+How many people who search for this term will come to your site and leave
+dissatisfied? (abandonment rate)
+
+Run a PPC campaign (full coverage) for a more accurate estimate of search
+volume
+
+text-mining relevant documents on the subject of your industry/service/product
+for terms that, although lower in search volume, have a reasonable degree
+of relation.
+
+1. Extract the top 10 to 50 most common search phrases at the head of the
+distribution graph from your existing keyword research in the industry.
+2. Search Google, Yahoo!, and Bing for each term.  3. For each page in the
+top 10 to 30 results, extract the unique usable text on the page.  4. Remove
+stop words and filter by phrase size.  5. Remove instances of terms/phrases
+already in your keyword research database.  6. Sort through the most common
+remnants first, and comb as far down as you feel is valuable.
+
+You can expand on this method in the following ways: • Text-mine Technorati
+or Delicious for relevant results.  • Use documents purely from specific
+types of results—local, academic—to focus your keyword mining efforts.
+• Mine forum threads on your subject matter. You could even use inurl:forum
+in the searches to grab conversational keywords.
+
+N.B. This methodology is highly effective. The return on this research has a
+direct relationship to the amount of effort you expend (and how deep you dig).
+
+The best approach is to use the long tail research techniques we discussed in
+this chapter and identify the major patterns, or the major words that appear
+across different long tail scenarios, and then work those words into your copy.
+
+Authority “DiscoWeb: Applying Link Analysis to Web Search”
+(http://www.cse.lehigh.edu/~brian/pubs/1999/www8/), became the basis of the
+Teoma algorithm,
+
+The model of organizing the Web into topical communities and pinpointing
+the hubs and authorities is an important model to understand (read
+more about it in Mike Grehan’s paper, “Filthy Linking Rich!” at
+http://www.search-engine-book.co.uk/filthy_linking_rich.pdf). The best link
+builders understand this model and leverage it to their benefit.
+
+TrustRank The trust level of a site would be based on how many clicks away
+it is from seed (trusted sites selected by hand) sites.
+
+mozTrust from SEOmoz’s Linkscape is the only publicly available measured
+estimation of a page’s TrustRank.
+
+Google has publicly indicated that it starts its crawl in PageRank order.
+
+Putting together a link campaign generally starts with researching sites
+that would potentially link to the publisher’s site and then determining
+the relative value of each potential linker.
+
+Determining a links value: The PageRank of the home page of the site
+providing the link. Note that Google does not publish a site’s PageRank,
+just the PageRank for individual pages. It is common among SEO practitioners
+to use the home page of a site as a proxy for the site’s overall PageRank,
+since a site’s home page typically garners the most links. You can also
+use the Domain mozRank from SEOmoz’s Linkscape tool to get a third-party
+approximation of domain PageRank.  • The perceived authority of the
+site. Although there is a relationship between authority and PageRank, they
+do not have a 1:1 relationship. Authority relates to how the sites in a given
+market space are linked to by other significant sites in the same market space,
+whereas PageRank measures aggregate raw link value without regard to the
+market space.  So, higher-authority sites will tend to have higher PageRank,
+but this is not absolutely the case.  • The PageRank of the linking page.
+• The perceived authority of the linking page.  • The number of outbound
+links on the linking page. This is important because the linking page can
+vote its passable PageRank for the pages to which it links, but each page
+it links o consumes a portion of that PageRank, leaving less to be passed
+on to other pages. This can be expressed mathematically as follows: For a
+page with passable PageRank n and with r outbound links: Passed PageRank =
+n/r This is a rough formula, but the bottom line is that the more outbound
+links a page has, the less valuable a link from that page will be.  • The
+relevance of the linking page and the site.
+
+Link factors: 3. Something on your site triggered an emotional reaction
+from the publisher, causing it to link to your site. For example, perhaps
+your site had the funniest cartoon the publisher ever saw, or it offered an
+inflammatory political opinion.  4. The publisher may see something of value
+on your site and wants its site visitors to know about it. The majority of the
+highest-value links are given for this reason.  5. A business relationship
+comes into play. For example, you may have a network of distributors and
+resellers for your product. Do they all link back to you?
+
+Creating emotional reactions can result in links • Create quality reference
+material. Providing unique and powerful information to users can be a
+great way to get links, particularly if you can make sure the publishers of
+authoritative sites in your market space learn about what you have created,
+including why it would be of value to their website visitors.  • Leverage
+business relationships. In our example, we suggested that you might be someone
+who has a network of resellers. If this is your business model, having a link
+back to you as a standard term in your reseller agreement is sound business.
+
+identify the link-building targets and what content will most resonate with
+the publisher of the target sites, and then tweak the content plan accordingly
+
+Use content that helps establish your site as a leading expert on its topic
+matter. When you produce really high-quality stuff, it builds trust with the
+user community and increases your chances of getting links.  • Minimize
+the commercial nature of the content pages.  Do not disguise the relationship
+between the content and the commercial part of your site.
+
+provide the content to another site in return for a link to its site.
+Social media
+
+Blogs
+
+Identify types of sites that might link to a site like yours Some example
+types of target sites include: • Noncompeting sites in your market space •
+Major media sites • Bloggers • Universities and colleges • Government
+sites • Sites that link to your competitors • Related hobbyist sites
+Make sure you take the time to answer the question “why would these sites
+link to us?” Think broadly here, and don’t limit the possible answers
+based on your current site. In other words, perhaps you can create some new
+content that would be compelling to one or more of your target groups.
+
+Find out where your competitors get links Simply use tools such as  Linkscape,
+Majestic-SEO, or Link Diagnosis, each of which will give you a list of the
+sites that link to your competitors.
+
+Once you have that data, look at the most powerful links they have (as
+measured by PageRank or mozRank/mozTrust) to identify opportunities for your
+site. Perhaps they have received great links from national media or a set
+of government sites. By seeing what has worked for them, you can get ideas
+on what may work for you.
+
+One key aspect of this is that the content needs to be unique and
+differentiated.
+
+Ultimately, you will want to build a road map that provides you with a sense
+of what it would cost to chase a potential group of linkers and the value
+of each group of linkers.
+
+Identify methods for contacting potential linkers You must undertake some
+activities to let potential linkers know about your site. There are two major
+categories of methods: direct and indirect. Some examples of direct contact
+methods include: • Email • Social media sites, using the messaging features
+of a social media property to make contact with potential linkers • Content
+syndication (contacting people and offering them great article content for
+placement on their site) • Blogger networking (building relationships by
+commenting on others’ blogs, writing content intended to be of interest
+to them, and letting them know about it) Some examples of indirect methods
+include: • Social media campaigns (including Digg, Propeller, Delicious,
+StumbleUpon, and others) • PR • News feeds (through Yahoo! News and
+Google News)
+
+Link bait ideas 1. Write down everything.  Just collect any and all ideas
+that come to mind. Do not censor or edit yourself during this phase; take
+down every idea no matter how bizarre, idiotic, or farfetched it may sound.
+2. Break down your ideas.  Once you’ve squeezed every last drop of creative
+juice from your head, it is time to filter everything out. It is a good idea
+to break down each idea (no censoring or editing yet) into its Concept and
+Content components. That is, what is the format (Concept) for the suggested
+link bait (tool, widget, top 10 list, how-to guide, blog post, etc.) versus
+what is the subject (Content) of the suggested link bait (Wii, iPod, PPC ads,
+pigs, celebrity weddings, etc.)? Separate these into two lists.  3. Evaluate
+the content.  Ignoring your Concept list, critically evaluate your Content
+list. Are some ideas time- sensitive? Can some wait for a relevant piece
+of news to complement them? Are there ideas you’d really like to write
+about? Are there ideas that can go into storage for a dry spell?
+
+10, how-to, and so on. Can it be interactive? Perhaps a tool or poll
+concept would be effective. By marrying your priority content to the most
+appropriate concept, you can optimize the effectiveness, reach, and novelty
+to your intended audience.  If you use this process or something similar,
+you’ll probably notice that you quickly generate a handy repertoire of
+concepts. Once you have these down, you can turn virtually any random idea
+that pops into your head into link bait.
+
+Incentive-Based Link Marketing
+
+Helping Other Sites Boost Their Value you can consider picking out the top
+10 sites related to your space. Then you can send these sites an award badge
+with a link to a review that lives on your site.
+
+Another example is various forms of certification. For example, Google has
+badges for its AdWords Qualified Professionals and AdWords Qualified Companies,
+with links back to Google.
+
+Blogging for Links at least two to three times per week (maybe more)
+
+One of the best places to get links to a blog is from other blogs. This is
+best done by targeting relationships with major bloggers and earning their
+trust and respect. Here are a few key things to think about when building
+these relationships: • Be patient when developing relationships with other
+bloggers. Trust and respect do not come overnight. And they certainly do not
+result from starting the relationship with a request for a link.  • The
+publisher should target a portion of its content at the interests of the
+major bloggers.  • Over time, this process should turn into links to the
+publisher’s blog from the major bloggers.  • Other lesser-known bloggers
+will begin to see links on the major blogs and will begin to follow suit.
+
+67.3% of people found what blogs to read by following links from other blogs.
+
+Publishers just launching a blog should try to provide a personalized
+response to every person who comments on their blog. One effective way to
+do this is to send each and every one of them a personalized response by
+email that shows that the comment was read.
+
+Leveraging Social News and Tagging Sites (Digg, Reddit, StumbleUpon, Delicious
+... )
+
+If you create articles for social news sites such as Digg, Reddit, and
+Propeller, focus on topics that relate to keywords relevant to your business.
+
+The key insight into how to make that happen is to use the competitive keyword
+in the title of the article itself and in the title of the submission of
+the article to the social news site.
+
+Tagging sites are best used in attempting to reach and develop credit with
+major influencers in a market space.
+
+Offline Relationship Building
+
+“Build great stuff, tell everyone about it, and motivate them to share.”
+
+== SEO research
+
+Competitor analysis
+
+1. Start with a simple business analysis to see how a particular company’s
+business overlaps with yours and with other top-ranked sites in your market
+space. It is good to know who is competing directly and who is competing
+only indirectly.  2. Find out the starting year for the website. This can
+be helpful in evaluating the site’s momentum. Determining the domain age
+is easy; you can do it by checking the domain’s Whois records. Obtaining
+the age of the site is trickier. However, you can use the Wayback Machine
+(http://www.archive.org) to get an idea of when a site was launched (or at
+least when it had enough exposure that Archive.org started tracking it).
+3. Determine the number of Google results for a search for the domain
+name (including the extension) for the past six months, excluding
+the domain itself. To get this information, search for theirdomain.com
+-site:theirdomain.com in Google. Then append as_qdr=m6 to the end of the
+results page URL and reload the page.  4. Determine the number of Google
+results for a search for the domain name (including the extension) for
+the past three months, excluding the domain itself. This time modify the
+results page URL by adding &as_qdr=m3 to the end of it.  5. Perform a query
+on Google Blog Search (http://blogsearch.google.com/) for the domain name,
+excluding the domain itself, on the default settings (no particular timeline).
+6. Find out from Google Blog Search how many posts have appeared about the site
+in the past month. To do this, search for the domain in Google Blog Search,
+but then append &as_qdr=m1 to the end of the results page URL and reload the
+page.  7. Obtain the PageRank of the domain’s home page as reported by the
+Google Toolbar.  8. Use Yahoo! Site Explorer to determine how many backlinks
+the site has. Better still is if you have an industrial-strength tool such
+as SEOmoz’s Linkscape (http://www.seomoz.org/linkscape) or Majestic-SEO
+(http://www.majesticseo.com). These tools provide a much richer set of link
+data based on their own crawl of the Web, including additional critical
+details such as the anchor text of the links.  9. Pull a traffic chart
+from Compete (http://www.compete.com) that compares the site’s traffic to
+that of its direct competitors to see how it is doing trafficwise. Repeat
+the traffic analysis with Quantcast (http://www.quantcast.com) and Alexa
+(http://www.alexa.com). Be careful to not put too much stock in the specific
+numbers, as the measurement techniques of these services are crude, but the
+relative traffic numbers should be information of great interest (e.g.,
+competitor A is doing better than competitor B and how they both compare
+to you).  10. If you are able to access a paid service such as Hitwise
+(http://www.hitwise.com) or comScore (http://www.comscore.com), you can pull
+a rich set of additional data, breaking out the site’s traffic by source
+(e.g., organic versus paid versus direct traffic versus other referrers). You
+can also pull information on their highest-volume search terms for both paid
+and organic search.  11. Determine the number of indexed pages in each of the
+three major search engines, using site:theirdomain.com.  12. If relevant,
+obtain Technorati’s authority number for the site, which derives from
+the number of individual, unique blogs that have linked to a site in the
+past 90 days.  13. If relevant, get Google’s feed subscriber numbers for
+the site, which you can find by searching for domains inside Google Reader.
+14. If relevant, determine Bloglines’ subscription numbers for the site,
+which derives from searches performed inside Bloglines.  15. Search on
+the company brand name at Google, restricted to the past six months (by
+appending &as_qdr=m6 as outlined earlier).  16. Repeat the preceding step,
+but for only the past three months (using &as_qdr=m3).  17. Perform a Google
+Blog Search for the brand name using the default settings (no time frame).
+18. Repeat the preceding step, but limit it to blog posts from the past month
+(using&as_qdr=m1).
+
+(prime candidate for a Google spreadsheet app script)
+
+When examining a competing website, ask yourself the following questions:
+• What content do they currently have on their site(s)? how they view their
+customers and how they use content to get links. For example, they may have a
+series of how-to articles related to their products, or a blog, or some nifty
+free tools that users may like. If they do have a blog, develop a sense as
+to what they write about. Also, see whether the content they are developing
+is noncommercial or simply a thinly disguised ad.  • How rapidly is that
+content changing? Publishers with rapidly changing websites are actively
+investing in their websites, whereas those who are not adding new articles
+or updating content may not be actively investing in their sites.
+
+What type of content is it? Articles? Videos? Images? Music? News feeds? The
+type of content they focus on can give you insight into their marketing
+strategy.  • Are they collecting user-generated content? Sites that gather
+a meaningful amount of user-generated content tend to have an engaged user
+audience.  • Are they trying to generate sign-ups or conversions in a direct
+way with their content? Or is it editorial in tone and structure? This can
+give you more visibility into the way their strategy is put together.
+
+You can extract a tremendous amount of information via link
+analysis. Yahoo! Site Explorer provides a start, but going past a simple list
+of links to gathering link data such as anchor text and link authority requires
+a more advanced tool, such as Link Diagnosis (http://www.linkdiagnosis.com),
+Linkscape (http://www.seomoz.org/linkscape), or Majestic-SEO (http://www
+.majesticseo.com).
+
+Dig deeper What pages on the site are attracting the most links? These are
+probably the most important pages on the site, particularly if those pages
+also rank well for competitive search terms.
+
+Determine where the content is getting its links This can help you develop
+your own content and link-building strategies.
+
+Analyze anchor text Do they have an unusually large number of people linking
+to them using highly optimized anchor text?
+
+Determine whether they are engaging in incentive-based link building Are
+they offering incentives in return for links, such as award programs or
+membership badges? Do those programs appear to be successful?
+
+
+= Action points
+
+Find out the seasonal search patterns for the PPC industry Check out the
+upcoming conferences (pp. 506) Keyword research for ATE Competitor research
+for ATE Keyword research for personal blog Content backlog for personal blog
+Link building strategy for personal blog
+

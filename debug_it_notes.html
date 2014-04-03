@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/debug_it_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Debug it reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Debug it reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Sunday, March 03, 2013.</p>
+
+<div class='content'>                                 
+   <p>The Core Debugging Process</p>
+<p>Reproduce:<br />
+	Find a way to reliably and conveniently reproduce the problem on<br />
+	demand.<br />
+Diagnose:<br />
+	Construct hypotheses, and test them by performing experiments<br />
+	until you are confident that you have identified the underlying<br />
+	cause of the bug.<br />
+Fix:<br />
+	Design and implement changes that fix the problem, avoid intro-<br />
+	ducing regressions, and maintain or improve the overall quality of<br />
+	the software.<br />
+Reflect:<br />
+	Learn the lessons of the bug. Where did things go wrong? Are there<br />
+	any other examples of the same problem that will also need fixing?<br />
+	What can you do to ensure that the same problem doesn’t happen<br />
+	again?</p>
+<p>Find a reproduction before doing anything else.<br />
+	• Ensure that you’re running the same version as the bug was<br />
+	reported against.<br />
+	• Duplicate the environment that the bug was reported in.<br />
+	• Determine the input necessary to reproduce the bug by:<br />
+	– Inference<br />
+	– Recording appropriate inputs via logging<br />
+	• Ensure that your reproduction is both reliable and convenient<br />
+	through iterative refinement:<br />
+	– Reduce the number of steps, amount of data, or time<br />
+	required.<br />
+	– Remove nondeterminism.<br />
+	– Automate.</p>
+<p>Scientific method:<br />
+	1. Examine what you know about the software’s behavior, and con-<br />
+	struct a hypothesis about what might cause it.<br />
+	2. Design an experiment that will allow you to test its truth (or oth-<br />
+	erwise).<br />
+	3. If the experiment disproves your hypothesis, come up with a new<br />
+	one, and start again.<br />
+	4. If it supports your hypothesis, keep coming up with experiments<br />
+	until you have either disproved it or reached a high enough level<br />
+	of certainty to consider it proven.</p>
+<p>One Change at a Time</p>
+<p>Keep a Record of What You’ve Tried &amp; periodically review</p>
+<p>Binary chop</p>
+<p>Favour tests to debugging sessions</p>
+<p>Know what assumptions you’re making, and examine them critically.</p>
+<p>Pair programming, ask for help. If no-one esle is available, write down the<br />
+scenario and re-read it to yourself.</p>
+<p>If you find yourself getting frustrated or thrashing (lots of action but<br />
+little forward progress), that can be a sign that you need to take a break.<br />
+Work on a different problem for a while, make a cup of tea, take a walk,<br />
+practice your juggling for a while—anything that will take your mind off<br />
+the problem.</p>
+<p>When the stroke of genius arrives out of nowhere, write it down. If a<br />
+pen and paper isn’t available, send yourself an <span class="caps">SMS</span> or tell whoever you<br />
+happen to be with—there’s nothing more frustrating than being unable<br />
+to recall your insight the following day.</p>
+<p>Construct hypotheses, and test them with experiments.<br />
+	– Make sure you understand what your experiments are going to tell you.<br />
+	– Make only one change at a time.<br />
+	– Keep a record of what you’ve tried.<br />
+	– Ignore nothing.<br />
+• When things aren’t going well:<br />
+	– If the changes you’re making don’t seem to be having an effect, you’re not changing what you think you are.<br />
+	– Validate your assumptions.<br />
+	– Are you facing multiple interacting causes or a changing underlying system?<br />
+• Validate your diagnosis.</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/debug_it_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

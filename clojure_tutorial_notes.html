@@ -1,0 +1,642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/clojure_tutorial_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Clojure tutorial reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Clojure tutorial reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Saturday, March 03, 2012.</p>
+
+<div class='content'>                                 
+   <p>= Questions</p>
+<p>What can you safely omit?</p>
+<ul>
+	<li>macros</li>
+	<li>multimethods</li>
+	<li>protocols</li>
+	<li>concurrency</li>
+	<li>Java interop (come back later for this)</li>
+	<li>= Action points<br />
+find a clojure repl with syntax highlighting<br />
+=&gt; None</li>
+</ul>
+<p>check out clojure blog posts (esp relevance)</p>
+<p>= Notes</p>
+<p>From http://java.ociweb.com/mark/clojure/article.html</p>
+<p>Overview</p>
+<ul>
+	<li>Clojure provides three ways of safely sharing mutable data, all of which</li>
+	<li>use mutable references to immutable data.</li>
+	<li>Refs provide synchronous access to multiple pieces of shared data</li>
+	<li>(&#8220;coordinated&#8221;) by using Software Transactional Memory (<span class="caps">STM</span>).</li>
+	<li>Atoms provide synchronous access to a single piece of shared data.</li>
+	<li>Agents provide asynchronous access to a single piece of shared data.</li>
+	<li></li>
+	<li>; When a set is used as a function, it returns a boolean ; that indicates</li>
+	<li>whether the argument is in the set.</li>
+	<li></li>
+	<li>(def vowel? (set &#8220;aeiou&#8221;))</li>
+	<li>(vowel? \x) =&gt; nil</li>
+	<li></li>
+	<li>Clojure doesn&#8217;t support variables. Instead it provides bindings which</li>
+	<li>are like variables that are not intended to be changed after a value is</li>
+	<li>assigned. There are global bindings, thread-local bindings, bindings that</li>
+	<li>are local to a function, and bindings that are local to a given form.</li>
+	<li></li>
+	<li>The def special form creates a global binding and optionally gives it a</li>
+	<li>&#8220;root value&#8221; that is visible in all threads unless a thread-local value</li>
+	<li>is assigned. def can also be used to change the root value of an existing</li>
+	<li>binding. However, doing this is frowned upon because it sacrifices the</li>
+	<li>benefits of working with immutable data.</li>
+	<li></li>
+	<li>The let special form creates bindings that are local to that form.</li>
+	<li></li>
+	<li>The binding macro is similar to let, but it temporarily gives new,</li>
+	<li>thread-local values to existing global bindings. The new values are seen</li>
+	<li>inside that form and also in functions called from inside it. When the</li>
+	<li>binding form exits, the bindings revert to their previous values.</li>
+	<li></li>
+	<li>; The next line uses an anonymous function that adds 3 to its argument.</li>
+	<li>(map #(+ % 3) [2 4 7])</li>
+	<li>; &#8594; (5 7 10) (map + [2 4 7] [5 6] [1 2 3 4])</li>
+	<li>; adds corresponding items &#8594; (8 12)</li>
+	<li></li>
+	<li>The apply function returns the result of a given function when all the items</li>
+	<li>in a given collection are used as arguments. For example:</li>
+</ul>
+<ul>
+	<li>(apply + [2 4 7]); &#8594; 13</li>
+</ul>
+<p>Collection retrieval</p>
+<ul>
+	<li>(def stooges [&#8220;Moe&#8221; &#8220;Larry&#8221; &#8220;Curly&#8221; &#8220;Shemp&#8221;]) (first stooges) ; &#8594; &#8220;Moe&#8221;</li>
+	<li>(second stooges) ; &#8594; &#8220;Larry&#8221; (last stooges) ; &#8594; &#8220;Shemp&#8221; (nth stooges 2)</li>
+	<li>; indexes start at 0 &#8594; &#8220;Curly&#8221;</li>
+</ul>
+<ul>
+	<li>(next stooges) ; &#8594; (&#8220;Larry&#8221; &#8220;Curly&#8221; &#8220;Shemp&#8221;) (butlast stooges) ; &#8594; (&#8220;Moe&#8221;</li>
+	<li>&#8220;Larry&#8221; &#8220;Curly&#8221;) (drop-last 2 stooges) ; &#8594; (&#8220;Moe&#8221; &#8220;Larry&#8221;) ; Get names</li>
+	<li>containing more than three characters.  (filter #(&gt; (count %) 3) stooges)</li>
+	<li>; &#8594; (&#8220;Larry&#8221; &#8220;Curly&#8221; &#8220;Shemp&#8221;) (nthnext stooges 2) ; &#8594; (&#8220;Curly&#8221; &#8220;Shemp&#8221;)</li>
+</ul>
+<ul>
+	<li>(every? #(instance? String %) stooges) ; &#8594; true</li>
+	<li>(not-every? #(instance? String %) stooges) ; &#8594; false (some</li>
+	<li>#(instance? Number %) stooges) ; &#8594; nil (not-any? #(instance? Number %)</li>
+	<li>stooges) ; &#8594; true</li>
+</ul>
+<p>Lists</p>
+<ul>
+	<li>are ordered collections of items. They are ideal when new items will be</li>
+	<li>added to or removed from the front (constant-time). They are not efficient</li>
+	<li>(linear time) for finding items by index (using nth)</li>
+</ul>
+<ul>
+	<li>(def stooges (list &#8220;Moe&#8221; &#8220;Larry&#8221; &#8220;Curly&#8221;))</li>
+	<li>(def stooges</li>
+	<li>(quote (&#8220;Moe&#8221; &#8220;Larry&#8221; &#8220;Curly&#8221;)))</li>
+	<li>(def stooges &#8217;(&#8220;Moe&#8221; &#8220;Larry&#8221; &#8220;Curly&#8221;))</li>
+</ul>
+<ul>
+	<li>(some #(= % &#8220;Moe&#8221;) stooges)  ; &#8594; true</li>
+	<li>(some #(= % &#8220;Mark&#8221;) stooges) ; &#8594; nil</li>
+</ul>
+<ul>
+	<li>; Another approach is to create a set from the list ; and then use the</li>
+	<li>contains? function on the set as follows.</li>
+	<li></li>
+	<li>(contains? (set stooges) &#8220;Moe&#8221;) ; &#8594; true</li>
+</ul>
+<ul>
+	<li>into creates a new list that contains all the items in two lists. For</li>
+	<li>example:</li>
+</ul>
+<ul>
+	<li>(def kids-of-mike &#8217;(&#8220;Greg&#8221; &#8220;Peter&#8221; &#8220;Bobby&#8221;))</li>
+	<li>(def kids-of-carol &#8217;(&#8220;Marcia&#8221; &#8220;Jan&#8221; &#8220;Cindy&#8221;))</li>
+	<li>(def brady-bunch (into kids-of-mike kids-of-carol))</li>
+	<li>(println brady-bunch)</li>
+	<li>; &#8594; (Cindy Jan Marcia Greg Peter Bobby)</li>
+</ul>
+<ul>
+	<li>peek and pop functions can be used to treat a list as a stack</li>
+</ul>
+<p>Vectors</p>
+<ul>
+	<li>are also ordered collections of items.</li>
+</ul>
+<ul>
+	<li>They are ideal when new items will be added to or removed from the back</li>
+	<li>(constant-time). This means that using conj is more efficient than cons</li>
+	<li>for adding items.</li>
+</ul>
+<ul>
+	<li>They are efficient (constant time) for finding (using nth) or changing</li>
+	<li>(using assoc) items by index. Function definitions specify their parameter</li>
+	<li>list using a vector.</li>
+</ul>
+<ul>
+	<li>(def stooges (vector &#8220;Moe&#8221; &#8220;Larry&#8221; &#8220;Curly&#8221;))</li>
+	<li>(def stooges [&#8220;Moe&#8221; &#8220;Larry&#8221; &#8220;Curly&#8221;])</li>
+</ul>
+<ul>
+	<li>(get stooges 1 &#8220;unknown&#8221;)</li>
+</ul>
+<ul>
+	<li>assoc creates a new vector where the item specified by an index is</li>
+	<li>replaced.</li>
+	<li>If the index is equal to the number of items in the vector,</li>
+	<li>a new item is added to the end.</li>
+	<li>If it is greater than the number of items</li>
+	<li>in the vector, an IndexOutOfBoundsException is thrown</li>
+</ul>
+<ul>
+	<li>(assoc stooges 2 &#8220;Shemp&#8221;)</li>
+</ul>
+<p>Sets</p>
+<ul>
+	<li>Collection of unique items</li>
+</ul>
+<ul>
+	<li>(def more-stooges (conj stooges &#8220;Shemp&#8221;))</li>
+	<li>; &#8594; #{&quot;Moe&quot; &#8220;Larry&#8221; &#8220;Curly&#8221; &quot;Shemp&quot;}</li>
+	<li></li>
+	<li>(def less-stooges (disj more-stooges &#8220;Curly&#8221;))</li>
+	<li>; &#8594; #{&quot;Moe&quot; &#8220;Larry&#8221; &quot;Shemp&quot;}</li>
+</ul>
+<p>Maps</p>
+<ul>
+	<li>Hash/dict</li>
+</ul>
+<ul>
+	<li>(def popsicle-map</li>
+	<li>{:red :cherry, :green :apple, :purple :grape})</li>
+</ul>
+<ul>
+	<li>(def popsicle-map</li>
+	<li>(sorted-map :red :cherry, :green :apple, :purple :grape))</li>
+</ul>
+<ul>
+	<li>(doseq [[color flavor] popsicle-map]</li>
+	<li>(println</li>
+	<li>(str &quot;The flavor of &quot; (name color) &quot; popsicles is &quot; (name flavor)</li>
+	<li>&#8220;.&#8221;)))</li>
+</ul>
+<ul>
+	<li>Easily nested</li>
+	<li>(def person {</li>
+	<li>:name &#8220;Mark Volkmann&#8221; :address {</li>
+	<li>:street &#8220;644 Glen Summit&#8221; :city &#8220;St. Charles&#8221; :state &#8220;Missouri&#8221;</li>
+	<li>:zip 63304 }</li>
+	<li>:employer {</li>
+	<li>:name &#8220;Object Computing, Inc.&#8221;  :address { :street &quot;12140 Woodcrest</li>
+	<li>Executive Drive, Suite 250&quot; :city &#8220;Creve Coeur&#8221; :state &#8220;Missouri&#8221;</li>
+	<li>:zip 63141}}})</li>
+</ul>
+<p>Struct maps</p>
+<ul>
+	<li>(defstruct car-struct :make :model :year :color)</li>
+</ul>
+<ul>
+	<li>(struct car-struct &#8220;Toyota&#8221; &#8220;Prius&#8221; 2009))</li>
+</ul>
+<p>Functions</p>
+<ul>
+	<li>(defn parting</li>
+	<li>&#8220;returns a String parting&#8221; [name] (str &quot;Goodbye, &quot; name)) ; concatenation</li>
+</ul>
+<ul>
+	<li>(println (parting &#8220;Mark&#8221;)) ; &#8594; Goodbye, Mark</li>
+</ul>
+<ul>
+	<li>Functions defined with the defn- macro are private. This means they are</li>
+	<li>only visible in the namespace in which they are defined.</li>
+</ul>
+<ul>
+	<li>Other macros that produce private definitions, such as defmacro- and</li>
+	<li>defstruct-,</li>
+</ul>
+<ul>
+	<li>Functions can take a variable number of parameters. Optional parameters</li>
+	<li>must appear at the end. They are gathered into a list by adding an</li>
+	<li>ampersand and a name for the list at the end of the parameter list.</li>
+</ul>
+<ul>
+	<li>(defn power [base &amp; exponents]</li>
+	<li>; Using java.lang.Math static method pow.</li>
+	<li>(reduce #(Math/pow %1 %2) base exponents))</li>
+</ul>
+<ul>
+	<li>(power 2 3 4) ; 2 to the 3rd = 8; 8 to the 4th = 4096</li>
+</ul>
+<ul>
+	<li>Function definitions can contain more than one parameter list and</li>
+	<li>corresponding body.</li>
+</ul>
+<ul>
+	<li>Each parameter list must contain a different number of parameters. This</li>
+	<li>supports overloading functions based on arity.</li>
+</ul>
+<ul>
+	<li>Often it is useful for a body to call the same function with a different</li>
+	<li>number of arguments in order to provide default values for some of</li>
+	<li>them. For example:</li>
+</ul>
+<ul>
+	<li>(defn parting</li>
+	<li>&#8220;returns a String parting in a given language&#8221;</li>
+	<li></li>
+	<li>([] (parting &#8220;World&#8221;))</li>
+	<li>([name] (parting name &#8220;en&#8221;))</li>
+	<li>([name language])</li>
+</ul>
+<ul>
+	<li>; condp is similar to a case statement in other languages.  ; It is</li>
+	<li>described in more detail later.  ; It is used here to take different</li>
+	<li>actions based on whether the ; parameter &#8220;language&#8221; is set to &#8220;en&#8221;,</li>
+	<li>&#8220;es&#8221; or something else.</li>
+	<li></li>
+	<li>(condp = language</li>
+	<li>&#8220;en&#8221; (str &quot;Goodbye, &quot; name)</li>
+	<li>&#8220;es&#8221; (str &quot;Adios, &quot; name)</li>
+</ul>
+<ul>
+	<li>(throw (IllegalArgumentException.</li>
+	<li>(str &quot;unsupported language &quot; language))))))</li>
+</ul>
+<ul>
+	<li>(println (parting)) ; &#8594; Goodbye, World</li>
+	<li>(println (parting &#8220;Mark&#8221;)) ; &#8594; Goodbye, Mark</li>
+	<li>(println (parting &#8220;Mark&#8221; &#8220;es&#8221;)) ; &#8594; Adios, Mark</li>
+	<li>(println (parting &#8220;Mark&#8221;, &#8220;xy&#8221;)) ; &#8594; java.lang.IllegalArgumentException:</li>
+	<li>unsupported language xy</li>
+</ul>
+<ul>
+	<li>(def years [1940 1944 1961 1985 1987]) (filter #(even? %) years)</li>
+</ul>
+<ul>
+	<li>Multimethods</li>
+</ul>
+<ul>
+	<li>(defmulti what-am-i class) ; class is the dispatch function</li>
+	<li></li>
+	<li>(defmethod what-am-i Number [arg] (println arg &#8220;is a Number&#8221;))</li>
+	<li>(defmethod what-am-i String [arg] (println arg &#8220;is a String&#8221;))</li>
+	<li>(defmethod what-am-i :default [arg] (println arg &#8220;is something else&#8221;))</li>
+	<li></li>
+	<li>(what-am-i 19) ; &#8594; 19 is a Number</li>
+	<li>(what-am-i &#8220;Hello&#8221;) ; &#8594; Hello is a String</li>
+	<li>(what-am-i true) ; &#8594; true is something else</li>
+	<li></li>
+	<li>Placeholder for unused args</li>
+	<li></li>
+	<li>(defn callback2 [n1 _ n3] (+ n1 n3)) ; only uses 1st &amp; 3rd arguments</li>
+	<li></li>
+	<li>complement &#8594;  opposite/inverse</li>
+	<li></li>
+	<li>(defn teenager? [age] (and (&gt;= age 13) (&lt; age 20)))</li>
+	<li>(def non-teen? (complement teenager?))</li>
+	<li></li>
+	<li>compose functions (works right to left)</li>
+	<li></li>
+	<li>(defn times2 [n] (* n 2))</li>
+	<li>(defn minus3 [n] (- n 3))</li>
+	<li>; Note the use of def instead of defn because comp returns</li>
+	<li>; a function that is then bound to &#8220;my-composition&#8221;.</li>
+	<li>(def my-composition (comp minus3 times2))</li>
+	<li>(my-composition 4) ; 4*2 &#8211; 3 &#8594; 5</li>
+	<li></li>
+	<li>partial applies fixed params to a function</li>
+	<li></li>
+	<li>; Note the use of def instead of defn because partial returns</li>
+	<li>; a function that is then bound to &#8220;times2&#8221;.</li>
+	<li>(def times2 (partial * 2))</li>
+	<li>(times2 3 4) ; 2 * 3 * 4 &#8594; 24</li>
+</ul>
+<ul>
+	<li>Memoization</li>
+	<li>=&gt; example doesn&#8217;t work</li>
+	<li>Java</li>
+	<li>Importing</li>
+	<li>(import</li>
+	<li>&#8217;(java.util Calendar GregorianCalendar)</li>
+	<li>&#8217;(javax.swing JFrame JLabel))</li>
+	<li></li>
+	<li>Constants</li>
+	<li>(. java.util.Calendar <span class="caps">APRIL</span>)</li>
+	<li>java.util.Calendar/<span class="caps">APRIL</span></li>
+	<li></li>
+	<li>Static methods</li>
+	<li>(. Math pow 2 4) ; &#8594; 16.0</li>
+	<li>(Math/pow 2 4)</li>
+</ul>
+<ul>
+	<li>Constructor</li>
+	<li>(import &#8217;(java.util Calendar GregorianCalendar))</li>
+	<li>(def calendar (new GregorianCalendar 2008 Calendar/<span class="caps">APRIL</span> 16))</li>
+	<li>OR</li>
+	<li>(def calendar (GregorianCalendar. 2008 Calendar/<span class="caps">APRIL</span> 16))</li>
+	<li></li>
+	<li>Instance methods</li>
+	<li>(. calendar add Calendar/<span class="caps">MONTH</span> 2)</li>
+	<li>(. calendar get Calendar/<span class="caps">MONTH</span>) ; &#8594; 5</li>
+	<li>(.add calendar Calendar/<span class="caps">MONTH</span> 2)</li>
+	<li>(.get calendar Calendar/<span class="caps">MONTH</span>) ; &#8594; 7</li>
+</ul>
+<ul>
+	<li>Chaining</li>
+	<li>(. (. calendar getTimeZone) getDisplayName) ; long way</li>
+	<li>(.. calendar getTimeZone getDisplayName) ;</li>
+	<li></li>
+	<li>also a .?. macro in the clojure.contrib.core namespace that stops and</li>
+	<li>returns nil if any method in the chain returns null.</li>
+	<li>This avoids getting a NullPointerException.</li>
+	<li></li>
+	<li>memfn macro allows Java method to be used as a 1st class function</li>
+	<li>Conditional processing</li>
+	<li>if</li>
+	<li></li>
+	<li>when</li>
+	<li>when-not</li>
+	<li>; No else part for when</li>
+	<li></li>
+	<li>; Conditional assignment</li>
+	<li>if-let</li>
+	<li>when-let</li>
+	<li></li>
+	<li>condp ; like switch</li>
+	<li></li>
+	<li>(condp = value</li>
+	<li>1 &#8220;one&#8221;</li>
+	<li>2 &#8220;two&#8221;</li>
+	<li>3 &#8220;three&#8221;</li>
+	<li>(str &#8220;unexpected value, \&#8221;&quot; value \&quot;)))</li>
+	<li></li>
+	<li>(cond</li>
+	<li>(instance? String temperature) &#8220;invalid temperature&#8221;</li>
+	<li>(&lt;= temperature 0) &#8220;freezing&#8221;</li>
+	<li>(&gt;= temperature 100) &#8220;boiling&#8221;</li>
+	<li>true &#8220;neither&#8221;)))</li>
+	<li>Iteration</li>
+	<li>; iterates from 0 &#8211; n, passing n as arg name to form body</li>
+	<li></li>
+	<li>(dotimes [card-number 3]</li>
+	<li>(println &#8220;deal card number&#8221; (inc card-number))) ;</li>
+	<li></li>
+	<li>while</li>
+	<li></li>
+	<li>List comprehension (for doseq)</li>
+	<li>They support iterating through multiple collections (rightmost collection fastest) and optional filtering using :when and :while expressions.</li>
+	<li></li>
+	<li>The for macro takes a single expression body and returns a lazy sequence</li>
+	<li>of the results.</li>
+	<li></li>
+	<li>The doseq macro takes a body containing any number of</li>
+	<li>expressions, executes them for their side effects, and returns nil.</li>
+	<li></li>
+	<li>(def cols &#8220;<span class="caps">ABCD</span>&#8221;)</li>
+	<li>(def rows (range 1 4))</li>
+	<li></li>
+	<li>(println &#8220;for demo&#8221;)</li>
+	<li>(dorun</li>
+	<li>(for [col cols :when (not= col \B)</li>
+	<li>row rows :while (&lt; row 3)]</li>
+	<li>(println (str col row))))</li>
+	<li></li>
+	<li>(println &#8220;\ndoseq demo&#8221;)</li>
+	<li>(doseq [col cols :when (not= col \B)</li>
+	<li>row rows :while (&lt; row 3)]</li>
+	<li>(println (str col row)))</li>
+	<li></li>
+	<li>(dorun</li>
+	<li>(for [col cols row rows ]</li>
+	<li>(println (str col row))))</li>
+	<li></li>
+	<li>Recursion</li>
+	<li>The loop/recur idiom turns what looks like a recursive call into a loop</li>
+	<li>that doesn&#8217;t consume stack space.</li>
+	<li></li>
+	<li>The loop special form is like the let special form in that they both</li>
+	<li>establish local bindings, but it also establishes a recursion point that</li>
+	<li>is the target of calls to recur</li>
+	<li></li>
+	<li>The bindings specified by loop provide initial values for the local</li>
+	<li>bindings.</li>
+	<li></li>
+	<li>Calls to recur cause control to return to the loop and assign new values</li>
+	<li>to its local bindings.</li>
+	<li></li>
+	<li>The number of arguments passed to recur must match the number of bindings</li>
+	<li>in the loop.</li>
+	<li></li>
+	<li>recur can only appear as the last call in the loop.</li>
+	<li></li>
+	<li>(defn factorial-1 [number]</li>
+	<li>&#8220;computes the factorial of a positive integer</li>
+	<li>in a way that doesn&#8217;t consume stack space&quot;</li>
+	<li>(loop [n number factorial 1]</li>
+	<li>(if (zero? n)</li>
+	<li>factorial</li>
+	<li>(recur (dec n) (* factorial n)))))</li>
+	<li></li>
+	<li>(println (time (factorial-1 5)))</li>
+	<li></li>
+	<li>You can also use recur inside defn</li>
+	<li></li>
+	<li>Another way is to use a more functional (but less efficient) style:</li>
+	<li></li>
+	<li>(defn factorial-2 [number] (reduce * (range 2 (inc number))))</li>
+	<li>Predicates</li>
+	<li>class?, coll?, decimal?, delay?, float?, fn?, instance?, integer?, isa?, keyword?, list?, macro?, map?, number?, seq?, set?, string? and vector?. Some non-predicate functions that perform reflection include ancestors, bases, class, ns-publics and parents.</li>
+</ul>
+<ul>
+	<li>Predicate functions that test relationships between values include &lt;, &lt;=, =, not=, ==, &gt;, &gt;=, compare, distinct? and identical?.</li>
+	<li></li>
+	<li>Predicate functions that test logical relationships include and, or, not, true?, false? and nil?</li>
+	<li></li>
+	<li>Predicate functions that test sequences, most of which were discussed earlier, include empty?, not-empty, every?, not-every?, some and not-any?.</li>
+	<li></li>
+	<li>Predicate functions that test numbers include even?, neg?, odd?, pos? and zero?.</li>
+	<li>Sequences</li>
+	<li>Logical view of a collection</li>
+	<li></li>
+	<li>lazy sequence: sequence whose items can be the result of function calls that aren&#8217;t evaluated until they are needed. A benefit of creating a lazy sequence is that it isn&#8217;t necessary to anticipate how many items in it will actually be used at the time the sequence is created.</li>
+	<li></li>
+	<li>eg</li>
+	<li>cache-seq, concat, cycle, distinct, drop, drop-last, drop-while, filter, for, interleave, interpose, iterate, lazy-cat, lazy-seq, line-seq, map, partition, range, re-seq, remove, repeat, replicate, take, take-nth, take-while and tree-seq.</li>
+	<li></li>
+	<li>(map #(println %) [1 2 3]) ; outputs nils returned from map</li>
+	<li></li>
+	<li>(dorun (map #(println %) [1 2 3]))</li>
+	<li>(doseq [i [1 2 3]] (println i))</li>
+	<li></li>
+	<li>(dorun (map #(println %) [1 2 3])) ; &#8594; nil</li>
+	<li>(doall (map #(do (println %) %) [1 2 3])) ; &#8594; (1 2 3)</li>
+	<li>I/O</li>
+	<li><span class="caps">STDIN</span> &amp; friends: <strong>in</strong>, <strong>out</strong> and <strong>err</strong></li>
+	<li></li>
+	<li>(binding <strong>out</strong> (java.io.FileWriter. &#8220;my.log&#8221;)]</li>
+	<li>&#8230;</li>
+	<li>(println &#8220;This goes to the file my.log.&#8221;)</li>
+	<li>&#8230;</li>
+	<li>(flush))</li>
+	<li>Destructuring</li>
+	<li>Destructuring can be used in the parameter list of a function or macro to extract parts of collections into local bindings.</li>
+	<li></li>
+	<li>(defn approach1 [numbers]</li>
+	<li>(let [n1 (first numbers)</li>
+	<li>n3 (nth numbers 2)]</li>
+	<li>(+ n1 n3)))</li>
+	<li>; OR</li>
+	<li>(defn approach2 [[n1 _ n3]] (+ n1 n3))</li>
+	<li></li>
+	<li>; The ampersand character can be used with destructuring to capturing the remaining items in a collection. For example:</li>
+</ul>
+<ul>
+	<li>(defn name-summary [[name1 name2 &amp; others]]</li>
+	<li>(println (str name1 &quot;, &quot; name2) &#8220;and&#8221; (count others) &#8220;others&#8221;))</li>
+</ul>
+<ul>
+	<li>The :as keyword can be used to retain access to the entire collection that is being destructured.</li>
+	<li></li>
+	<li>(defn summer-sales-percentage</li>
+	<li>; The keywords below indicate the keys whose values</li>
+	<li>; should be extracted by destructuring.</li>
+	<li>; The non-keywords are the local bindings</li>
+	<li>; into which the values are placed.</li>
+	<li></li>
+	<li>; You can simplify this to {:keys [june july august] :as all}</li>
+	<li>[{june :june july :july august :august :as all}]</li>
+	<li>(let [summer-sales (+ june july august)</li>
+	<li>all-sales (apply + (vals all))]</li>
+	<li>(/ summer-sales all-sales)))</li>
+	<li></li>
+	<li></li>
+	<li>(def sales {</li>
+	<li>:january   100 :february 200 :march      0 :april    300</li>
+	<li>:may       200 :june     100 :july     400 :august   500</li>
+	<li>:september 200 :october  300 :november 400 :december 600})</li>
+	<li></li>
+	<li>(summer-sales-percentage sales)</li>
+	<li>Namespaces</li>
+	<li>(require &#8217;clojure.contrib.str-utils)</li>
+	<li>(clojure.contrib.str-utils/str-join &#8220;$&#8221; [1 2 3])</li>
+	<li></li>
+	<li>(alias &#8217;su &#8217;clojure.contrib.str-utils)</li>
+	<li>(su/str-join &#8220;$&#8221; [1 2 3])</li>
+	<li></li>
+	<li>The refer function makes all the symbols in a given namespace accessible in the current namespace without namespace-qualifying them.</li>
+	<li></li>
+	<li>(refer &#8217;clojure.contrib.str-utils)</li>
+	<li>(str-join &#8220;$&#8221; [1 2 3])</li>
+	<li></li>
+	<li>require + refer:</li>
+	<li>(use &#8217;clojure.contrib.str-utils)</li>
+</ul>
+<ul>
+	<li>The ns macro, mentioned earlier, changes the default namespac</li>
+	<li></li>
+	<li>(ns com.ociweb.demo</li>
+	<li>(:require [clojure.contrib.str-utils :as su])</li>
+	<li>(:use [clojure.contrib.math :only (gcd, sqrt)])</li>
+	<li>(:import (java.text NumberFormat) (javax.swing JFrame JLabel)))</li>
+</ul>
+<ul>
+	<li>(create-ns &#8217;com.ociweb.demo)</li>
+	<li>(intern &#8217;com.ociweb.demo &#8217;foo 2) ; defines a symbol in a given namespace</li>
+	<li></li>
+	<li>(ns-interns &#8217;clojure.contrib.str-utils) ; show all symbols in ns</li>
+	<li></li>
+	<li>See also</li>
+	<li>ns-aliases, ns-imports, ns-map, ns-name, ns-publics, ns-refers, ns-unalias, ns-unmap and remove-ns.</li>
+	<li>Metadata</li>
+	<li>(meta reverse)</li>
+	<li>Macros</li>
+	<li>Add a new construct to the language</li>
+	<li></li>
+	<li>While functions always evaluate all their arguments, macros can decide which of their arguments will be evaluated. This is important for implementing forms like (if condition then-expr else-expr)</li>
+	<li></li>
+	<li>; The Reader expands calls to the around-zero macro into a call to the let special form</li>
+	<li>; That contains a call to the cond function whose arguments are its conditions and return values</li>
+	<li>(defmacro around-zero [number negative-expr zero-expr positive-expr]</li>
+	<li></li>
+	<li>; The back-quote (aka syntax quote) at the beginning of the macro definition prevents everything inside from being evaluated unless it is unquoted</li>
+	<li>; This means the contents will appear literally in the expansion, except items preceded by a tilde (in this case, number, zero-expr, positive-expr and negative-expr)</li>
+	<li>`(let [number# ~number] ; so number is only evaluated once</li>
+	<li>; The let special form is used here for efficiency in the event that the first parameter, number, is passed as an expression instead of simple value</li>
+	<li>; It evaluates number once and then uses its value in two places within the cond</li>
+	<li></li>
+	<li>(cond</li>
+	<li>; The auto-gensym number# is used to generate a unique symbol name so there is no chance the binding name can conflict with that of another symbol</li>
+	<li>(&lt; (Math/abs number#) 1e-15) ~zero-expr</li>
+	<li></li>
+	<li>; When a symbol name is preceded by a tilde inside a syntax quoted list, its value is substituted</li>
+	<li>; Bindings in syntax quoted lists whose values are sequences can be preceded by ~@ to substitute their individual items</li>
+	<li>(pos? number#) ~positive-expr</li>
+	<li></li>
+	<li>true ~negative-expr)))</li>
+	<li></li>
+	<li>Macro names cannot be passed as arguments to functions. For example, a macro name such as and cannot be passed to the reduce function. A workaround is to define an anonymous function that calls the macro. For example, (fn [x y] (and x y)) or #(and %1 %2).</li>
+	<li>Concurrency</li>
+	<li>All data is immutable unless explicitly marked as mutable by using the reference types Var, Ref, Atom and Agent.</li>
+	<li></li>
+	<li>The future macro runs a body of expressions in a different thread using one of the thread pools (CachedThreadPool) that are also used by Agents (described later). This is useful for long running expressions whose results aren&#8217;t needed immediately. The result is obtained by dereferencing the object</li>
+	<li>returned by future</li>
+	<li></li>
+	<li>(println &#8220;creating future&#8221;)</li>
+	<li>(def my-future (future (f-prime 2))) ; f-prime is called in another thread</li>
+	<li>(println &#8220;created future&#8221;)</li>
+	<li>(println &#8220;result is&#8221; @my-future)</li>
+	<li>(shutdown-agents)</li>
+	<li></li>
+	<li>Reference types are mutable references to immutable data. There are four references types in Clojure: Vars, Refs, Atoms and Agents. They have many things in common:</li>
+	<li>They can hold any kind of object.</li>
+	<li></li>
+	<li>They can be dereferenced to retrieve the object they hold with the deref function or the @ reader macro.</li>
+	<li></li>
+	<li>They support validators which are functions that are invoked when the value changes. If the new value is valid, they return true. Otherwise they either return false or throw an exception. If they simply return false, an IllegalStateException with the message &#8220;Invalid reference state&#8221; will be thrown.</li>
+	<li></li>
+	<li>They support watchers which are Agents. When the value of a watched reference changes, the Agent is notified. For more detail, see the &#8220;Agents&#8221; section.</li>
+	<li></li>
+	<li>Var   synchronous changes to a single, thread-local value</li>
+	<li>Ref 	synchronous, coordinated changes to one or more values</li>
+	<li>Atom 	synchronous changes to a single value</li>
+	<li>Agent asynchronous changes to a single value</li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/clojure_tutorial_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

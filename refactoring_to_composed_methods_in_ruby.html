@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/refactoring_to_composed_methods_in_ruby.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Refactoring to composed methods in Ruby</title>
+   </head>
+   <body class='show'>
+      <h1>Refactoring to composed methods in Ruby</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Monday, February 21, 2011.</p>
+
+<div class='content'>                                 
+   <p>The composed method pattern means breaking up your code into code into quite short, self descriptive methods. The result should be that your code is more readable and easier to debug.</p>
+<p>An easy way to start is to take (or write) comments above a code section and use those as the method name. For example:</p>
+<pre>
+def foo
+  # Seconds in a day
+  puts 60 * 60 * 24
+end
+</pre>
+<p>becomes:</p>
+<pre>
+def foo
+  puts seconds_in_a_day
+end
+
+def seconds_in_a_day
+  60 * 60 * 24
+end
+</pre>
+<p>Here&#8217;s the safest way to proceed:</p>
+<p>1. Ensure there are passing tests for all functionality<br />
+2. Make comments for each block of functionality<br />
+3. Move the functionality to new methods<br />
+4. Explain what you just did to someone else</p>
+<p>Here&#8217;s a real live example from production code. I had to fix a bug in this code; so I used the boy scout principle to test, fix and refactor.</p>
+<h2>Before</h2>
+<pre>
+# Rules for determining next delivery date
+# 1. Initially set next delivery date to current date + delivery time for delivery method
+# 2. Add the non delivery dates between now and the expected delivery date
+# 3. Add 1 day if the order is placed after noon
+# 4. If there is a Sunday between today's date and the next delivery add 1 day
+# 5. If the current day is Saturday or Sunday or Friday afternoon then add 1 day to next delivery date
+#
+def next_delivery_date
+  ndd = current_time
+  # Rule 1
+  if delivery_time
+  ndd = current_time + delivery_time.days
+  end
+  # Rule 2
+  ndd = ndd + NonDeliveryDate.count_none_delivery_dates(current_time.tomorrow, ndd).days
+  # Rule 3
+  ndd = ndd.advance(:days =&gt; 1) if current_time.hour &gt;= 12 &amp;&amp; !(current_time.wday == 6 || current_time.wday == 0)
+  # Rule 4
+  ndd = ndd.advance(:days =&gt; 1) if ndd.wday &lt; current_time.wday &amp;&amp; current_time.wday != 0
+  # Rule 5
+  ndd = ndd.advance(:days =&gt; 1) if current_time.wday == 6 || current_time.wday == 0 || (current_time.wday == 5 &amp;&amp; current_time.hour &gt;= 12) 
+end
+</pre>
+<h2>After</h2>
+<pre>
+def next_delivery_date
+  ndd = delivery_time ? current_time + delivery_time.days : current_time
+
+  ndd += NonDeliveryDate.count_none_delivery_dates(current_time.tomorrow, ndd).days
+
+  ndd = ndd.advance :days =&gt; 1 if on_a_weekday? &amp;&amp; after_12_midday?
+  ndd = ndd.advance :days =&gt; 1 if sunday_between? ndd, current_time
+  ndd = ndd.advance :days =&gt; 1 if on_weekend? || (friday? &amp;&amp; after_12_midday?)
+
+  ndd.beginning_of_day
+end
+
+private
+  
+def current_time
+  @current_time ||= Time.zone.now
+end
+
+def after_12_midday?
+  current_time.hour &gt;= 12
+end
+
+def on_a_weekday?
+  (1..5).include? current_time.wday
+end
+
+def on_weekend?
+  !on_a_weekday?
+end
+
+def sunday_between?(ndd,current_time)
+  ndd.wday &lt; current_time.wday &amp;&amp; current_time.wday != 0
+end
+
+def friday?
+  current_time.wday == 5 
+end
+</pre>
+<p>No, it&#8217;s not perfect and you could definitely <span class="caps">DRY</span> up the <code>advance :days =&gt; 1</code> statements. But for now its Good Enough <sup>TM</sup>.</p>
+<h2>Further reading</h2>
+<ul>
+	<li><a href="http://c2.com/cgi/wiki?SmalltalkBestPracticePatterns">Small talk best practive patterns</a></li>
+	<li><a href="http://www.amazon.com/Refactoring-Ruby-Jay-Fields/dp/0321603508">Refactoring Ruby</a> by Jay Fields</li>
+	<li><a href="http://www.amazon.co.uk/Refactoring-Ruby-William-C-Wake/dp/0321545044/ref=sr_1_2?ie=UTF8&amp;qid=1298311302&amp;sr=8-2">Refactoring in Ruby</a> by Kevin Rutherford</li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/refactoring_to_composed_methods_in_ruby.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

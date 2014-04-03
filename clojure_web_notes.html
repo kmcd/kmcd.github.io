@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/clojure_web_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Clojure web reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Clojure web reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Thursday, April 04, 2013.</p>
+
+<div class='content'>                                 
+   <p>Rifle oriented programming<br />
+http://thinkrelevance.com/blog/2009/08/12/rifle-oriented-programming-with-clojure-2.html</p>
+<p>Collections themselves act as functions. <br />
+They take an argument which is the key/index to look up:</p>
+<p>([:a :b :c :d :e] 2)<br />
+; &#8594; :c</p>
+<p>({:name &#8220;Stu&#8221; :ext 101} :name)<br />
+; &#8594; &#8220;Stu&#8221;</p>
+<p>Encapsulation   <br />
+Clojure accomplishes the purposes of encapsulation in three ways: closures, namespaces, and immutability.</p>
+<p>A closure closes over (remembers) the environment at the time it was created. For example, the function `make-counter` below closes over the initial value passed via `init-val`:</p>
+<p>(defn make-counter [init-val] <br />
+   (let [c (atom init-val)] #(swap! c inc)))</p>
+<p>; `defn` defines a new function, named `make-counter`, that takes a single argument `init-val`.</p>
+<p>; The `let` binds the name `c` to a new `atom`.</p>
+<p>; The `atom` creates a threadsafe, deadlock-proof mutable reference to a value.</p>
+<p>; The octothorpe (`#`) prefix introduces an anonymous function</p>
+<p>; The call to `swap!` updates the value referenced by `c` by calling `inc` on it.</p>
+<p>; The value of the let is the value of its last expression. This `let` returns a function that increments a counter, which is then the return value of `make-counter`.</p>
+<p>(def c (make-counter))</p>
+<p>&#169;<br />
+&#8594; 1</p>
+<p>&#169;<br />
+&#8594; 2</p>
+<p>&#169;<br />
+&#8594; 3</p>
+<p>(defn make-counter [init-val] <br />
+   (let [c (atom init-val)] <br />
+      {:next #(swap! c inc)<br />
+      :reset #(reset! c init-val)}))</p>
+<p>(def c (make-counter 10))</p>
+<p>((c :next))<br />
+&#8594; 11</p>
+<p>((c :next))<br />
+&#8594; 12</p>
+<p>((c :reset))<br />
+&#8594; 10</p>
+<p>Polymorphism<br />
+(defmulti fly class)<br />
+(defmethod fly Bird [b] (flap-wings b))<br />
+(defmethod fly Airplane [a] (turn-propeller a))</p>
+<p>(defmulti interest :type)<br />
+(defmethod interest :checking [a] 0)<br />
+(defmethod interest :savings [a] 0.05M)</p>
+<p>(defmulti service-charge <br />
+(fn [acct] [(account-level acct) (:tag acct)]))</p>
+<p>(defmethod service-charge [::Basic ::Checking]   <em>] 25)<br />
+(defmethod service-charge [::Basic ::Savings]    <em>] 10)<br />
+(defmethod service-charge [::Premium ::Checking] [</em> 0)<br />
+(defmethod service-charge [::Premium ::Savings]  [</em> 0)</p>
+<p>The double-colon prefix resolves a keyword in a namespace. This prevents name collisions among keywords, just as object-oriented langauges use namespaces to prevent name collisions between type names.</p>
+<p>No direct inheritance</p>
+<p>Use methods instead of types<br />
+(defn indexed [coll] (map vector (iterate inc 0) coll))</p>
+<p>(defn index-filter [pred coll]<br />
+   (when pred <br />
+      (for [[idx elt] (indexed coll) :when (pred elt)] idx)))</p>
+<p>(index-filter #{\a \e \i \o \u} &#8220;Lts f cnsnts nd n vwel&#8221;)</p>
+<p>The expression above finds the index of the first vowel in the string &#8220;Lts f cnsnts nd n vwel&#8221;, that is, 20.</p>
+<p>1. `index-filter` returns all the matches, not just one.</p>
+<p>(index-filter #{\a \e \i \o \o} &#8220;The quick brown fox&#8221;)<br />
+&#8594; (2 6 12 17)</p>
+<p>2. `index-filter` works with any sequence, not just a string of characters. For example, the call below works against a range of integers:</p>
+<p>(index-filter #{2 3 5 7} (range 6))<br />
+&#8594; (2 3 5)</p>
+<p>3. `index-filter` works with any predicate, not just a test against a character array. In the example below, the predicate is an anonymous function that tests for strings longer than three characters:</p>
+<p>(index-filter #(&gt; (.length %) 3) [&#8220;The&#8221; &#8220;quick&#8221; &#8220;brown&#8221; &#8220;fox&#8221;])<br />
+&#8594; (1 2)</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/clojure_web_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

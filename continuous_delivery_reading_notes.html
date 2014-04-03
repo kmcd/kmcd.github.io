@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/continuous_delivery_reading_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Continuous Delivery reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Continuous Delivery reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Tuesday, January 18, 2011.</p>
+
+<div class='content'>                                 
+   <p>From <a href="http://continuousdelivery.com/">Continuous Delivery</a> by Farley &amp; Humble. You can check out the book and articles on their web site.</p>
+<h2>Release anti-patterns</h2>
+<p>Antipattern: Deploying Software Manually</p>
+<ul>
+	<li>The production of extensive, detailed documentation that describes the steps to be taken and the ways in which the steps may go wrong</li>
+	<li>Reliance on manual testing to confirm that the application is running correctly</li>
+	<li>Frequent calls to the development team to explain why a deployment is going wrong on a release day</li>
+	<li>Frequent corrections to the release process during the course of a release</li>
+	<li>Environments in a cluster that differ in their configuration</li>
+	<li>Releases that take more than a few minutes to perform</li>
+	<li>Releases that are unpredictable in their outcome, that often have to be rolled back or run into unforeseen problems</li>
+</ul>
+<p>Antipattern: Deploying to a Production-like Environment Only after Development Is Complete</p>
+<p>Antipattern: Manual Configuration Management of Production Environments</p>
+<p>Feedback is essential to frequent, automated releases. There are three criteria<br />
+for feedback to be useful.</p>
+<ul>
+	<li>Any change, of whatever kind, needs to trigger the feedback process.</li>
+	<li>The feedback must be delivered as soon as possible.</li>
+	<li>The delivery team must receive feedback and then act on it.</li>
+</ul>
+<p>Typical tests</p>
+<ul>
+	<li>The software’s unit tests must pass.</li>
+	<li>test coverage and other technology-specific metrics.</li>
+	<li>business acceptance criteria—that it delivers the business value that was intended.</li>
+	<li>capacity, availability, security,</li>
+	<li>exploratory testing and a demonstration</li>
+</ul>
+<p>Principles</p>
+<ol>
+	<li>Create a Repeatable, Reliable Process for Releasing Software</li>
+	<li>Automate Almost Everything</li>
+	<li>Keep Everything in Version Control</li>
+	<li>If It Hurts, Do It More Frequently, and Bring the Pain Forward</li>
+	<li>Build Quality In (catch defects as early in the delivery process as possible)</li>
+	<li>Done Means Released</li>
+</ol>
+<h2>Continuous Integration</h2>
+<p>Keep the Build and Test Process Short</p>
+<p>I&#8217;ll add more to these reading notes as I find useful information in the book.</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/continuous_delivery_reading_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+</html>

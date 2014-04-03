@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/command_line_bash_fu.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Command line Bash-fu</title>
+   </head>
+   <body class='show'>
+      <h1>Command line Bash-fu</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Tuesday, February 22, 2011.</p>
+
+<div class='content'>                                 
+   <p>Why use the command line? Because it&#8217;s far quicker &amp; more productive than using a <span class="caps">GUI</span>. It&#8217;s easy to automate &amp; you can search what you&#8217;ve previously done. I use the <span class="caps">BASH</span> shell which is usually the default.</p>
+<p>Firstly, you need a cool prompt. Here&#8217;s mine which shows my user name, computer name and current directory:</p>
+<pre>
+export PS1="\[\e[36;1m\]\u\[\e[0m\]@\[\e[32;1m\]\H\[\e[34;1m\] \W\[\e[0m\] $ "
+</pre>
+<p>Which translates to kmcd@shinobi ~ $ on my laptop.</p>
+<p>You can save this in ~/.bash_profile</p>
+<h2>Cutting down on keystrokes</h2>
+<p>Use tab completion to complete commands and directory listings; eg type in <code>ma</code> and hit the tab key twice. You&#8217;ll get a list of all commands beginning with &#8220;ma&#8221; .</p>
+<p>Similarly, to view a directory listing, type the name of the directory and tab twice to see what&#8217;s inside; eg <code>ls /</code> <span class="caps">TAB</span> <span class="caps">TAB</span> shows:</p>
+<pre>
+kmcd@shinobi ~ $ ls /
+bin/            initrd.img      proc/           usr/
+boot/           initrd.img.old  root/           var/
+... and so on
+</pre>
+<h2>Learning the lessons of history</h2>
+<p>One of my favourite features is the history command. Simply type in <code>history</code> to see everything you&#8217;ve typed at the command line.</p>
+<p>I combine this with an <code>alias h='history | grep '</code> in my ~/.bash_profile to quickly search. eg to see all your subversion commands, type in <code>$ h svn</code></p>
+<p>If you want to run that command again, type in <code>!</code> followed by the command number; eg <code>!123</code> . Awesome!</p>
+<p>You&#8217;ll want to increase the size of your history &#8211; the default is 1000 entries which is no enough. You&#8217;d be surprised how quickly that rolls over. Add this to your ~/.bash_profile :</p>
+<pre>
+export HISTSIZE=999999
+export HISTCONTROL=ignoredups
+</pre>
+<p>There&#8217;s one more (even quicker) way to run a command again. Type in <span class="caps">CTLR</span> + R followed by the string your searching for and the shell will display the last matching command..</p>
+<h2>Useful commands</h2>
+<table>
+	<tr>
+		<th>Command</th>
+		<th>Description</th>
+		<th>Exmaple</th>
+	</tr>
+	<tr>
+		<td>grep</td>
+		<td> Search in a file for a pattern </td>
+		<td> grep -R  </td>
+	</tr>
+	<tr>
+		<td>find</td>
+		<td> Find files matching name </td>
+		<td> find . -name &#8220;my_homework.txt&#8221; </td>
+	</tr>
+	<tr>
+		<td>tree</td>
+		<td> View directory as a tree </td>
+		<td> tree /tmp </td>
+	</tr>
+</table>
+<p>You can also pipe commands, eg to show all ruby processes <code>$ ps waux | grep ruby</code> .</p>
+<p>Sometimes you need to poce</p>
+<h2>Shortcuts</h2>
+<p>Add aliases to your ~/.bash_profile to shorten frequently used commands. Here are some aliases useful for Rails development:</p>
+<pre>
+alias dm='rake db:migrate'
+alias tst='ruby -Ilib:test '
+alias g='git '
+alias 7st='svn st --ignore-externals | egrep "(M|A|D|\?)" '
+alias 7ci='svn ci -m '
+</pre>
+<p>Here&#8217;s how I quickly open an editor to modify my shell profile and reload the environment (so the changes take effect).</p>
+<pre>
+alias jpf='~/bin/jedit -reuseview  ~/.bash_profile'
+alias rl='source ~/.bash_profile'
+</pre>
+<p>Sometimes alias dont work (eg what about a piped command?). Functions to the rescue! Here&#8217;s how I pass all arguments to svn and pipe the results to the coloriser:</p>
+<pre>
+sd()
+{
+  svn diff "${@}" | colordiff
+}
+</pre>
+<p>All you need to know are that arguments are passed in as $1, $2 and so on. All arguments are stored as $* .</p>
+<h2>Bonus tip</h2>
+<p>Create a directory ~/bin to keep handy scripts. Extra bonus for Gnome users &#8212; you can run this from the <span class="caps">ALT</span> + F2 launcher.</p>
+<h2>Futher reading</h2>
+<ul>
+	<li><a href="http://www.pragprog.com/the-pragmatic-programmer">The Pragmatic Programmer</a> , pp 77 (Shell games)</li>
+	<li><a href="http://www.amazon.com/Productive-Programmer-Theory-Practice-OReilly/dp/0596519788">Productive programmer</a> , chapter 4 Focus</li>
+	<li><a href="http://docstore.mik.ua/orelly/unix/upt">Unix power tools</a></li>
+	<li><a href="http://tldp.org/LDP/abs/html">Advanced Bash scripting guide</a></li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/command_line_bash_fu.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

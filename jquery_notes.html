@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/jquery_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Jquery reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Jquery reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Monday, October 10, 2011.</p>
+
+<div class='content'>                                 
+   <p>= peepcode jQuery ajax</p>
+<p>Load a result from a web page &amp; filter by <span class="caps">CSS</span> selector:<br />
+- request made as a post</p>
+<p>.load(&#8220;/report.html table.td.result&#8221;);</p>
+<p>.load(&#8220;/report.html table.td.result&#8221;, {query: 200});</p>
+<p>.ajaxStart() fired before all requests fired (success or error), use it for error handling, eg spinner</p>
+<p>.ajaxError()</p>
+<p>Global Ajax Event handlers</p>
+<p>$form instantiates a jQuery objects</p>
+<p>$form.show(&#8220;slide&#8221;, { direction: &#8216;up&#8217; })</p>
+<p>Stop a form from being submitted<br />
+form.submit(function(e) { e.preventDefault(); }</p>
+<p>compare without coercion: ===</p>
+<p>Seperation of concerns:<br />
+I dont like <span class="caps">ANY</span> html or css in js. Create all markup &amp; styles beforehand. Test them in the browser to see if they look correct. Then hide them with css display none. Subsequently all you have to do in js is activate the dom objects.</p>
+<p>= jQuery in action 2nd edition</p>
+<p>What are the key chapters?</p>
+<p>What is the jQuery selector syntax standard &#8594; xpath3 ?</p>
+<p>You can handle collections/wrapped set like an array (get, first, last &#8230;)</p>
+<p>Is there a clean way to build html/css? Pre-create &amp; activate (seperation of concerns) or use a builder library?</p>
+<p>event handlers are where the action is! Looks like this is the chapter to work through in detail.</p>
+<p>How to I add a method to a jQuery wrapped set?</p>
+<p>What are some cool toy apps I could work on to brush up on my javascript &amp; jQuery skills? <br />
+- countdown timer<br />
+- drop down pre-populator<br />
+- orbitz interview question<br />
+- tile slider game</p>
+<p>Scriptaculous style effects are available using show(&#8216;&#8217;, {effect: &#8217;type&#8217;})</p>
+<p>Utility functions are like ActiveSupport extensions, String#trim, Array#map and friends.</p>
+<p>jQuery UI:</p>
+<p>Effects—Enhanced effects beyond those provided by the core library<br />
+Interactions—Mouse interactions, such as drag and drop, sorting, and the like<br />
+Widgets—A set of commonly needed controls, such as progress bars, sliders, dialog boxes, tabs, and so on</p>
+<p>Can you call jQuery UI effects based on <span class="caps">CSS</span> classes, eg if the element has a class &#8216;effect-pulsate&#8217;, then use that effect</p>
+<p>What is the state of the Rails jQuery plugin? Does it use <span class="caps">RJS</span> or is it unobtrusive?</p>
+<p>What is the state of js testing? Geoff Grosenback used the jasmine library in the coffeescript peepcode screencast.</p>
+<p>What is the 80/20 effect for js? eg I think that the jQuery UI tabs widget could just as easily be created in html &amp; css.</p>
+<p>Is ruby, sinatra, haml, sass, jquery &amp; coffee script the ultimate protyping stack?</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/jquery_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

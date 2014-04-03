@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/creating_a_rails_generator.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Creating a Rails generator</title>
+   </head>
+   <body class='show'>
+      <h1>Creating a Rails generator</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Saturday, September 22, 2007.</p>
+
+<div class='content'>                                 
+   <p>In this article, I&#8217;ll show you how a <strong>custom generator</strong> can speed up your Rails workflow by copying some boilerplate code. For example, instead of copying and pasting <span class="caps">CSS</span> and <span class="caps">HTML</span> layout you can create a generator to do this for you.</p>
+<p>If you&#8217;ve coded even the most basic Rail app you&#8217;ll be familiar with generators. We let <code>./script/generate</code> &amp; friends automate mundane &amp; error prone tasks and leave us to get on with the fun stuff. If you&#8217;re <em>not</em> familiar with generators just read the <a href="http://guides.rubyonrails.org/command_line.html">Rails command line guide</a> and expiriment with <code>./script/generate</code> from the root of a Rails app directory.</p>
+<h2>Create a new app with a RailCasts style UI</h2>
+<p>Here&#8217;s a quick way to create a new rails app with <a href="http://railscasts.com/">Railscasts</a> style presentation. The idea being that when you want to watch a new episode you can:</p>
+<ol>
+	<li>create a new rails app <code>rails_metal</code></li>
+	<li>generate a RailsCasts style UI <code>cd rails_metal &amp;&amp; ./script/generate
+railscasts_ui</code></li>
+	<li>start the server <code>./script/server</code> and follow along</li>
+</ol>
+<p>Seeing as you&#8217;ll probably use this on multiple, seperate Rails apps, the<br />
+generator should be saved in <code>~/.rails/generators/railscasts_ui</code> .</p>
+<ol>
+	<li>Create the generator directory <br />
+  <code>mkdir -p /.rails/generators/railscasts_ui/templates</code></li>
+</ol>
+<ol>
+	<li>Change to the generator directory<br />
+  <code>cd /.rails/generators/railscasts_ui</code></li>
+</ol>
+<ol>
+	<li>Create a documentation file<br />
+  <code>touch USAGE</code></li>
+</ol>
+<ol>
+	<li>Create the stylesheet<br />
+  <code>touch templates/railscasts.css</code></li>
+</ol>
+<ol>
+	<li>Create the layout file<br />
+  <code>touch templates/application.rhtml</code></li>
+</ol>
+<ol>
+	<li>Create the generator file <code>edit templates/railscasts_ui.rb</code> . Note that the class name must be a camel case version of the generator directory (RailscastsUi).<br />
+<pre><br />
+class RailscastsUi &lt; Rails::Generator::NamedBase<br />
+  def manifest</li>
+	<li>record do |m|</li>
+	<li>m.directory &#8220;#{RAILS_ROOT}/public/stylesheets&#8221;</li>
+	<li>m.file &#8220;railscasts.css&#8221;,    &#8220;#{RAILS_ROOT}/public/stylesheets/railscasts.css&#8221;</li>
+	<li></li>
+	<li>m.directory &#8220;#{RAILS_ROOT}/app/views/layouts&#8221;</li>
+	<li>m.file &#8220;application.rhtml&#8221;, &#8220;#{RAILS_ROOT}/app/views/layouts/application.rhtml&#8221;</li>
+	<li>end<br />
+  end<br />
+end<br />
+</pre></li>
+</ol>
+<p>You can use this technique to automate any static file creation or copying, e.g. if you want to have different stylesheets for development and production.</p>
+<h2>References</h2>
+<ul>
+	<li><a href="http://api.rubyonrails.org/classes/Rails/Generator/Base.html">Rails <span class="caps">API</span></a></li>
+	<li><a href="http://guides.rubyonrails.org/plugins.html#generators">Creating generator Rails guide</a></li>
+	<li><a href="http://railscasts.com/episodes/58-how-to-make-a-generator">Railscasts</a></li>
+	<li><a href="http://www.aidanf.net/rails/creating-your-own-generators-in-rails">Aidan Finn&#8217;s excellent tutorial</a></li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/creating_a_rails_generator.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:48 GMT -->
+</html>

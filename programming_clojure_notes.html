@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/programming_clojure_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Programming clojure reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Programming clojure reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Monday, August 08, 2011.</p>
+
+<div class='content'>                                 
+   <p>= Questions</p>
+<p>What are multi mehtods &amp; why are they useful?<br />
+What chapters can you omit?<br />
+What are the data types?<br />
+How is functional programming <sub>truly</sub> side effect free?<br />
+What is lazy evaluation?<br />
+How do agents compare to erlang actors?<br />
+What is a sequence?<br />
+Are there any build tools like rake?<br />
+How do you unit test?<br />
+Why is the current directory not in the java class path (for requiring files)?<br />
+How do you handle regular expressions?<br />
+What can I leave out (macros, multimethods?)<br />
+How do I connect to a web api?<br />
+What is the best order to read the book?</p>
+<ul>
+	<li>exploring</li>
+	<li>sequences</li>
+	<li>functional</li>
+	<li>concurrency</li>
+	<li>in the wild</li>
+</ul>
+<p>Why <strong>exactly</strong> do I need to use clojure?</p>
+<ul>
+	<li>Integration with TA-lib</li>
+	<li>Access java tech analysis libs</li>
+	<li>Most finance api&#8217;s have a java lib</li>
+	<li>Key chapters</li>
+	<li>2,4,5</li>
+	<li></li>
+	<li>Come back to macros, concurrency &amp; Java later</li>
+</ul>
+<p>= Action points</p>
+<p>Download intraday data from google/yahoo and store it in mysql (useful for<br />
+qtStalker)</p>
+<ul>
+	<li>= Read actively (notes, examples)</li>
+</ul>
+<p>#’user/hello. <br />
+#’ function was stored in a Clojure var<br />
+user is the function namespace</p>
+<p>*1, *2, *3 store the last 3 varialbe assignments</p>
+<p>*e holds the last exception</p>
+<p>#{} is a Set</p>
+<p>A def can define functions or data.</p>
+<p>References must be updated in a transaction to handle concurrency:<br />
+(dosync &amp; exprs)</p>
+<p>Use the @ symbol to inspect a reference, eg @foo</p>
+<p>(require &#8217;clojure.contrib.str-utils)<br />
+maps to clojure/contrib/str-utils.clj</p>
+<p>When you require a function, you must refer to the full name space, eg<br />
+(require &#8217;examples.introduction)<br />
+(take 10 examples.introduction/fibs)</p>
+<p>You can refer to the function at the top level (without using the namespace <br />
+prefix) using refer:<br />
+(refer &#8217;examples.introduction)<br />
+(take 10 fibs)</p>
+<p>Reload libs:<br />
+(use :reload-all &#8217;examples.introduction)</p>
+<p>Use find-doc with a string or regex to search the documentation</p>
+<p>use show to enumerate all the Java members (fields and methods) of any Java object:</p>
+<ul>
+	<li>you can also use Java’s Reflection <span class="caps">API</span>.<br />
+(ancestors (class [1 2 3]))</li>
+</ul>
+<p>Division may not execute as expected: could convert to a ration instead:</p>
+<ul>
+	<li>eg 22/7</li>
+	<li>use a decimal to divide</li>
+	<li>Append M to a number to create a BigDecimal for arbitrary precision math</li>
+	<li>BigDecimal is slow</li>
+</ul>
+<p>String &amp; Charachter are delegated to Java</p>
+<ul>
+	<li>= Recite (answer qs, mind map)</li>
+</ul>
+<p>= Review (blog post)</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/programming_clojure_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

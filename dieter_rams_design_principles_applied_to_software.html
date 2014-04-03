@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/dieter_rams_design_principles_applied_to_software.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Dieter Rams design principles applied to software</title>
+   </head>
+   <body class='show'>
+      <h1>Dieter Rams design principles applied to software</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Saturday, May 08, 2010.</p>
+
+<div class='content'>                                 
+   <p>I went to a <a href="http://designmuseum.org/design/dieter-rams">retrospective of Dieter Rams design work at the London Design meseum</a> during the summer. He&#8217;s the master of the simple, elegant and functional aesthetic. I could really see where Jonathan Ive gets his inspiration.</p>
+<p><img src="http://gizmodo.com/assets/resources/2008/01/rams-ive.jpg" alt="" /></p>
+<p>Quite helpfully, he came up with 10 design principles:</p>
+<h2>Good design is &#8230;</h2>
+<ul>
+	<li>innovative</li>
+	<li>a useful product</li>
+	<li>aesthetic (has beauty)</li>
+	<li>an understandable product</li>
+	<li>unobtrusive</li>
+	<li>honest</li>
+	<li>long-lasting</li>
+	<li>thorough down to the last detail</li>
+	<li>environmentally friendly</li>
+	<li>as little design as possible</li>
+</ul>
+<p>All very Zen, but how can we put this to good use in the software world ?</p>
+<h2>Applied to user interface</h2>
+<p>A <strong>useful</strong> user interface clearly presents the information without requiring interaction. In the UI context <strong>useful</strong> and <strong>understandable</strong> are synonymous. Read <a href="http://worrydream.com/MagicInk">Magic Ink: Information Software and the Graphical Interface</a> by Bret Victor for more on the perils of interactivity. You can find out if your UI is useful by doing usability testing.</p>
+<p>Dont rely on fashions or fads. Instead, try and understand the principles of graphic design such as layout, color, typography. If you use as <strong>little design as possible</strong> your interface should be <strong>long lasting</strong> in that it will never look out of date.</p>
+<p>An <strong>unobtrusive</strong> design is free from unnecessary ornamentation. What Tufte would refer to as &#8220;administrative debris&#8221; :</p>
+<blockquote>
+<p>&#8220;The idea is that the content is the interface, the information is the interface not computer administrative debris.&#8221;</p>
+</blockquote>
+<p>You can really be ruthless in pruning here. See how <a href="http://tomayko.com/writings/administrative-debris">Ryan Tomayko improved his website based on Tufte principles</a> .</p>
+<p>I would agrees that <strong>aesthetic</strong> or beauty is important to good desgin. Despite the current trend for A/B tested hyper optimised pages. For one thing, it gives you pride in your work.</p>
+<h2>Applied to software (code) design</h2>
+<p>The first crtieria of well designed code is that it is actually <strong>useful</strong>. Trite though it may sound, it must do what it&#8217;s supposed to do without bugs.</p>
+<p>Your code should be <strong>understandable</strong> by end users and developers. For end users, speak and understand <span class="caps">THEIR</span> language. Use as little jargon as possible. For developers, your code should read as close to pseudo-code as possbile.</p>
+<p>As <strong>little design as possible</strong>. Amen to that. Don&#8217;t try and over-engineer your application and beware gold plating. Use design patterns and complex algorithms to solve a problem, not improve a solution.</p>
+<p>How can you make your code <strong>long-lasting</strong>? By making it (a) easy to change and (b) resilient to failure. For example, (a) one of your vendors has gone bust and you have to replace a key piece of your architecture. You should have a layer of abstraction where you can plug in the new vendors code in <span class="caps">ONE</span> <span class="caps">PLACE</span>. Similarly, your new vedor is flaky but solvent. You can mitigate this by (b) handling outages gracefully and storing missed calls in a queue and try again later.</p>
+<p>Further reading</p>
+<ul>
+	<li>If you haven&#8217;t already, you should  <a href="http://worrydream.com/MagicInk/">Magic Ink: Information Software and the Graphical Interface</a> by Bret Victor. It&#8217;ll change the way you think about interface design for ever.</li>
+	<li><a href="http://en.wikipedia.org/wiki/Dieter_Rams">Dieter Rams on Wikipedia</a></li>
+	<li><a href="http://www.vitsoe.com/en/gb/about/dieterrams/gooddesign">Nice explination of Dieter Rams 10 principles</a></li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/dieter_rams_design_principles_applied_to_software.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+</html>

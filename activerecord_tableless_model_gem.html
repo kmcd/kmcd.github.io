@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/activerecord_tableless_model_gem.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>ActiveRecord tableless model gem</title>
+   </head>
+   <body class='show'>
+      <h1>ActiveRecord tableless model gem</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Monday, January 31, 2011.</p>
+
+<div class='content'>                                 
+   <p>I&#8217;ve written a gem to simplify creating ActiveRecord clases which don&#8217;t need a database table. I&#8217;ve found this useful for:</p>
+<ul>
+	<li>Factory method, ie creating other classes</li>
+	<li>Wizard (multi-step) forms</li>
+	<li>Presenter style forms handling mutiple models</li>
+</ul>
+<p>Thanks to Ryan Bates <a href="http://railscasts.com/episodes/193-tableless-model">Tableless Model Railscast</a> and the  <a href="http://asciicasts.com/episodes/193-tableless-model.html">Tableless Model asciicast</a> for the inspiration.</p>
+<h3>Installation</h3>
+<p><code>$ gem install active_record-tableless_model</code></p>
+<h3>Usage</h3>
+<pre>
+require 'active_record-tableless_model'
+
+class Task &lt; ActiveRecord::Base
+  no_table
+  
+  column :description,  :text
+  column :priority,     :integer
+  column :project_id,   :string  
+end 
+</pre>
+<p>Note that your class must still inherit from ActiveRecord if you need to use validations and associations.</p>
+<h3>How it works</h3>
+<p>If you create a class inheriting from ActiveModel, and no corresponding table exist in the database you&#8217;ll get an <code>ActiveRecord::StatementInvalid</code> error. You need to tell your model what columns should exist on the table. Migrations do this by defining colums using <code>column</code>.</p>
+<p>All you need to do is create class methods allowing you to declare the column names directly in the class (without the need for a migration). Here&#8217;s how it&#8217;s done:</p>
+<pre>
+module TablelessModel
+  def self.included(klass)
+*  klass.extend ClassMethods
+  end
+  
+  module ClassMethods
+*  def self.columns() @columns ||= []; end  
+*   
+*  def self.column(name, sql_type = nil, default = nil, null = true)  
+*    columns &lt;&lt; ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)  
+*  end  
+  end
+end
+</pre>
+<p>There&#8217;s no need for this gem if you&#8217;re using Rails 3 &#8211; ActiveModel provides all ActiveRecord functionality for plain Ruby objects.</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/activerecord_tableless_model_gem.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

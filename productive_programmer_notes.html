@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/productive_programmer_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Productive programmer reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Productive programmer reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Wednesday, June 06, 2012.</p>
+
+<div class='content'>                                 
+   <p>= Acceleration</p>
+<p>application launchers, eg alt-f2<br />
+search rather than browsing<br />
+clipboard manager<br />
+shell history<br />
+pushd/popd<br />
+text editor keyboard shortcuts<br />
+text editor super abbreviations<br />
+text editor macros<br />
+Spend a little time each day to become more productive</p>
+<p>= Focus</p>
+<p>kill all distractions<br />
+create quite time</p>
+<p>finding</p>
+<ul>
+	<li>find . -regex &#8220;.*Db\.java&#8221;</li>
+	<li></li>
+	<li>find . -name &#8220;*.java&#8221; -exec grep -n -H &#8220;new .<strong>Db.</strong>&#8221; {} \;</li>
+	<li>-exec         like piping to xargs</li>
+	<li>grep -n -H    show numbers &amp; filenames</li>
+	<li>{}            place holder for file</li>
+	<li>\;            end of find terminator</li>
+	<li>= Automation</li>
+</ul>
+<p>Use open source tools<br />
+Cache dev dox locally<br />
+Use <span class="caps">RSS</span> instead of browsing<br />
+Use rake, eg lauch apps for a presentation<br />
+Use selenium for repetitive web tasks, ie step 4 of a wizard</p>
+<p>Use bash to harvest exception counts:</p>
+<p>for X in $(egrep -o &#8220;[A-Z]\w*Exception&#8221; log_week.txt | sort | uniq) ;<br />
+do</p>
+<ul>
+	<li>echo -n -e &#8220;processing $X\t&#8221;</li>
+	<li>grep -c &#8220;$X&#8221; log_week.txt<br />
+done</li>
+</ul>
+<p>Performing simple, repetitive tasks squanders your concentration.</p>
+<p><span class="caps">SQL</span> splitter:</p>
+<p>SQL_FILE = &#8220;./GeneratedTestData.sql&#8221;<br />
+OUTPUT_PATH = &#8220;./chunks of sql/&#8221;<br />
+line_num = 1<br />
+file_num = 0<br />
+Dir.mkdir(OUTPUT_PATH) unless File.exists? OUTPUT_PATH<br />
+file = File.new(OUTPUT_PATH + &quot;chunk &quot; + file_num.to_s + &#8220;.sql&#8221;,<br />
+File::<span class="caps">CREAT</span>|File::<span class="caps">TRUNC</span>|File::<span class="caps">RDWR</span>, 0644)<br />
+done, seen_1k_lines = false</p>
+<p>IO.readlines(SQL_FILE).each do |line|</p>
+<ul>
+	<li>file.puts(line)</li>
+	<li>seen_1k_lines = (line_num % 1000 == 0) unless seen_1k_lines</li>
+	<li>line_num += 1</li>
+	<li>done = (line.downcase =~ /^\W*go\W*$/ or line.downcase =~ /^\W*end\W*$/) != nil</li>
+	<li></li>
+	<li>if done and seen_1k_lines</li>
+	<li>file_num += 1</li>
+	<li>file = File.new(OUTPUT_PATH + &quot;chunk &quot; + file_num.to_s + &#8220;.sql&#8221;,</li>
+	<li>File::<span class="caps">CREAT</span>|File::<span class="caps">TRUNC</span>|File::<span class="caps">RDWR</span>, 0644)</li>
+	<li>done, seen_1k_lines = false</li>
+	<li>end<br />
+end</li>
+</ul>
+<p>This little Ruby program reads lines from the original source file until it has read 1,000 lines.<br />
+Then, it starts looking for lines that have either GO or <span class="caps">END</span> on them. Once it finds either of<br />
+those two strings, it finishes off the current file and starts another one.</p>
+<p>Would take 10 mins by hand and 1 hour to automate.</p>
+<p>Justifying automation is about return on investment and risk mitigation.</p>
+<p>Timebox speculative development &amp; dont shave yaks!</p>
+<p>= Canonicality</p>
+<p>Sync jEdit macros (github)<br />
+Use VM for OS setup / states<br />
+Use a wiki for up to date info/doc</p>
+<p>= Practice</p>
+<p><span class="caps">TDD</span><br />
+Use source analysis tools, eg reek, flog<br />
+Maximize work on essential complexity; kill accidental complexity.</p>
+<p>Law of Demeter says that for any object and method, the only methods<br />
+that should be invoked are the following:<br />
+• The methods of the object itself<br />
+• Parameters of the method<br />
+• Any objects created within the method</p>
+<p>2006 <span class="caps">OOPSLA</span> Anti-objects:</p>
+<p>The “obvious” solution to the Pac Man problem builds intelligence into the ghosts. <br />
+Yet, the much simpler solution builds the intelligence into the maze (cell smells).<br />
+That is the anti-object approach: flip the computational foreground and background.</p>
+<p>Composed method <span class="caps">FTW</span></p>
+<p><span class="caps">SLAP</span> (single level of abstraction):</p>
+<p>you shouldn’t have a method in which part of it deals with low-level database<br />
+connectivity, another part with high-level business code, and another with web service<br />
+plumbing.</p>
+<p>Learn your editor inside &amp; out (pip for jEdit)</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/productive_programmer_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

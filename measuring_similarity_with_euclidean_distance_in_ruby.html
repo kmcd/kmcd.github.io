@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/measuring_similarity_with_euclidean_distance_in_ruby.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Measuring similarity with Euclidean distance in Ruby</title>
+   </head>
+   <body class='show'>
+      <h1>Measuring similarity with Euclidean distance in Ruby</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Monday, November 02, 2009.</p>
+
+<div class='content'>                                 
+   <p>Ringo      Pulp Fiction    5 <br />
+Ringo      Blade Runner    2 <br />
+Ringo      Casablanca      3 <br />
+Paul       Pulp Fiction    4 <br />
+Paul       Blade Runner    5 <br />
+Paul       Casablanca      3 <br />
+John       Metropolis      3 <br />
+John       Casablanca      3 <br />
+George     Pulp Fiction    2 <br />
+George     Casablanca      5 <br />
+</pre></p>
+<h2>Comparing films</h2>
+<p>To compare two films, use each <strong>reviewer rating as a point in multidimensional space</strong>; e.g. Pulp Fiction P(5,4,2) and Casablanca Q(3,3,5) :</p>
+<table>
+	<tr>
+		<td> &radic; (P <sub>1</sub> &#8211; Q <sub>1</sub> ) <sup>2</sup> + (P <sub>2</sub> &#8211; Q <sub>2</sub> ) <sup>2</sup> + (P <sub>3</sub> &#8211; Q <sub>3</sub> ) <sup>2</sup> </td>
+	</tr>
+	<tr>
+		<td> = &radic; (5-3) <sup>2</sup> + (4-3) <sup>2</sup> + (2-5) <sup>2</sup> </td>
+	</tr>
+	<tr>
+		<td> = &radic; (2) <sup>2</sup> + (1) <sup>2</sup> + (-3) <sup>2</sup> </td>
+	</tr>
+	<tr>
+		<td> = &radic; 4 + 1 + 9  &asymp; 3.742 </td>
+	</tr>
+</table>
+<h2>Comparing reviewers</h2>
+<p>To compare two reviewers, <strong>only use the films they have both rated</strong>. In the case of Ringo and Geogre that&#8217;s Pulp Fiction &amp; Casablanca, giving Ringo P(5,3) and George Q(2,5) :</p>
+<table>
+	<tr>
+		<td> &radic; (P <sub>1</sub> &#8211; Q <sub>1</sub> ) <sup>2</sup> + (P <sub>2</sub> &#8211; Q <sub>2</sub> ) <sup>2</sup> </td>
+	</tr>
+	<tr>
+		<td> = &radic; (5-2) <sup>2</sup> + (3-5) <sup>2</sup> </td>
+	</tr>
+	<tr>
+		<td> = &radic; (3) <sup>2</sup> + (-2) <sup>2</sup> </td>
+	</tr>
+	<tr>
+		<td> = &radic; 9 + 4 &asymp; 3.605 </td>
+	</tr>
+</table>
+<p>Therefore, the closer together two films, the more similar they are. Conversely, the further apart, the less similar they are. i.e. Reviewers with a similarity of 0.1 would have similar tastes, whereas reviewers with 10.50 would be dissimilar.</p>
+<h2>References</h2>
+<ul>
+	<li><a href="http://en.wikipedia.org/wiki/Euclidean_distance">Wikipedia:Euclidean distance</a></li>
+	<li><a href="http://www.amazon.com/Programming-Collective-Intelligence-Building-Applications/dp/0596529325/ref=sr_1_2?ie=UTF8&amp;s=books&amp;qid=1240322333&amp;sr=8-2">Programming Collective Intelligence</a> by Toby Segaran</li>
+</ul>
+<h2>Futher reading</h2>
+<p>You can also use Euclidean distance to:</p>
+<ul>
+	<li><a href="http://www.phpandme.net/2009/03/calculating-distance-between-two-documents">calculate the similarity between two documents</a></li>
+	<li>or calculate the proximity of two locations</li>
+</ul>
+<p>I&#8217;m working through the examples in the Collective Intelligence book by Segaran. You can find them at my <a href="http://github.com/kmcd/ci">Collective Intelligence github repository</a></p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/measuring_similarity_with_euclidean_distance_in_ruby.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/technical_analysis_of_financial_markets_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Technical analysis of financial markets reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Technical analysis of financial markets reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Thursday, July 07, 2011.</p>
+
+<div class='content'>                                 
+   <p>= Questions</p>
+<p>What are the key chapters?</p>
+<ul>
+	<li>basic trend</li>
+	<li>volume</li>
+	<li>long term charts</li>
+	<li>moving averages</li>
+	<li>oscilators</li>
+	<li>point &amp; figure charting</li>
+	<li>computer systems</li>
+	<li>money management</li>
+	<li>intermarket analysis</li>
+	<li>Stock market indicators, advanced indicators</li>
+	<li>Checklist, essentials</li>
+	<li>Who are the &#8220;Random Walk Theorists&#8221; &amp; what do they espouse?</li>
+	<li>= Action points</li>
+</ul>
+<p>= Notes</p>
+<p>Trend</p>
+<ul>
+	<li>simply the direction of the market</li>
+	<li></li>
+	<li>sideways is the absence of up/down trend</li>
+	<li></li>
+	<li>catagorised as major, secondary &amp; near term</li>
+	<li></li>
+	<li>depends on your timeframe</li>
+	<li></li>
+	<li>prices tend to move in a series of peaks &amp; troughs</li>
+	<li></li>
+	<li>support / resistance are local min/max values</li>
+	<li>&#8594; referred to pivot elsewhere?</li>
+	<li></li>
+	<li>for an uptrend to continue</li>
+	<li>each successive low <span class="caps">MUST</span> BE <span class="caps">HIGHER</span> than the preceding low (support level)</li>
+	<li>each successive high must also be higher</li>
+	<li>&#8594; is this an up-channel?</li>
+	<li>&#8594; does a narrowing up-channel annouce the end of a rally?</li>
+	<li></li>
+	<li>if corrective dips below previous low, a reversal may be on the cards</li>
+	<li></li>
+	<li>test significance of trendline:</li>
+	<li>how long has it been intact?</li>
+	<li>how many times has it been tested?</li>
+	<li></li>
+	<li>50% price retractment is often observed</li>
+	<li>&#8594; can use % retractment to measure the narrowing of an up channel</li>
+	<li>Volume</li>
+	<li>is secondary to price in indication importance</li>
+	<li>used a confirmation only</li>
+	<li>defined as: number of entities traded for that period</li>
+	<li></li>
+	<li>open interest: number of outstanding contracts (long OR short <span class="caps">NOT</span> both)</li>
+	<li>idicates if more more buyers are coming into the market</li>
+	<li>if buyers == sellers, OI remains unchanged</li>
+	<li>used mainly in <span class="caps">FUTURES</span></li>
+	<li></li>
+	<li>strong market: price rising, volume &amp; OI increasing</li>
+	<li></li>
+	<li><span class="caps">VFI</span> looks like a decent indicator (also useful for uptrend confirmation)</li>
+	<li></li>
+	<li>an increase in volume may precede a price change</li>
+	<li>Long term charts</li>
+	<li>can provide a perspective that daily charts cannot</li>
+	<li></li>
+	<li>if can verfify with another time dimension, why not use it?</li>
+	<li>You can evaluate the usefullness of different time dimensions during testing</li>
+	<li></li>
+	<li>is a daily time series all that&#8217;s needed?</li>
+	<li>ie uptrend on the day &amp; uptrending for the last few days</li>
+	<li></li>
+	<li>useful to identify a major trend</li>
+	<li></li>
+	<li>not suitable for timing entry &amp; exit points, are they useful for day trading</li>
+	<li>at all?</li>
+	<li>Moving averages</li>
+	<li>much chart analysis is subjective, some suggest it merely helps develop a</li>
+	<li>mental model for traders &amp; has NO empirical basis.</li>
+	<li></li>
+	<li>AM is more easily used in algo trading :)</li>
+	<li></li>
+	<li>10 day average: last 10 days closing averages / 10</li>
+	<li></li>
+	<li>can have many paramaters for optimisation</li>
+	<li><span class="caps">KISS</span>: just stick with the closing price</li>
+	<li></li>
+	<li>MA period depends on your trading time frame, eg a day trader might use 3, 5,</li>
+	<li>10 moving averages</li>
+	<li></li>
+	<li>uses the arithmetic mean, exponential has less lag</li>
+	<li></li>
+	<li>the simplest, most widely used indicator</li>
+	<li></li>
+	<li>double crossover: when the shorter time period (eg 5) crossed over the longer</li>
+	<li>(10)</li>
+	<li>&#8594; will this always be the case when on the top Bollinger band?</li>
+	<li></li>
+	<li>4-9-18 day MA used in futures trading</li>
+	<li></li>
+	<li>Bollinger bands:</li>
+	<li>2 std dev +/- MA</li>
+	<li>contains 95% of price data (verification of assumption needed)</li>
+	<li>pricess are over extended / bought when they touch the upper band</li>
+	<li>during a period of rising volatility, the bands will expand</li>
+	<li>during a period of decreasing volatility, the bands will contract</li>
+	<li>&#8594; how does this feed into a predictive model, do we want more, less or</li>
+	<li>equal volatility?</li>
+	<li>best combined with overbought/over sold oscillators</li>
+	<li></li>
+	<li>one of the oldest maxims in trading: trade in the direction of the trend</li>
+	<li></li>
+	<li>because MA are trend folling, they work best in trending market</li>
+	<li></li>
+	<li>dont work so well in a sideways market</li>
+	<li></li>
+	<li><span class="caps">ADX</span> indicator (ch 15) tells you whether a market is trending or not</li>
+	<li></li>
+	<li>they dont work well for extended periods of time (is this because markets</li>
+	<li>are generally not trending?)</li>
+	<li></li>
+	<li>channel breakout and MA strategies came tops in a study of 23 different</li>
+	<li>trading systems [Financial Review, 1990]</li>
+	<li></li>
+	<li>&#8594; What is a channel breakout system?</li>
+	<li></li>
+	<li>4 week rule: buy long whenever the price exceeds the high of the previous 4 weeks</li>
+	<li>needs a trend to be in place</li>
+	<li>alter the time frame as needed</li>
+	<li>does not catch tops or bottoms, therefore lock in your profit early</li>
+	<li>less frequent trades</li>
+	<li>&#8594; can you add this as a 5 day timeframe to your entry signal</li>
+	<li>simple breakout system</li>
+	<li></li>
+	<li>stock traders rely heavily on the 50 day (10 week) MA</li>
+	<li></li>
+	<li>Adapative Moving average (Smarter trading, Perry Kaufman)</li>
+	<li>automatically adjusts for market volatility</li>
+	<li>moves slowly when markets are sideways, swiftly when trending</li>
+	<li>Oscillators</li>
+	<li>useful to detect overbought/sold conditions</li>
+	<li>can indicate that a a trend is losing momentum before that is refected in the</li>
+	<li>price</li>
+	<li>secondary indicator, subordinate to trend analysis</li>
+	<li>most useful when at the upper/lower boundry, indicating that trend may ending</li>
+	<li>watch for divergence when oscilators is in an extreme position</li>
+	<li>crossing at zero (mid-point) can give directional indicator</li>
+	<li>&#8594; how can you calculate this: trig?</li>
+	<li></li>
+	<li>momentum measures <span class="caps">VELOCITY</span> of price changes rather than the prices levels</li>
+	<li>latest closing price &#8211; closing price X days ago</li>
+	<li></li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/technical_analysis_of_financial_markets_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

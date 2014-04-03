@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/easily_declare_private_methods_in_ruby.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Easily declare private methods in Ruby</title>
+   </head>
+   <body class='show'>
+      <h1>Easily declare private methods in Ruby</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Thursday, January 20, 2011.</p>
+
+<div class='content'>                                 
+   <h3>Work in progress! Haven&#8217;t yet figured out how to declare method private fro m within an instance method.</h3>
+<p>When you have a large class file, private method definitions can often be too far away from their calling methods. You can end up ping ponging back and forward between calling and helper methods.</p>
+<p>In a larger class file, I like to group co-operating methods together. Any called private methods are close to the methods where they are called. This can get ugly when using the <a href="http://books.google.com/books?id=oVadw8Jf0cYC&amp;pg=PA156&amp;lpg=PA156&amp;dq=composed+method+ruby+refactor&amp;source=bl&amp;ots=fbOkzTZlOw&amp;sig=1yV5m8MCqWXXto_gR0u7Ud4AwnU&amp;hl=en&amp;ei=XsE5TcfIFsev8QPtnL2kCA&amp;sa=X&amp;oi=book_result&amp;ct=result&amp;resnum=1&amp;ved=0CBIQ6AEwAA#v=onepage&amp;q=composed%20method%20ruby%20refactor&amp;f=false">composed method</a> style.</p>
+<pre>
+def foo
+  bar
+  baz
+end
+
+def bar
+end
+
+private :bar
+
+def baz
+end
+
+private :baz
+</pre>
+<p>Why not just use the private method above the method declarations? You must re-declare subsequent public methods to be so, which can get messy.</p>
+<pre>
+def foo
+  bar
+end
+
+private
+
+def bar
+end
+
+public 
+
+def baz
+end
+</pre>
+<p>Duplication easily removed with a class level macro (just dont say magic metaprogramming).</p>
+<p>To that end I&#8217;ve created a gem: <strong>ruby-private</strong>. Here it is in action.</p>
+<pre>
+$ gem install ruby-private
+
+$ irb -rrubygems
+
+require 'ruby-private'
+
+class Foo
+  def bar
+*  # You can declare this anywhere in the method. 
+*  # However, at the top or bottom would be most noticable
+*  private!
+  end
+end
+
+Foo.private_methods
+=&gt; ["bar"]
+</pre>
+<p>Sweet, tasty sugar. Not the most useful code in the world but an interesting eperiment which helped me get re-aquinted with an old friend called Kernel.</p>
+<h3>Work in progress! Haven&#8217;t yet figured out how to declare method private fro m within an instance method.</h3>
+<p><code>ruby-private</code> is <a href="http://">available on ruby gems</a>. You can check out the <a href="http://">ruby-private source on github</a> .</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/easily_declare_private_methods_in_ruby.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

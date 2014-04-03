@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/my_ruby_on_rails_development_environment.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>My Ruby on Rails development environment</title>
+   </head>
+   <body class='show'>
+      <h1>My Ruby on Rails development environment</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Thursday, January 20, 2011.</p>
+
+<div class='content'>                                 
+   <p>Here&#8217;s my Ruby / Rails development environment. I use jedit, firefox and gnome-terminal. My operating system of choice is Ubuntu (the rich mans OS X).</p>
+<p>What you won&#8217;t see are: email, IM. I switch to a different work space to launch thunderbird or pidgin when I need to communicate. More importantly, I close communication apps when I&#8217;m finished communicating.</p>
+<p><img src="rails_dev_env.png" alt="" /></p>
+<p>I use a laptop (lower screen) with an external monitor (upper screen). There is black area around the bottom screen because the external monitor is wider than the laptop screen.</p>
+<h2>Documentation</h2>
+<p>My main sources of reference for daily development are:</p>
+<ul>
+	<li><a href="http://railsapi.com/">Searchable rails api</a></li>
+	<li><a href="http://guides.rubyonrails.org/">Rails guides</a></li>
+	<li><a href="http://asciicasts.com/">asciicasts</a></li>
+</ul>
+<p>I download all documentation onto my latop so I can still work without a connection to the internet.</p>
+<p>I also have quite a few pdf books for reference. I use gnome-search to search for them or text within.</p>
+<h2>Text editor</h2>
+<p>I use the mighty <a href="http://jedit.org/">jEdit</a> with the following plugins:</p>
+<ul>
+	<li>candy folds</li>
+	<li><span class="caps">FTP</span></li>
+	<li>Find file</li>
+	<li>Sessions</li>
+	<li>Abbrevs</li>
+</ul>
+<p>The complete awesomeness of jEdit is a topic for another article. Suffice to say that its a great editor for Ruby &amp; Rails development. Code snippet expansion, multiple select, rectangle select, macro recording, searchable clip board &#8211; it&#8217;s all there.</p>
+<h2>Shell</h2>
+<p>The standard gnome-terminal is enough for me. I&#8217;ve set up the following aliases in my ~/.bash_profile to cut down on keystrokes.</p>
+<pre>
+alias 7ci='svn ci -m '
+alias 7st='svn st --ignore-externals | egrep "(M|A|D|\?)" '
+alias dm='rake db:migrate'
+alias g='git '
+alias j='~/bin/jedit -reuseview '
+alias tst='ruby -Ilib:test '
+</pre>
+<h2>Web browser</h2>
+<p>There really only is one game in town when it comes to web development: <a href="http://firefox.com/">firefox</a> with the firebug &amp; web developer plugins. I usually have these three tabs open:</p>
+<ul>
+	<li>bug tracker</li>
+	<li>localhost developement server</li>
+	<li>rails/ruby reference</li>
+</ul>
+<p>I tried the selenium <span class="caps">IDE</span> plugin but it&#8217;s too much hassle to set up &amp; maintain those test suites. They just keep on breaking. I&#8217;ll keep looking for a browser recorder because the promise of automated broswing is too great.</p>
+<p>For <strong>cross browser testing</strong> I have a Virtual box windows XP machine with ie 6. I&#8217;ve installed the my debug bar plugin, which lauches ieTester allowing me to open up tabs for each version of ie.</p>
+<p>That&#8217;s it! Hope you found something that makes your development environment more productive.</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/my_ruby_on_rails_development_environment.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+</html>

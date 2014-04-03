@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/learning_R_basics_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Learning r basics reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Learning r basics reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Saturday, March 03, 2012.</p>
+
+<div class='content'>                                 
+   <p>= Questions</p>
+<ul>
+	<li>What is a factor (when reading in a string from a file)</li>
+	<li>A categorical variable, ie like an object you can call methods on it</li>
+	<li></li>
+	<li>Nominal variables are categorical, without an implied order</li>
+	<li>Diabetes (Type1, Type2)</li>
+	<li></li>
+	<li>Ordinal variables imply order but not amount.</li>
+	<li>Status (poor, improved, excellent)</li>
+	<li>= Getting Help</li>
+	<li>help(mean)</li>
+	<li>?mean</li>
+	<li>args(mean)</li>
+	<li>example(mean)</li>
+	<li>help.start()  =&gt; launches local server &amp; html help doc in browser</li>
+	<li>??solve =&gt; searches the help</li>
+	<li></li>
+	<li>http://rseek.org</li>
+	<li>http://stackoverflow.com</li>
+	<li>http://stats.stackexchange.com</li>
+	<li></li>
+	<li>RSiteSearch(&#8220;canonical correlation&#8221;) =&gt; launches an r-project.org search in your browser</li>
+	<li>= Reading from files</li>
+	<li></li>
+	<li>dfrm &lt;- read.table(&#8220;statisticians.txt&#8221;, sep=&#8220;:&#8221;)</li>
+	<li></li>
+	<li>nasdaq &lt;- read.csv(&#8220;data/NASDAQ_20110214.csv&#8221;)</li>
+	<li></li>
+	<li>str(nasdaq) =&gt; shows internal structure of an object</li>
+	<li>= Vectors</li>
+	<li></li>
+	<li>Like an array</li>
+	<li></li>
+	<li>creating a vector of vectors flattens &amp; concatenates:</li>
+	<li></li>
+	<li>&gt; v1 &lt;- c(1,2,3)</li>
+	<li>&gt; v2 &lt;- c(3,4,5)</li>
+	<li>&gt; c(v1,v2)</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 1 2 3 3 4 5</li>
+	<li></li>
+	<li>Must be all of the same type, R will automatically coerce:</li>
+	<li></li>
+	<li>&gt; v1 &lt;- c(1,2,3)</li>
+	<li>&gt; v3 &lt;- c(&#8220;A&#8221;,&#8220;B&#8221;,&#8220;C&#8221;)</li>
+	<li>&gt; c(v1,v3)</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> &#8220;1&#8221; &#8220;2&#8221; &#8220;3&#8221; &#8220;A&#8221; &#8220;B&#8221; &#8220;C&#8221;</li>
+	<li>= Basic stats</li>
+	<li>mean(x)</li>
+	<li>median(x)</li>
+	<li>sd(x)</li>
+	<li>var(x)</li>
+	<li>cor(x, y)</li>
+	<li>cov(x, y)</li>
+	<li></li>
+	<li>The cor and cov functions can calculate the correlation and covariance, respectively,</li>
+	<li>between two vectors:</li>
+	<li></li>
+	<li>na.rm=<span class="caps">TRUE</span> to permit empty data points</li>
+	<li>= Data frames</li>
+	<li></li>
+	<li>Used for column data</li>
+	<li></li>
+	<li>Use matrix notation (like array indexing) to select a column by index or name</li>
+	<li>= Intro to R</li>
+	<li></li>
+	<li>source(&#8220;commands.R&#8221;) =&gt; execute from a file</li>
+	<li>sink(&#8220;session.log&#8221;) =&gt; sends output to file</li>
+	<li>sink =&gt; restores output to console</li>
+	<li></li>
+	<li>seq(1..10, by=1) =&gt; creates a vector (1,2 .. 10)</li>
+	<li></li>
+	<li>You can use data frames to work on different problems in the same working</li>
+	<li>directory</li>
+	<li></li>
+	<li>foo &lt;- function(x=1, y=2) {</li>
+	<li></li>
+	<li>}</li>
+	<li>= R in a nutshell</li>
+	<li></li>
+	<li>&gt; b &lt;- c(1,2,3,4,5,6,7,8,9,10,11,12)</li>
+	<li>&gt; b<sup class="footnote" id="fnr7"><a href="#fn7">7</a></sup></li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 7</li>
+	<li></li>
+	<li>&gt; b[1:6]</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 1 2 3 4 5 6</li>
+	<li></li>
+	<li>&gt; b[b %% 2 == 0]</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>  2  4  6  8 10 12</li>
+	<li></li>
+	<li>An array object is just a vector that’s associated with a dimension attribute</li>
+	<li>a &lt;- array(c(1,2,3,4,5,6,7,8,9,10,11,12),dim=c(3,4))</li>
+	<li></li>
+	<li>A matrix is just a two-dimensional array:</li>
+	<li>&gt; m &lt;- matrix(data=c(1,2,3,4,5,6,7,8,9,10,11,12),nrow=3,ncol=4)</li>
+	<li></li>
+	<li>&gt; i &lt;- 5</li>
+	<li>&gt; repeat {if (i &gt; 25) break else {print(i); i &lt;- i + 5;}}</li>
+	<li></li>
+	<li>&gt; i &lt;- 5</li>
+	<li>&gt; while (i &lt;= 25) {print(i); i &lt;- i + 5}</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 5</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 10</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 15</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 20</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 25</li>
+	<li></li>
+	<li>for (i in seq(from=5,to=25,by=5)) print(i)</li>
+	<li></li>
+	<li>A list is an ordered collection of objects (does not have to be of similar type)</li>
+	<li></li>
+	<li>parcel &lt;- list(destination=&#8220;New York&#8221;,dimensions=c(2,6,9),price=12.95)</li>
+	<li></li>
+	<li>A factor is an ordered collection of items. The different values that the factor can take are called</li>
+	<li>levels. (like an enumerated type)</li>
+	<li></li>
+	<li>eye.colors &lt;- factor(c(&#8220;brown&#8221;, &#8220;blue&#8221;, &#8220;blue&#8221;, &#8220;green&#8221;, &#8220;brown&#8221;, &#8220;brown&#8221;, &#8220;brown&#8221;))</li>
+	<li></li>
+	<li>Data frames are similar to DB tables</li>
+	<li></li>
+	<li>You can create connections to files, URLs, zip compressed</li>
+	<li>files, gzip compressed files, bzip compressed files, Unix pipes, network sockets, and</li>
+	<li><span class="caps">FIFO</span> (first in, first out) objects. You can even read from the system clipboard (to</li>
+	<li>paste data into R).</li>
+	<li></li>
+	<li>An environment</li>
+	<li>is an R object that contains the set of symbols available in a given context, the objects</li>
+	<li>associated with those symbols, and a pointer to a parent environment. The symbols</li>
+	<li>and associated objects are called a frame.</li>
+	<li></li>
+	<li>sapply() is like map</li>
+	<li>&gt; a &lt;- 1:7</li>
+	<li>&gt; sapply(a, sqrt)</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 2.645751</li>
+	<li></li>
+	<li>Anonymous functions (similar to a Ruby block/lambda)</li>
+	<li>&gt; apply.to.three &lt;- function(f) {f(3)}</li>
+	<li>&gt; apply.to.three(function(x) {x * 7})</li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li>= OO programming</li>
+	<li></li>
+	<li>In R, the places where information is stored in an object are called slots. We’ll name</li>
+	<li>the slots data, start, and end. To create a class, we’ll use the setClass function:</li>
+	<li></li>
+	<li>&gt; setClass(&#8220;TimeSeries&#8221;,</li>
+	<li>representation(</li>
+	<li>data=&#8220;numeric&#8221;,</li>
+	<li>start=&#8220;POSIXct&#8221;,</li>
+	<li>end=&#8220;POSIXct&#8221;</li>
+	<li>))</li>
+	<li></li>
+	<li>my.TimeSeries &lt;- new(&#8220;TimeSeries&#8221;,</li>
+	<li>data=c(1,2,3,4,5,6),</li>
+	<li>start=as.POSIXct(&#8220;07/01/2009 0:00:00&#8221;,tz=&#8220;<span class="caps">GMT</span>&#8221;,</li>
+	<li>format=&#8220;%m/%d/%Y %H:%M:%S&#8221;),</li>
+	<li>end=as.POSIXct(&#8220;07/01/2009 0:05:00&#8221;,tz=&#8220;<span class="caps">GMT</span>&#8221;,</li>
+	<li>format=&#8220;%m/%d/%Y %H:%M:%S&#8221;)</li>
+	<li>)</li>
+	<li></li>
+	<li>Create a validation to ensure that the start date is before the end date:</li>
+	<li></li>
+	<li>setValidity(&#8220;TimeSeries&#8221;,</li>
+	<li>function(object) {</li>
+	<li>object@start &lt;= object@end &amp;&amp;</li>
+	<li>length(object@start) == 1 &amp;&amp;</li>
+	<li>length(object@end) == 1</li>
+	<li>} )</li>
+	<li></li>
+	<li></li>
+	<li>Let’s create a function for extracting the data series from a generic object:</li>
+	<li>&gt; series &lt;- function(object) {object@data}</li>
+	<li>&gt; setGeneric(&#8220;series&#8221;)</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> &#8220;series&#8221;</li>
+	<li>&gt; series(my.TimesSeries)</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 1 2 3 4 5 6</li>
+	<li></li>
+	<li>period.TimeSeries &lt;- function(object) {</li>
+	<li>if (length(object@data) &gt; 1) {</li>
+	<li>(object@end &#8211; object@start) / (length(object@data) &#8211; 1)</li>
+	<li>}</li>
+	<li>else {</li>
+	<li>Inf</li>
+	<li>}</li>
+	<li>= Working with data</li>
+	<li></li>
+	<li>&gt; save(top.5.salaries,file=&#8220;~/top.5.salaries.RData&#8221;)</li>
+	<li></li>
+	<li>You can use URL&#8217;s!</li>
+	<li></li>
+	<li>sp500 &lt;- read.csv(paste(&#8220;http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC&amp;a=03&amp;b=1&amp;c=1999&amp;d=03&amp;e=1&amp;f=2009&amp;g=m&amp;ignore=.csv&#8221;))</li>
+	<li>= Preparing data</li>
+	<li></li>
+	<li>The cbind function will combine</li>
+	<li>objects by adding columns. You can picture this as combining two tables horizon-</li>
+	<li>tally.</li>
+	<li></li>
+	<li>The rbind function will combine objects by adding rows. You can picture this as</li>
+	<li>combining two tables vertically.</li>
+	<li></li>
+	<li>The paste function allows you to concate-</li>
+	<li>nate multiple character vectors into a single vector. (If you concatenate a vector of</li>
+	<li>another type, it will be coerced to a character vector first.)</li>
+	<li></li>
+	<li>&gt; x &lt;- c(&#8220;a&#8221;,&#8220;b&#8221;,&#8220;c&#8221;,&#8220;d&#8221;,&#8220;e&#8221;)</li>
+	<li>&gt; y &lt;- c(&#8220;A&#8221;,&#8220;B&#8221;,&#8220;C&#8221;,&#8220;D&#8221;,&#8220;E&#8221;)</li>
+	<li>&gt; paste(x,y)</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> &#8220;a A&#8221; &#8220;b B&#8221; &#8220;c C&#8221; &#8220;d D&#8221; &#8220;e E&#8221;</li>
+	<li></li>
+	<li>Binning: grouping data into bins, eg every 5 mins</li>
+	<li></li>
+	<li>Shingles are a way to represent overlapping time series</li>
+	<li></li>
+	<li>The function cut is useful for taking a continuous variable and splitting it into dis-</li>
+	<li>crete pieces</li>
+	<li></li>
+	<li>Use subset or bracket notation to select a subset of the data</li>
+	<li></li>
+	<li>subset, tapply, agregate could be very useful for data analysis</li>
+	<li></li>
+	<li>tabulate =&gt; count the number of observations</li>
+	<li>= Stats in R (reference)</li>
+	<li></li>
+	<li>Control structures</li>
+	<li>if(&#8230;) {</li>
+	<li>&#8230;</li>
+	<li>} else {</li>
+	<li>&#8230;</li>
+	<li>}</li>
+	<li></li>
+	<li>Conditional assignment</li>
+	<li></li>
+	<li>x &lt;- if(&#8230;) 3.14 else 2.71</li>
+	<li>y &lt;- ifelse(x&gt;0, 1, -1)</li>
+	<li></li>
+	<li>Iteration</li>
+	<li></li>
+	<li>for (i in 1:10) {</li>
+	<li>next</li>
+	<li>break</li>
+	<li>}</li>
+	<li></li>
+	<li>while() {}</li>
+	<li>repeat {}</li>
+	<li></li>
+	<li>Functions</li>
+	<li>named args (useful when defaults are already provided)</li>
+	<li></li>
+	<li>namespace::method</li>
+	<li></li>
+	<li>Operators</li>
+	<li>matrix multiplication</li>
+	<li><span>a</span></li>
+	<li></li>
+	<li>Euclidean divistion</li>
+	<li><span>/</span></li>
+	<li></li>
+	<li>Modulus</li>
+	<li>%%</li>
+	<li></li>
+	<li>Set membership</li>
+	<li>17 <span>in</span> 1:100</li>
+	<li></li>
+	<li>Data structures</li>
+	<li>Vectors</li>
+	<li>&gt; c(1,2,3,4,5)</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 1 2 3 4 5</li>
+	<li></li>
+	<li>&gt; 1:5</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 1 2 3 4 5</li>
+	<li></li>
+	<li>&gt; seq(1, 5, by=1)</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 1 2 3 4 5</li>
+	<li></li>
+	<li>&gt; seq(1, 5, lenth=5)</li>
+	<li><sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> 1 2 3 4 5</li>
+	<li></li>
+	<li>Select all except 5-10</li>
+	<li>x[-(5:10)]</li>
+	<li></li>
+	<li>seq(0,10, length=11, by=0.5)</li>
+	<li></li>
+	<li>Repeat</li>
+	<li>rep()</li>
+	<li>= R in action</li>
+	<li></li>
+	<li>patientID &lt;- c(1, 2, 3, 4)</li>
+	<li>age &lt;- c(25, 34, 28, 52)</li>
+	<li>diabetes &lt;- c(&#8220;Type1&#8221;, &#8220;Type2&#8221;, &#8220;Type1&#8221;, &#8220;Type1&#8221;)</li>
+	<li>status &lt;- c(&#8220;Poor&#8221;, &#8220;Improved&#8221;, &#8220;Excellent&#8221;, &#8220;Poor&#8221;)</li>
+	<li>patientdata &lt;- data.frame(patientID, age, diabetes, status)</li>
+	<li></li>
+	<li>Use attach(data_frame) to call data_frame&#8217;s attributes at the top level,</li>
+	<li>ie you dont have to use data_frame$column</li>
+	<li></li>
+	<li>Or with:</li>
+	<li>with(data_frame, {</li>
+	<li></li>
+	<li>}</li>
+	<li></li>
+	<li>Nominal variables are categorical, without an implied order. Diabetes (Type1, Type2) is</li>
+	<li>an example of a nominal variable. Even if Type1 is coded as a 1 and Type2 is coded</li>
+	<li>as a 2 in the data, no order is implied.</li>
+	<li></li>
+	<li>Ordinal variables imply order but not amount.</li>
+	<li>Status (poor, improved, excellent) is a good example of an ordinal variable. You</li>
+	<li>know that a patient with a poor status isn’t doing as well as a patient with an improved</li>
+	<li>status, but not by how much.</li>
+	<li></li>
+	<li>Continuous variables can take on any value within some</li>
+	<li>range, and both order and amount are implied. Age in years is a continuous variable</li>
+	<li>and can take on values such as 14.5 or 22.8 and any value in between. You know that</li>
+	<li>someone who is 15 is one year older than someone who is 14.</li>
+	<li></li>
+	<li>Categorical (nominal) and ordered categorical (ordinal) variables in R are called</li>
+	<li>factors.</li>
+	<li></li>
+	<li>a list is an ordered collection of objects (components)</li>
+	<li>allows you to gather a variety of (possibly unrelated) objects</li>
+	<li></li>
+	<li>You can add extra columns thusly:</li>
+	<li>mydata &lt;- transform(mydata, sumx = x1 + x2, meanx = (x1 + x2)/2)</li>
+	<li></li>
+	<li>leadership &lt;- within(leadership,{</li>
+	<li>agecat &lt;- NA</li>
+	<li>agecat[age &gt; 75]              &lt;- &#8220;Elder&#8221;</li>
+	<li>agecat[age &gt;= 55 &amp; age &lt;= 75] &lt;- &#8220;Middle Aged&#8221;</li>
+	<li>agecat[age &lt; 55]              &lt;- &#8220;Young&#8221;</li>
+	<li>})</li>
+	<li></li>
+	<li></li>
+	<li>na.omit(data_frame) =&gt; reject all NA rows</li>
+	<li></li>
+	<li>Handle date formats</li>
+	<li>strDates &lt;- c(&#8220;01/05/1965&#8221;, &#8220;08/16/1975&#8221;)</li>
+	<li>dates &lt;- as.Date(strDates, &#8220;%m/%d/%Y&#8221;)</li>
+	<li></li>
+	<li>Sorting</li>
+	<li>leadership[order(leadership$age),]</li>
+	<li></li>
+	<li>Selecting data</li>
+	<li>names(leadership) <span>in</span> c(&#8220;q3&#8221;, &#8220;q4&#8221;)</li>
+	<li></li>
+	<li>leadership[which(gender==&#8216;M&#8217; &amp; age &gt; 30),]</li>
+	<li></li>
+	<li>subset(leadership, age &gt;= 35 | age &lt; 24, select=c(q1, q2, q3, q4))</li>
+	<li></li>
+	<li>apply(x, <span class="caps">MARGIN</span>, <span class="caps">FUN</span>, &#8230;)</li>
+	<li>where x is the data object,</li>
+	<li><span class="caps">MARGIN</span> is the dimension index,</li>
+	<li><span class="caps">FUN</span> is a function you specify,</li>
+	<li>and &#8230; are any parameters you want to pass to <span class="caps">FUN</span>.</li>
+</ul>
+<ul>
+	<li>Need to learn more about: aggregate, melt &amp; cast.</li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/learning_R_basics_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/kanban_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Kanban reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Kanban reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Saturday, May 05, 2012.</p>
+
+<div class='content'>                                 
+   <p>Kanban, David Anderson</p>
+<p>= Skim</p>
+<p>= Questions</p>
+<p>What chapters should I omit? <br />
+1, 13, 14, 16 &#8211; 20 (advanced)</p>
+<p>What are the key / most applicable chapters?<br />
+6, 7, 10, 11, 12, 15<br />
+From steps to implement, ch 6 &amp; 7 are mentioned repeatedly</p>
+<p>Can I summarise with the takeaways sections only? Yes</p>
+<p>Kanban will reveal opportunities for improvement that do not involve<br />
+complex changes to engineering methods. <br />
+&#8594; What are the low cost, high return activities?</p>
+<p>How to measure the current system?<br />
+&#8594; raw data from lighthouse api<br />
+&#8594; model current workflow using value stream<br />
+&#8594; model kanban pull system using a card board<br />
+&#8594; <span class="caps">WIP</span>, thoughput, % billable time (key metric), total time from request to invoice</p>
+<p>How long to see changes take effect?<br />
+&#8594; review &amp; make changes at monthly ops meeting<br />
+&#8594; original implementation took 15 months for max improvement</p>
+<p>Can we use <span class="caps">WIP</span> limits on number of tickets per client release to enforce pair<br />
+programming?<br />
+&#8594; Dont impose policies, instead suggest solutions to problems as they arise</p>
+<p>What are MS work item types?<br />
+&#8594; support (admin/config) request<br />
+&#8594; bug<br />
+&#8594; feature (load failure)<br />
+&#8594; new feature<br />
+&#8594; UI change (including text chunk)</p>
+<p>How can we perform a demand analysis of work item types using LightHouse api?<br />
+Yes, for items that have a ticket. This does not measure time spend on phone calls,<br />
+interruptions to current work, investigating issues on production.</p>
+<p>What is the absolute minimum we can do to improve?<br />
+Visualise workflow<br />
+Limit <span class="caps">WIP</span><br />
+Measure cycle time<br />
+Start to focus on quality</p>
+<p>Do we need a kanban board or can we manage soley with an electronic tool?<br />
+Still don&#8217;t know the answer to this. Probably not.</p>
+<p>What are the classes of service?<br />
+&#8594; based on delivery time &amp; work item type<br />
+&#8594; expidited   1 day<br />
+&#8594; feature     15 days<br />
+&#8594; bug         5 days<br />
+&#8594; support     2 days</p>
+<p>= Notes</p>
+<p>== ch 2, What is a Kanban method?</p>
+<p>Kanban (signal card)<br />
+- represents a unit of capacity in a system<br />
+- signalling mechanism, eg plane ticket (provides direction/instruction)</p>
+<p>Imperial Palace Gardens admission tickets (effective, low cost solution)</p>
+<p>use a kanban system to:<br />
+- limit a team’s work-in-progress<br />
+- set capacity<br />
+- balance the demand against the throughput of delivered work. <br />
+- enforce a sustainable pace of development<br />
+- ensure work versus personal life balance.</p>
+<p>== ch 3, Recipe for success</p>
+<p>Goldratt, Theory of contraints:</p>
+<p>1.	 Visualize Workflow<br />
+2.	 Limit Work-in-Progress<br />
+3.	 Measure and Manage Flow<br />
+4.	 Make Process Policies Explicit<br />
+5.	 Use Models to Recognize Improvement Opportunities</p>
+<p>excessive defects are the biggest waste in software development</p>
+<p>Focus on quality</p>
+<ul>
+	<li>pair programming / <span class="caps">TDD</span> / refactoring</li>
+	<li>Code inspection (every day for 30 mins)</li>
+	<li>Collaborative team analysis and design modeling sessions (Scott Ambler, Agile modelling)</li>
+	<li>Code metrics tools</li>
+	<li>Automated acceptance testing</li>
+	<li>Server monitoring</li>
+	<li>Automation</li>
+</ul>
+<p>Reduce Work-in-Progress and Deliver Often</p>
+<ul>
+	<li>Frequent Releases Build Trust</li>
+	<li>Balance Demand against Throughput</li>
+	<li>set the rate at which we accept new requirements into our software development</li>
+	<li>pipe to correspond with the rate at which we can deliver working code</li>
+	<li></li>
+	<li>create slack</li>
+	<li></li>
+	<li>You need slack to enable continuous improvement. In order to have slack, you</li>
+	<li>must have an unbalanced value stream with a bottleneck resource. Optimizing</li>
+	<li>for utilization is not desirable. (Queing theory, road traffic)</li>
+</ul>
+
+<p>== ch 15, Starting a Kanban change initiative</p>
+<p>Steps to Get Started<br />
+1.	 Agree on a set of goals for introducing Kanban.<br />
+2.	 Map the value stream <br />
+3.	 Define some point where you want to control input. Define what is</p>
+<ul>
+	<li>upstream of that point and who the upstream stakeholders are (explained</li>
+	<li>in chapter 6). For example, do you wish to control requirements arriving</li>
+	<li>to the design team pre-production? The upstream stakeholders might be</li>
+	<li>product managers.<br />
+4.	 Define some exit point beyond which you do not intend to control. Define</li>
+	<li>what is downstream of that and who the downstream stakeholders are</li>
+	<li>(explained in chapter 6). For example, maybe you don’t need to control</li>
+	<li>the delivery fulfillment of the product.<br />
+5.	 Define a set of work item types based on the types of work requests that</li>
+	<li>come from the upstream stakeholders (explained in chapter 6). Do you</li>
+	<li>have some item types that are time-sensitive and others that are not? If so,</li>
+	<li>then you may require some classes of service (explained in chapter 11).<br />
+6.	 Analyze the demand for each work item type. Observe the arrival rate</li>
+	<li>and variation. Is the variation seasonal or event-driven? What risks are</li>
+	<li>associated with this type of demand? Should the system be designed to</li>
+	<li>cope with average or peak demand? What is the tolerance for late or unre-</li>
+	<li>liable delivery of this type of work? Create a risk profile for the demand.</li>
+	<li>(Explained in chapter 6.)<br />
+7.	 Meet with the upstream and downstream stakeholders—this might be</li>
+	<li>one big meeting, or it might be lots of little meetings. (Explained in more</li>
+	<li>depth later in this chapter.)</li>
+	<li>a.	 Discuss policies around capacity of the piece of the value stream you want</li>
+	<li>to control and get agreement on a <span class="caps">WIP</span> limit (explained in chapter 10).</li>
+	<li>b.	 Discuss and agree on an input-coordination mechanism, such as a</li>
+	<li>regular prioritization meeting, with the upstream partners (explained</li>
+	<li>in chapter 9).</li>
+	<li>c.	 Discuss and agree on a release/delivery-coordination mechanism,</li>
+	<li>such as a regular software release, with the downstream partners</li>
+	<li>(explained in chapter 8).</li>
+	<li>d.	 You may need to introduce the concept of different classes of service</li>
+	<li>for work requests (explained in chapter 11).</li>
+	<li>e.	 Agree on a lead-time target for each class of service of work items.</li>
+	<li>This is known as a service-level agreement (<span class="caps">SLA</span>), and is explained in</li>
+	<li>chapter 11.<br />
+8. Create a board/card wall to track the value stream you are controlling</li>
+	<li>(explained in chapters 6 and 7).<br />
+9. Optionally, create an electronic system to track and report the same</li>
+	<li>(explained in chapters 6 and 7).<br />
+10.Agree with the team to have a standup meeting every day in front of the</li>
+	<li>board; invite up- and downstream stakeholders but don’t mandate their</li>
+	<li>involvement (explained in chapter 7).<br />
+11. Agree to have a regular operations review meeting for retrospective analy-</li>
+	<li>sis of the process; invite up- and downstream stakeholders but don’t man-</li>
+	<li>date their involvement (explained in chapter 14).<br />
+12. Educate the team on the new board, <span class="caps">WIP</span> limits, and the pull system.</li>
+	<li>Nothing else in their world should have changed. Job descriptions are</li>
+	<li>the same. Activities are the same. Handoffs are the same. Artifacts are the</li>
+	<li>same. Their process hasn’t changed, other than your asking them to accept</li>
+	<li>a <span class="caps">WIP</span> limit and to pull work based on class-of-service policy rather than</li>
+	<li>receiving it in a push fashion.</li>
+</ul>
+<p><span class="caps">WIP</span> limits<br />
+- prevent multi-tasking</p>
+<p>rules for that game must be agreed upon by consensus among all the stakeholders.</p>
+<p>“Yes, we’d love to accept this new work, as we realize it is very important to<br />
+you. Equally, you know and understand that we have an agreed-upon <span class="caps">WIP</span> limit.<br />
+You were part of that decision, and you understand why we made it. We want to<br />
+be able to process requests reliably and in a timely manner. In order to take on your<br />
+request, we will need to put something else aside. Which one of the current items in<br />
+progress would you prefer that we drop in order to start your new item?”</p>
+<p>Prioritization<br />
+- aka queue replenishment<br />
+- slots available<br />
+- drop current work</p>
+<p>Lead Time and Classes of Service</p>
+<p>Recipe for success:<br />
+1. learn to build high-quality code<br />
+2. reduce the work-in-progress<br />
+3. shorten lead times, and release often. <br />
+4. balance demand against throughput, limit work-in-progress, and create slack to free<br />
+up bandwidth, which will enable improvements.</p>
+<p>Then, with a smoothly functioning and optimizing software development capability,<br />
+improve prioritization to optimize value delivery.</p>
+<p>Reduce variablity to improve predictabilty<br />
+- reduce batch sizes<br />
+- even out the arrival of work</p>
+<p>== ch 4 <span class="caps">XIT</span> case study</p>
+<p>neither the <span class="caps">PSP</span>/<span class="caps">TSP</span> method nor the <span class="caps">CMMI</span> rating of the<br />
+vendor were likely to be the root cause of their problems. In fact, the team produced<br />
+pretty much what was asked of them, and with very high quality</p>
+<p>Visualise the work flow<br />
+- Requests were arriving uncontrollably.</p>
+<p>More than 90 percent of the lead time was queuing, or other forms of waste.</p>
+<p>estimation effort alone was consuming around 33 percent of<br />
+capacity, and on a bad month it could be as much as 40 percent.</p>
+<p>No estimation<br />
+Limit <span class="caps">WIP</span> to 1 request per developer</p>
+<p>Establishing an Input Cadence<br />
+weekly meeting “Which three items from the backlog would you most like delivered next?”</p>
+<p>offer a “guaranteed” delivery time of 25 days from acceptance into<br />
+the input queue. This 25 days was considerably greater than the 11 days of aver-<br />
+age engineering time required to complete the job.</p>
+<p>customers were being asked to give up <span class="caps">ROI</span> calculations and inter-department<br />
+budget transfers based on estimated effort per request. In exchange, they were being<br />
+offered unprecedented short delivery times and reliability.</p>
+<p>To get around the accounting issues, they were asked to accept that all requests <br />
+took, on average, 11 days of engineering. They were asked to accept that costs <br />
+were essentially fixed.</p>
+<p>guaranteed that each of the product managers would get a fair allocation of capacity</p>
+<p>A simple, weighted round-robin scheme<br />
+Or dedicate an amount of time per release</p>
+<p>Any item older than six months was purged from backlog.</p>
+<p><span class="caps">ROI</span> not needed: If something was important and valuable, it was selected for the <br />
+input queue from the backlog; if it wasn’t, then it wasn’t selected.</p>
+<p>team reduced the lead time to an average of 14 days against an 11-day engineering time</p>
+<p>== ch 6 Mapping the value stream</p>
+<p>Define work item types (bug, feature, refactoring, infrastructure)</p>
+<p>Card wall (new, open, hold, resolved)</p>
+<p>Demand Analysis<br />
+If you have historical data, use it to make a quantitative study. If you do not,<br />
+then an anecdotally derived subjective analysis will suffice.</p>
+<p>Allocate work items based on demand analysis<br />
+eg 60% feature, 10% Maintainance, 30% UI change</p>
+<p>== ch 7 Coordination</p>
+<p>Daily Standup Meetings<br />
+- focus on flow of work (rather than 3 questions)<br />
+- impediments / blockers / hold</p>
+<p>Release planning</p>
+<p>- Which items in the system are (or will be) ready for release?<br />
+- What is required to actually release each item to production?<br />
+- What testing will be required post-release to validate the integrity of produc-<br />
+tion systems?<br />
+- What risks are involved?<br />
+- How are these risks being mitigated?<br />
+- What contingency plans are required?<br />
+- Who needs to be involved in the release and present during the push to produc-<br />
+tion (or other delivery mechanism)?<br />
+- How long will the release take?<br />
+- What other logistics will be involved?</p>
+<p>Triage: assessing and classifying into categories for priority of attention</p>
+<p>Issue Log Review and Escalation</p>
+<p>When work items in the Kanban system are impeded, they will be marked as such<br />
+and an issue work item will be created. The issue will remain open until the imped-<br />
+iment is removed and the original work item can progress through the system.</p>
+<p>Reviewing open issues, therefore, becomes vital to improving flow through the<br />
+system.</p>
+<p>Issue-log review should happen frequently and regularly.</p>
+<p>Create a &#8216;blocked&#8217; ticket state, or just use &#8216;hold&#8217; ?</p>
+<p>When the telecommuter completed an item and changed its electronic status, they<br />
+would contact their sticky buddy by instant message, email, or phone and ask them <br />
+to update the physical board.</p>
+<p>Synchronizing across Geographic Locations<br />
+- electronic system<br />
+- keep physical card walls synchronized, at the very least, on a daily basis.</p>
+<p>Holding regular meetings reduces the coordination cost</p>
+<p>Prioritization and release planning should be done independently and<br />
+should have independent cadence.</p>
+<ul>
+	<li>Daily standup meetings should be used to discuss issues, impediments and flow</li>
+</ul>
+<p>Grooming the backlog with regular triage to reduce its size improves<br />
+the effectiveness and efficiency of prioritization meetings.</p>
+<p>Issue management, escalation, and resolution is a core discipline in improving <br />
+performance</p>
+<p>Escalation paths and policies should be clearly defined.</p>
+<p>== ch 8 Delivery cadence</p>
+<p>Kanban dispenses with the time-boxed iteration and instead decouples the ac-<br />
+tivities of prioritization, development, and delivery.</p>
+<p>Kanban also decouples the prioritization cadence from both the lead time through<br />
+the system and from the delivery cadence.</p>
+<p>Coordination Costs of Delivery<br />
+- how much does it cost to deploy?</p>
+<ul>
+	<li>cost-only model. We must consider the total costs incurred between</li>
+	<li>releases. Often this is a known amount—the burn rate of the organization. If we</li>
+	<li>release once per month and our burn rate is $1.3 million per month, our costs are</li>
+	<li>at least $1.3 million per release</li>
+	<li></li>
+	<li>MS burn rate £30k per month</li>
+	<li></li>
+	<li>Delivery Efficiency% = 100% x (Total Cost – (Coordination Cost + Transaction Cost) ) / Total Cost of Software Release</li>
+	<li></li>
+	<li>100 * ( 30000 &#8211; ) / 30000</li>
+	<li></li>
+	<li>reducing of waste by reducing coordination and transaction costs in order to</li>
+	<li>make the batch size efficient—in this case, to make the time between releases</li>
+	<li>efficient.</li>
+</ul>
+<p>=&gt; In our case is the best option is to deploy every 2 weeks?</p>
+<p>== Chapter 9  ❖  Establishing an Input Cadence</p>
+<p>“Prioritization cadence” means an agreed-upon regular interval between<br />
+meetings to prioritize new work into the input queue for development.</p>
+<p>Prioritization of new work requests such as user stories involves coordi-<br />
+nation of many people from various functions. All of this coordination<br />
+has a measurable cost.</p>
+<p>Estimation to facilitate prioritization decisions represents the transac-<br />
+tion costs in both time and money associated with prioritization. These<br />
+costs can be determined and tracked.</p>
+<p>Prioritization cadence can be established by encouraging those involved<br />
+in prioritization decision making to meet as regularly as is reasonable<br />
+based on the transaction and coordination costs involved.<br />
+Efficiency and cadence of prioritization can be increased by focusing<br />
+on reducing its transaction and coordination costs.<br />
+Frequent prioritization meetings build trust.<br />
+Scheduling regular prioritization meetings reduces coordination costs<br />
+and is particularly useful in lower-maturity organizations</p>
+<p>== ch 10 <span class="caps">WIP</span> limits</p>
+<p>Get buy in from all stakeholders</p>
+<p>the tension created by imposing a <span class="caps">WIP</span> limit across<br />
+the value-stream is positive tension. This positive tension forces discussion about<br />
+the organization’s issues and dysfunctions. The dysfunctions generate impediments<br />
+to flow and result in sub-optimal productivity, lead time, and quality. The discus-<br />
+sion and collaboration invoked by the positive tension of a <span class="caps">WIP</span> limit is healthy. It<br />
+is the mechanism that enables the emergence of a continuous-improvement culture.<br />
+Without <span class="caps">WIP</span> limits, progress on process improvement is slow.</p>
+<p>Capacity allocation allows us to guarantee service for each type of work received<br />
+by the kanban system. The allocation should generally be made in response to the<br />
+comparative demand observed for each type of work. Hence, it is important to<br />
+complete some demand analysis to facilitate reasonable allocation of <span class="caps">WIP</span> limits on<br />
+swim lanes for each type of work.</p>
+<p>== Chapter 11  ❖  Establishing Service Level Agreements</p>
+<p>Customers who pay more or who spend money with the airline on a regular<br />
+basis enjoy a better class of service.</p>
+<p>High severity, high priority defects<br />
+are fixed immediately. They receive a different, higher, class of ser-<br />
+vice than other work. To fix a high-severity production defect, we<br />
+put other work aside, pull in as many people as we require</p>
+<p>Classes of service provide us a convenient way of classifying work to provide ac-<br />
+ceptable levels of customer satisfaction at an economically optimal cost. By quickly<br />
+identifying the class of service for an item, we are spared the need to make a detailed<br />
+estimate or analysis.</p>
+<p>The Expedite (or “Silver Bullet”) <br />
+- <span class="caps">ASAP</span><br />
+1- Manufacturing companies often create policy to limit the number of expedite re-<br />
+quests that hit a factory.</p>
+<p>Fixed date</p>
+<p>Standard</p>
+<p>Intangaible (eg devliverable dates far in the future, refactoring)</p>
+<p>offering a target lead time coupled with a due-date performance metric is an <br />
+alternative to treating each item individually and having to estimate and commit <br />
+to a delivery date for each item.</p>
+<p>The service-level agreement allows us to avoid costly activities, such as<br />
+estimation; low-trust activities, such as making commitments; and to spread risk by<br />
+aggregating a large collection of requests and promising only aggregate performance<br />
+in the form of a percentage due-date performance.</p>
+<p>important to communicate that the target lead time in the<br />
+Standard class of service is just that, a target!</p>
+<p>The Expedite and Fixed Delivery Date classes of service were ensuring that im-<br />
+portant items were always on time.</p>
+<p>Due Date Performance (percentage) should be monitored for target lead times.</p>
+<p>If classes of service are used properly and combined with a regular deliv-<br />
+ery cadence, very few complaints are likely to be received, even if a sig-<br />
+nificant portion of items miss their target lead time.</p>
+<p>== ch 12 Metrics</p>
+<p><span class="caps">WIP</span> (cumulative flow, or use board)</p>
+<p>Lead time<br />
+- against each class of service</p>
+<p>Due Date Performance<br />
+- for fixed date items</p>
+<p>Throughput<br />
+- number of items—delivered in a given time period, such as one month.<br />
+- should increase<br />
+- indicator of how well the system is performing, demonstrate continuous improvement.</p>
+<p>Issues and Blocked Work Items<br />
+cumulative-flow diagram of<br />
+reported impediments overlaid with a graph of the number of work-in-progress<br />
+items that have become blocked,</p>
+<p>Flow Efficiency<br />
+- lead time vs. time spent actually working on work item<br />
+- not particularly useful day to day</p>
+<p>Initial Quality<br />
+- number of escaped defects as a percentage against the total <span class="caps">WIP</span> and throughput<br />
+- bugs per feature</p>
+<p>Failure Load, how many work items:<br />
+- we process because of earlier poor quality—<br />
+- are production defects / new features to overcome to mitigate existing shortcoming <br />
+- causes inclucde poor usability or a failure to anticipate user needs properly.<br />
+- shows capacity left on the table that could be used for new, value-added features.</p>
+<p>== ch 14, Operations review</p>
+<p>Objective, data-driven retrospective on the organization’s performance. Sets an<br />
+expectation of objective, data-driven, quantitative management</p>
+<p>Should be performed monthly. Can it be held in 1 hour?</p>
+<p>Need to prepare data. Can the charts be generated automatically?</p>
+<p>== ch 18 economic model</p>
+<p>Waste can be classified into three main abstract categories: transaction<br />
+costs, coordination costs, and failure load.</p>
+<p>To determine if an activity is truly wasteful ask, “Would we do more of<br />
+this if we could?” If the answer is no, then the activity is some form of<br />
+waste.</p>
+<p>Transaction costs come in two types: setup activities and cleanup, or delivery activities.</p>
+<p>Coordination costs are activities that are performed in order to assign<br />
+people to tasks, schedule events, or coordinate the work of two or more<br />
+people toward a common outcome.</p>
+<p>Failure load</p>
+<ul>
+	<li>is new value-added work that is generated because of some</li>
+	<li>earlier failing, such as a defect in the software, or a poor design or imple-</li>
+	<li>mentation that led to lack of customer adoption, a failure to realize a</li>
+	<li>target payoff function, or a significant rise in help desk calls or service</li>
+	<li>requests.</li>
+</ul>
+<ul>
+	<li>uses capacity that could be used for new, innovative, additional customer-valued, and revenue-generating features.</li>
+	<li></li>
+	<li>demand generated by the customer that might have been avoided through higher quality delivered earlier.</li>
+</ul>
+<ul>
+	<li>eg help desk calls</li>
+	<li></li>
+	<li>adds value that should have been there already</li>
+</ul>
+<p>= Review</p>
+<p>= Recite (blog articles)</p>
+<p>= MS notes</p>
+<p>15 days per week<br />
+30 days per fortnight<br />
+60 days per month</p>
+<p>30 days / 5 clients (inc FlexShop) = 6 days per client per fortnight</p>
+<p>2 people work for 3 days then release?</p>
+<p>How many per release?</p>
+<p>Can we use the LightHouse search &amp; <span class="caps">CSV</span> exports for metrics?</p>
+<p>Instead of calculating the time spent on each client &#8211; allocate time &amp; dont exceed.</p>
+<p>Triage &amp; limit ticket backlog per client 12 days/month, 36 days/</p>
+<p>Action plan:<br />
+1. Agree a set of goals<br />
+2. Map the value stream<br />
+3. Define a set of work item types based on the types of work requests<br />
+4. Analyze the demand for each work item type<br />
+5. Meet with the upstream and downstream stakeholders—this might be</p>
+<ul>
+	<li>one big meeting, or it might be lots of little meetings. (Explained in more</li>
+	<li>depth later in this chapter.)</li>
+	<li>a.	 Discuss policies around capacity of the piece of the value stream you want</li>
+	<li>to control and get agreement on a <span class="caps">WIP</span> limit (explained in chapter 10).</li>
+	<li>b.	 Discuss and agree on an input-coordination mechanism, such as a</li>
+	<li>regular prioritization meeting, with the upstream partners (explained</li>
+	<li>in chapter 9).</li>
+	<li>c.	 Discuss and agree on a release/delivery-coordination mechanism,</li>
+	<li>such as a regular software release, with the downstream partners</li>
+	<li>(explained in chapter 8).</li>
+	<li>d.	 You may need to introduce the concept of different classes of service</li>
+	<li>for work requests (explained in chapter 11).</li>
+	<li>e.	 Agree on a lead-time target for each class of service of work items.</li>
+	<li>This is known as a service-level agreement (<span class="caps">SLA</span>), and is explained in</li>
+	<li>chapter 11.<br />
+6. Stand up at card wall.</li>
+	<li>Nothing should change in work arrangements apart from:</li>
+	<li>- accept <span class="caps">WIP</span> limit</li>
+	<li>- pull work based on class-of-service policy<br />
+7. Monthy ops meeting</li>
+</ul>
+<p><span class="caps">WIP</span> is code not deployed to production; the corollary of which is that to reduce<br />
+<span class="caps">WIP</span> you must increase the frequency of production deployments.</p>
+<p>Allocate work based on demand analysis<br />
+- UI changes (10%)<br />
+- Bug (50%)<br />
+- Feature (30%)<br />
+- Support request (10%)</p>
+<p>How to perform a demand analysis?<br />
+- Fetch 1,000 random tickets from LightHouse<br />
+- Categorise based on tag (foc, bug, post deploy issue)</p>
+<p>Limit number of open tickets by client<br />
+replenish Q at weekly meeting</p>
+<ul>
+	<li>(requires a single point of contact between customer and client manager)</li>
+	<li>may also need a developer on-hand</li>
+</ul>
+<p>Board wall</p>
+<ul>
+	<li>| backlog | started | staging | production <br />
+Support  |<br />
+Bug      |<br />
+Feature  |<br />
+UI       |</li>
+</ul>
+<p>Or use client instead of class of service?</p>
+<p>Move all new ticket creation to weekly client meeting</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/kanban_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

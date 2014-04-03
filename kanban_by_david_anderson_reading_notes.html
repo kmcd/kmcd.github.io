@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/kanban_by_david_anderson_reading_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Kanban by David Anderson reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Kanban by David Anderson reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Monday, January 17, 2011.</p>
+
+<div class='content'>                                 
+   <h2><a href="http://agilemanagement.net/index.php/site/kanbanbook/">Kanban by David Anderson is available to purchase on his website</a></h2>
+<h2>What is a Kanban method?</h2>
+<p>Kanban means signal card in Japansese. It represents a unit of capacity in a system. It can also be a signalling mechanism, eg plane ticket (providing direction/instruction). A kanban system can be used to:</p>
+<ul>
+	<li>limit a team’s work-in-progress</li>
+	<li>set capacity</li>
+	<li>balance the demand against the throughput of delivered work.</li>
+	<li>enforce a sustainable pace of development</li>
+	<li>ensure work versus personal life balance.</li>
+</ul>
+<h2>Recipe for success from Goldratt&#8217;s Theory of contraints</h2>
+<ol>
+	<li>Visualize Workflow</li>
+	<li>Limit Work-in-Progress</li>
+	<li>Measure and Manage Flow</li>
+	<li>Make Process Policies Explicit</li>
+	<li>Use Models to Recognize Improvement Opportunities</li>
+</ol>
+<p>Excessive defects are the biggest waste in software development. Therefore focus on quality to reduce waste. Quality improvement techniques include:</p>
+<ul>
+	<li>pair programming / <span class="caps">TDD</span> / refactoring</li>
+	<li>Code inspection (every day for 30 mins)</li>
+	<li>Collaborative team analysis and design modeling sessions (Scott Ambler, Agile modelling)</li>
+	<li>Code metrics tools</li>
+	<li>Automated acceptance testing</li>
+	<li>Server monitoring</li>
+	<li>Automation</li>
+</ul>
+<p>Reduce Work-in-Progress and Deliver Often Frequent Releases Build Trust.</p>
+<h2>Balance Demand against Throughput</h2>
+<ul>
+	<li>set the rate at which we accept new requirements into our software development</li>
+	<li>pipe to correspond with the rate at which we can deliver working code</li>
+	<li>You need slack to enable continuous improvement. In order to have slack, you</li>
+	<li>must have an unbalanced value stream with a bottleneck resource. Optimizing</li>
+	<li>for utilization is not desirable. (Queing theory, road traffic)</li>
+</ul>
+
+<h2>Starting a Kanban change initiative</h2>
+<ol>
+	<li>Agree on a set of goals for introducing Kanban.</li>
+	<li>Map the value stream</li>
+	<li>Define some point where you want to control input.</li>
+	<li>Define some exit point beyond which you do not intend to control.</li>
+	<li>Define a set of work item types based on the types of work requests</li>
+	<li>Analyze the demand for each work item type.</li>
+	<li>Meet with the upstream and downstream stakeholders to agree to <span class="caps">WIP</span> limit, regular prioritization meeting, regular fixed date release and a lead-time target for each class of service of work item.</li>
+	<li>Create a board/card wall to track the value stream you are controlling</li>
+	<li>Optionally, create an electronic system to track and report the same</li>
+	<li>Agree with the team to have a standup meeting every day in front of the board;</li>
+	<li>Educate the team on the new board, <span class="caps">WIP</span> limits, and the pull system.</li>
+	<li>Their process hasn’t changed, other than your asking them to accept a <span class="caps">WIP</span> limit and to pull work based on class-of-service policy rather than</li>
+	<li>receiving it in a push fashion.</li>
+</ol>
+<h2>Coordination</h2>
+<p>Daily Standup Meetings</p>
+<ul>
+	<li>focus on flow of work (rather than Scrum&#8217;s 3 questions)</li>
+	<li>in particular try to reslove impediments</li>
+	<li>Triage work; assessing and classifying into categories for priority of attention</li>
+</ul>
+<p>Reviewing &amp; resolving impediments issues is vital to improving flow through the system.</p>
+<h2>Synchronizing across Geographic Locations</h2>
+<ul>
+	<li>electronic system</li>
+	<li>keep physical card walls synchronized, at the very least, on a daily basis.</li>
+</ul>
+<p>When the telecommuter completed an item and changed its electronic status, they<br />
+would contact their sticky buddy by instant message, email, or phone and ask them to update the physical board.</p>
+<h2>Release planning</h2>
+<ul>
+	<li>Which items in the system are (or will be) ready for release?</li>
+	<li>What is required to actually release each item to production?</li>
+	<li>What testing will be required post-release to validate the integrity of production systems?</li>
+	<li>What risks are involved?</li>
+	<li>How are these risks being mitigated?</li>
+	<li>What contingency plans are required?</li>
+	<li>Who needs to be involved in the release and present during the push to production (or other delivery mechanism)?</li>
+	<li>How long will the release take?</li>
+	<li>What other logistics will be involved?</li>
+</ul>
+<h2>Establishing Service Level Agreements</h2>
+<p>Customers who pay more or who spend money with the airline on a regular<br />
+basis enjoy a better class of service.</p>
+<p>Classes of service provide us a convenient way of classifying work to provide acceptable levels of customer satisfaction at an economically optimal cost. By quickly identifying the class of service for an item, we are spared the need to make a detailed estimate or analysis.</p>
+<h2>Classes of service or work item types</h2>
+<ul>
+	<li>High severity, high priority defects are fixed immediately. They receive a different, higher, class of service than other work. To fix a high-severity production defect, we put other work aside, pull in as many people as we require.</li>
+</ul>
+<ul>
+	<li>The Expedite (or “Silver Bullet”) <br />
+<span class="caps">AKA</span> <span class="caps">ASAP</span>. Manufacturing companies often create policy to limit the number of expedite requests that hit a factory.</li>
+</ul>
+<ul>
+	<li>Fixed date</li>
+	<li>Standard</li>
+	<li>Intangaible (eg devliverable dates far in the future, refactoring)</li>
+</ul>
+<p>Offering a target lead time coupled with a due-date performance metric is an alternative to treating each item individually and having to estimate and commit to a delivery date for each item.</p>
+<p>The service-level agreement allows us to avoid costly activities, such as<br />
+estimation; low-trust activities, such as making commitments; and to spread risk by aggregating a large collection of requests and promising only aggregate performance in the form of a percentage due-date performance.</p>
+<p>It is important to communicate that the target lead time in the Standard class of service is just that, a target!</p>
+<p>The Expedite and Fixed Delivery Date classes of service were ensuring that important items were always on time.</p>
+<p>Due Date Performance (percentage) should be monitored for target lead times.</p>
+<p>If classes of service are used properly and combined with a regular delivery cadence, very few complaints are likely to be received, even if a significant portion of items miss their target lead time.</p>
+<h2>Metrics</h2>
+<p>Measure</p>
+<ul>
+	<li><span class="caps">WIP</span> (cumulative flow, or use board)</li>
+	<li>Lead time against each class of service</li>
+	<li>Due Date Performance for fixed date items</li>
+	<li>Throughput<br />
+- number of items delivered in a given time period, such as one month.<br />
+- should increase as time goes by<br />
+- indicator of how well the system is performing, demonstrate continuous improvement.</li>
+	<li>Issues and Blocked Work Items<br />
+cumulative-flow diagram of reported impediments overlaid with a graph of the number of work-in-progress items that have become blocked,</li>
+</ul>
+<p>Initial Quality</p>
+<ul>
+	<li>number of escaped defects as a percentage against the total <span class="caps">WIP</span> and throughput</li>
+	<li>bugs per feature</li>
+</ul>
+<p>Failure Load, how many work items:</p>
+<ul>
+	<li>we process because of earlier poor quality—</li>
+	<li>are production defects / new features to overcome to mitigate existing shortcoming</li>
+	<li>causes inclucde poor usability or a failure to anticipate user needs properly.</li>
+	<li>shows capacity left on the table that could be used for new, value-added features.</li>
+</ul>
+<h2>Operations review</h2>
+<p>Objective, data-driven retrospective on the organization’s performance. Sets an expectation of objective, data-driven, quantitative management</p>
+<p>Should be performed monthly at a time boxed meeting.</p>
+<p>You will need to allow time to prepare data. Ideally this data would be generated automatically.</p>
+<h2>Economic model</h2>
+<p>Waste can be classified into three main abstract categories: transaction costs, coordination costs, and failure load.</p>
+<p>To determine if an activity is truly wasteful ask, “Would we do more of this if we could?” If the answer is no, then the activity is some form of waste.</p>
+<p>Transaction costs come in two types: setup activities and cleanup, or delivery activities.</p>
+<p>Coordination costs are activities that are performed in order to assign people to tasks, schedule events, or coordinate the work of two or more people toward a common outcome.</p>
+<h2>Failure load</h2>
+<ul>
+	<li>is new value-added work that is generated because of some earlier failing, such as a defect in the software, or a poor design or implementation that led to lack of customer adoption, a failure to realize a target payoff function, or a significant rise in help desk calls or service requests.</li>
+	<li>uses capacity that could be used for new, innovative, additional customer-valued, and revenue-generating features.</li>
+	<li>demand generated by the customer that might have been avoided through higher quality delivered earlier.</li>
+	<li>eg help desk calls</li>
+	<li>adds value that should have been there already</li>
+</ul>
+<h2><a href="http://agilemanagement.net/index.php/site/kanbanbook/">Kanban by David Anderson is available to purchase on his website.</a></h2>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/kanban_by_david_anderson_reading_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+</html>

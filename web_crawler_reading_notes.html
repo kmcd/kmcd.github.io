@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/web_crawler_reading_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Web Crawler reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Web Crawler reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Thursday, February 17, 2011.</p>
+
+<div class='content'>                                 
+   <p>Reading notes from <a href="http://www.cse.iitb.ac.in/soumen/mining-the-web">Mining the Web, Discovering Knowledge from Hypertext Data</a> by <a href="http://www.cse.iitb.ac.in/~soumen">Soumen Chakrabarti</a></p>
+<h2>I wrote a <a href="https://github.com/kmcd/web_crawler">prototype web crawler in Ruby</a> .</h2>
+<p>A large scale crawler fetches concurrently as many web pages as possible. The crawler should:<br />
+1. Resolving the hostname in the <span class="caps">URL</span> to an IP address using <span class="caps">DNS</span><br />
+2. Connecting a socket to the server and sending the request<br />
+3. Receiving the requested page in response</p>
+<p>Because a single page fetch may involve several seconds of network latency, it<br />
+is essential to fetch many pages (typically hundreds to thousands) at the same<br />
+time to utilize the network bandwidth available.</p>
+<p>Many simultaneous fetches are possible only if the <span class="caps">DNS</span> lookup is streamlined<br />
+to be highly concurrent, possibly replicated on a few <span class="caps">DNS</span> servers.</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/en/b/b2/WebCrawlerArchitecture.png" alt="" /></p>
+<p>Multiprocessing or multithreading provided by the operating system is not the<br />
+best way to manage the multiple fetches owing to high overheads. The best<br />
+bet is to explicitly encode the state of a fetch context in a data structure and<br />
+use asynchronous sockets, which do not block the process/thread using it, but<br />
+can be polled to check for completion of network transfers.</p>
+<p>Care is needed to extract URLs and eliminate duplicates to reduce redundant<br />
+fetches and to avoid “spider traps”—hyperlink graphs constructed carelessly<br />
+or malevolently to keep a crawler trapped in that graph, fetching what can<br />
+potentially be an infinite set of “fake” URLs.</p>
+<p>A canonical <span class="caps">URL</span> is formed by:<br />
+1. A standard string is used for the protocol (most browsers tolerate Http, which<br />
+should be converted to lowercase, for example).<br />
+2. The hostname is canonicalized as mentioned above.<br />
+3. An explicit port number is added if necessary.<br />
+4. The path is normalized and cleaned up, for example, /books/../papers<br />
+/sigmod1999.ps simplifies to /papers/sigmod1999.ps.</p>
+<p>It is easiest to start building a crawler with a core whose only responsibility is to copy bytes from network sockets to storage media.</p>
+<pre>
+class Crawler {
+* void setDnsTimeout(int milliSeconds);
+* void setHttpTimeout(int milliSeconds);
+* void fetchPush(const string&amp; url);
+* virtual boolean fetchPull(string&amp; url); // set url, return success
+* virtual void fetchDone(const string&amp; url,
+* const ReturnCode returnCode, // timeout, server not found, ...
+* const int httpStatus,
+* // 200, 404, 302, ...
+* const hash_map&lt;string, string&gt;&amp; mimeHeader,
+* // Content-type = text/html
+* // Last-modified = ...
+* const unsigned char * pageBody,
+* const size_t pageSize);
+};
+</pre>
+<h2>Implementation of the Crawler class.</h2>
+<p>We will need two helper classes called <span class="caps">DNS</span> and Fetch. Crawler is started with a fixed set of <span class="caps">DNS</span> servers.</p>
+<p>For each server, a <span class="caps">DNS</span> object is created. Each <span class="caps">DNS</span> object creates a <span class="caps">UDP</span> socket with its assigned <span class="caps">DNS</span> server as the destination.</p>
+<p>The most important data structure included in a <span class="caps">DNS</span> object is a list of Fetch <br />
+contexts waiting for the corresponding <span class="caps">DNS</span> server to respond</p>
+<pre>
+class DNS {
+* list&lt;Fetch*&gt; waitForDns;
+}
+
+Crawler::start()
+
+while event loop has not been stopped do
+* if not enough active Fetches to keep system busy then
+*    try a fetchPull to replenish the system with more work
+*    if no pending Fetches in the system then
+*       stop the event loop
+*    end if
+* end if
+* 
+* if not enough Http sockets busy and there is a Fetch f in waitForHttp whose server IP address busyServers then
+*    remove f from waitForHttp
+*    lock the IP address by adding an entry to busyServers (to be polite to the server)
+*    change f.state to STATE_HTTP_SEND
+*    allocate an Http socket s to start the Http protocol
+*    set the Http timeout for f
+*    set httpSockets[s] to the Fetch pointer
+*    continue the outermost event loop
+* end if
+* 
+* if the shortest waitForDns is “too short” then
+*    remove a URL from the head of waitForIssue
+*    create a Fetch object f with this URL
+*    issue the DNS request for f
+*    set f.state to STATE_DNS_RECEIVE
+*    set the DNS timeout for f
+*    put f on the laziest DNS’s waitForDns
+*    continue the outermost event loop
+* end if
+* 
+* collect open SocketIDs from dnsSockets and httpSockets
+*    also collect the earliest deadline over all active Fetches
+*    perform the select call on the open sockets with the earliest deadline
+* as timeout
+* 
+* if select returned with a timeout then
+*    for each expired Fetch record f in dnsSockets and httpSockets do
+*       remove f
+*       invoke f.fetchDone(...) with suitable timeout error codes
+*       remove any locks held in busyServers
+*    end for
+* else
+*    find a SocketID s that is ready for read or write
+*    locate a Fetch record f in dnsSockets or httpSockets that was waiting on s
+*    
+*    if a DNS request has been completed for f then
+*       move f from waitForDns to waitForHttp
+*    else
+*       if socket is ready for writing then
+*          send request
+*          change f.state to STATE_HTTP_RECEIVE
+*       else
+*          receive more bytes
+*          if receive completed then
+*             invoke f.fetchDone(...) with successful status codes
+*             remove any locks held in busyServers
+*             remove f from waitForHttp and destroy f
+*          end if
+*       end if
+*    end if
+* end if
+end while
+</pre>
+<p>See also:</p>
+<ul>
+	<li><a href="http://en.wikipedia.org/wiki/Web_crawler">http://en.wikipedia.org/wiki/Web_crawler</a></li>
+	<li>http://blog.marc-seeger.de/2010/12/09/my-thesis-building-blocks-of-a-scalable-webcrawler</li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/web_crawler_reading_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

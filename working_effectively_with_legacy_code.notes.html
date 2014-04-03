@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/working_effectively_with_legacy_code.notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Working effectively with legacy code reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Working effectively with legacy code reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Thursday, April 04, 2013.</p>
+
+<div class='content'>                                 
+   <p>Create a seperate branch for annotation &amp; refactoring</p>
+<p>Understanding code techniques</p>
+<ul>
+	<li>Notes / sketching</li>
+	<li>Code comments</li>
+	<li>Experimental refactoring (moving around, raising)</li>
+	<li>Delete unused code</li>
+	<li>The Legacy Code Change Algorithm</li>
+	<li>Identify change points.</li>
+	<li>Find test points.</li>
+	<li>Break dependencies.</li>
+	<li>Write tests.</li>
+	<li>Make changes and refactor.</li>
+	<li>Breaking dependencies</li>
+	<li>Use fake/mock objects to test dependent code</li>
+	<li>How do I know I&#8217;m not breaking things?</li>
+	<li>&#8220;Programming is the art of doing one thing at a time&#8221; =&gt; limit <span class="caps">WIP</span></li>
+	<li>Hyperaware editing</li>
+	<li>Preserve method signatures</li>
+	<li>Seam</li>
+	<li>a place where you can alter behavior in your program without editing in that place.</li>
+	<li>eg</li>
+	<li></li>
+	<li>def foo</li>
+	<li>puts &#8216;foo&#8217;</li>
+	<li>bar # Seam</li>
+	<li>end</li>
+	<li></li>
+	<li>Why not use mocks/stubs instead?</li>
+	<li>Single-Responsibility Principle (<span class="caps">SRP</span>)</li>
+	<li>Every class should have a single responsibility: It should have a single</li>
+	<li>purpose in the system, and there should be only one reason to change it.</li>
+	<li>Similar to <span class="caps">SLAP</span> (Single Level of Abstraction Principle)</li>
+	<li>eg method that calculates, formats &amp; prints a report should be decomposed</li>
+	<li>into calc, format, print methods.</li>
+	<li>Sprout method =&gt; composed method</li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/working_effectively_with_legacy_code.notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

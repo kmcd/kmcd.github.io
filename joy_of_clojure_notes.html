@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/joy_of_clojure_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Joy of clojure reading notes</title>
+   </head>
+   <body class='show'>
+      <h1>Joy of clojure reading notes</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Wednesday, June 06, 2012.</p>
+
+<div class='content'>                                 
+   <p>= Questions</p>
+<p>What are protocols &amp; multimethods ?</p>
+<p>How much do I need to get going?</p>
+<ul>
+	<li>ch 4-11</li>
+	<li>What is the default project structure?</li>
+	<li>See leiningen</li>
+	<li>Any good screen casts?</li>
+	<li>Dont bother &#8211; you learn more quickly from reading &amp; experimenting</li>
+</ul>
+<p>= Action points</p>
+<p>Read the source code for stockings</p>
+<p>Find out how to use leiningen</p>
+<p>= Notes</p>
+<p>Exponent notation:</p>
+<ul>
+	<li>366e-1 =&gt; 36.6</li>
+	<li>Rationals</li>
+	<li>22/7 =&gt; 22.7</li>
+	<li>100/5 =&gt; 20 (simplified if they leave a whole number)</li>
+	<li>Lists</li>
+	<li>&#8217;(1 2 3)  ;; need quote to create a list</li>
+	<li>Vectors</li>
+	<li>evaluated in order</li>
+	<li>[1 2 3]</li>
+	<li>Maps</li>
+	<li>like hash/dictionary/associative array</li>
+	<li>doesn&#8217;t like single quotes</li>
+	<li></li>
+	<li>{ 1 &#8220;one&#8221;, 2 &#8220;two&#8221; }</li>
+	<li>Sets</li>
+	<li>#{}</li>
+	<li>Functions</li>
+	<li>[anon func]        [args]</li>
+	<li>( (fn [x y] #{x y})   1 2)</li>
+</ul>
+<ul>
+	<li></li>
+	<li>The way to denote variable arguments is to use the &amp; symbol followed by a symbol.</li>
+	<li></li>
+	<li>(defn make-a-set</li>
+	<li>&#8220;Takes either one or two values and makes a set from them&#8221;</li>
+	<li>([x]</li>
+	<li>#{x})</li>
+	<li>([x y] #{x y}))</li>
+	<li></li>
+	<li>Pass arg to anon func:</li>
+	<li>(def make-list #( list %1 ) )</li>
+	<li></li>
+	<li>Pass optional args to anon func:</li>
+	<li>(def make-a-list3+ #(list %1 %2 %3 %&amp;))</li>
+</ul>
+<p>Variables</p>
+<ul>
+	<li>(def x 42)</li>
+	<li></li>
+	<li>other threads will view the same root binding (for x var) by default</li>
+	<li></li>
+	<li>immutable vars:</li>
+	<li></li>
+	<li>(let</li>
+	<li>[r 5</li>
+	<li>pi 3.1415</li>
+	<li>r-squared (* r r)]</li>
+	<li></li>
+	<li>(println &#8220;radius is&#8221; r)</li>
+	<li>(* pi r-squared))</li>
+	<li>Loops</li>
+	<li>Use tail recursion</li>
+	<li></li>
+	<li>(defn print-down-from [x]</li>
+	<li>(when (pos? x)</li>
+	<li>(println x)</li>
+	<li>(recur (dec x))))</li>
+	<li></li>
+	<li>the reasons to use when are:</li>
+	<li>No else-part is associated with the result of a conditional.</li>
+	<li>You require an implicit do in order to perform side-effects.</li>
+</ul>
+<ul>
+	<li>inverse is true for if statement</li>
+</ul>
+<ul>
+	<li>A recur always loops back to the closest enclosing loop or fn</li>
+	<li></li>
+	<li>(defn sum-down-from [initial-x]</li>
+	<li>(loop [sum 0, x initial-x]</li>
+	<li>(if (pos? x)</li>
+	<li>(recur (+ sum x) (dec x))</li>
+	<li>sum)))</li>
+</ul>
+
+<ul>
+	<li>The recur form can only appear in the tail position of a func-</li>
+	<li>tion or loop.</li>
+	<li></li>
+	<li>(defn absolute-value [x]</li>
+	<li>(if (pos? x)</li>
+	<li>x ; &#8220;then&#8221; clause</li>
+	<li>(- x))) ; &#8220;else&#8221; clause</li>
+</ul>
+<ul>
+	<li>The if form is in the function’s tail position because whatever it returns, the whole</li>
+	<li>function will return.</li>
+	<li></li>
+	<li>But the x in the “else” clause is not in the function’s tail position because the value of x</li>
+	<li>is passed to the &#8211; function, not returned directly.</li>
+</ul>
+<p>quote special form prevents its argument, and all of its sub-<br />
+forms, from being evaluated.</p>
+<p>Java</p>
+<ul>
+	<li>java.util.Locale/<span class="caps">JAPAN</span></li>
+	<li>(Math/sqrt 9)</li>
+	<li>java.util.Locale/<span class="caps">JAPAN</span></li>
+	<li></li>
+	<li>(new java.util.HashMap {&quot;foo&quot; 42 &#8220;bar&#8221; 9 &#8220;baz&#8221; &quot;quux&quot;})</li>
+	<li>abbrev:</li>
+	<li>(java.util.HashMap. {&quot;foo&quot; 42 &#8220;bar&#8221; 9 &#8220;baz&#8221; &quot;quux&quot;})</li>
+	<li></li>
+	<li>Access intance properties:</li>
+	<li>(.x (java.awt.Point. 10 20))</li>
+</ul>
+<ul>
+	<li>Pass additional args:</li>
+	<li>(.divide (java.math.BigDecimal. &#8220;42&#8221;) 2M)</li>
+	<li></li>
+	<li>Set instance properties</li>
+	<li>(let [origin (java.awt.Point. 0 0)]</li>
+	<li>(set! (.x origin) 15)</li>
+	<li>(str origin))</li>
+</ul>
+<ul>
+	<li>Method chaining</li>
+	<li>new java.util.Date().toString().endsWith(&#8220;2010&#8221;)</li>
+	<li></li>
+	<li>(.endsWith (.toString (java.util.Date.)) &#8220;2010&#8221;)</li>
+	<li>OR:</li>
+	<li>(.. (java.util.Date.) toString (endsWith &#8220;2010&#8221;))</li>
+</ul>
+<ul>
+	<li>Init instance with propset mutators:</li>
+	<li></li>
+	<li>(doto (java.util.HashMap.)</li>
+	<li>(.put &#8220;<span class="caps">HOME</span>&#8221; &#8220;/home/me&#8221;)</li>
+	<li>(.put &#8220;<span class="caps">SRC</span>&#8221; &#8220;src&#8221;)</li>
+	<li>(.put &#8220;<span class="caps">BIN</span>&#8221; &#8220;classes&#8221;))</li>
+</ul>
+<p>Namespaces</p>
+<ul>
+	<li>(ns joy.req</li>
+	<li>(:require clojure.set))</li>
+	<li></li>
+	<li>(ns joy.req-alias</li>
+	<li>(:require [clojure.set :as s]))</li>
+	<li></li>
+	<li>(s/intersection #{1 2 3} #{3 4 5}</li>
+	<li></li>
+	<li>Using :require indicates that you want the clojure.set namespace loaded, but you</li>
+	<li>don’t want the mappings of symbols to functions in the joy.req namespace.</li>
+</ul>
+<ul>
+	<li>(ns joy.use-ex</li>
+	<li>(:use [clojure.string :only [capitalize]]))</li>
+	<li></li>
+	<li>(map capitalize [&#8220;kilgore&#8221; &#8220;trout&#8221;])</li>
+</ul>
+<ul>
+	<li>The :use directive indicates that only the function capitalize should be mapped in</li>
+	<li>the namespace joy.use-ex.</li>
+</ul>
+<ul>
+	<li>(ns joy.exclusion</li>
+	<li>(:use [clojure.string :exclude [capitalize]]))</li>
+	<li></li>
+	<li>:refer directive that works almost exactly like :use except</li>
+	<li>that it only creates mappings for libraries that have already been loaded:</li>
+	<li></li>
+	<li>(ns joy.yet-another</li>
+	<li>(:refer joy.ch1))</li>
+</ul>
+<ul>
+	<li>(ns joy.yet-another</li>
+	<li>(:refer joy.ch1 :rename {hello hi}))</li>
+</ul>
+<ul>
+	<li>Importing Java classes:</li>
+	<li></li>
+	<li>(ns joy.java</li>
+	<li>(:import [java.util HashMap]</li>
+	<li>[java.util.concurrent.atomic AtomicLong]))</li>
+	<li></li>
+	<li>(HashMap. {&quot;happy?&quot; true})</li>
+</ul>
+<p>Every object is “true” all the time, unless it’s nil or false.</p>
+Destructuring allows us to positionally bind locals
+<p>based on an expected form for a composite data structure.</p>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/joy_of_clojure_notes.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:46 GMT -->
+</html>

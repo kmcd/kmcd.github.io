@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/testing_ruby_system_shell_calls_using_mock_objects.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Testing Ruby system shell calls using Mock objects</title>
+   </head>
+   <body class='show'>
+      <h1>Testing Ruby system shell calls using Mock objects</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Thursday, April 01, 2010.</p>
+
+<div class='content'>                                 
+   <h2>Problem</h2>
+<p>You want to test Ruby code which calls shell commands, e.g.</p>
+<pre>
+  Kernel.system "ls -l"
+  `df -f`
+  %x( du -sh ) 
+</pre>
+<h2>Solution</h2>
+<p>Use mock object expectations to test that the method was called with the correct arguments.</p>
+<pre>
+  def list_files
+*  Kernel.system "ls -l"
+  end
+  
+  require 'test/unit'
+  require 'mocha'
+  
+  class FileListingTestCase &lt; Test::Unit::TestCase
+*  def test_file_listing
+*    Kernel.expects(:system).with "ls -l"
+*    list_files
+*  end
+  end
+</pre>
+<p>Unfortunately, I havn&#8217;t been able to find a way to test the backtick <code>`ls -l`</code> or macro <code>%x( ls -l )</code> with mocks. So you must use <code>Kernel.system</code> which isn&#8217;t as pretty as the backtick or macro options.</p>
+<h2>Further reading</h2>
+<ul>
+	<li><a href="http://mocha.rubyforge.org/">Mocha</a> A straightforward mock &amp; stub library for Ruby</li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/testing_ruby_system_shell_calls_using_mock_objects.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:47 GMT -->
+</html>

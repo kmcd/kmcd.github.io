@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   
+<!-- Mirrored from www.keithmcdonnell.net/setting_up_a_new_rails_app_with_git.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <link href="dancingtext.css" rel="stylesheet" type="text/css" media="screen"/>
+      <title>Setting up a new Rails app with Git</title>
+   </head>
+   <body class='show'>
+      <h1>Setting up a new Rails app with Git</h1>
+
+<p class='author'>Written by <a href="index.html">Keith McDonnell</a>. Last updated on 
+Tuesday, January 15, 2008.</p>
+
+<div class='content'>                                 
+   <p>For the purposes of this tutorial I&#8217;ll assume you have a working <strong><span class="caps">UNIX</span> like operating system</strong>, such as Linux or Apple Mac OS X. You can also use cygwin for windows but you <em>really should</em> <a href="http://farm1.static.flickr.com/87/240803829_9212773615_o.png">get a better computer</a> .</p>
+<p>Also, a package manager (such as apt or yum) for your operating system will be invaluable if you have to install new software, otherwise you&#8217;ll have to download, compile &amp; install from source (no thanks).</p>
+<h2>Install packages</h2>
+<p>If you haven&#8217;t already, you&#8217;ll need to install the following software (on Ubuntu 8.10):</p>
+<ol>
+	<li>Ruby 1.8 <code>$ sudo apt-get install -Y ruby1.8-dev ruby1.8 ri1.8 rdoc1.8 irb1.8 libreadline-ruby1.8 libruby1.8</code></li>
+	<li>Ruby gems <code>$ sudo apt-get install -Y rubygems1.8</code></li>
+	<li>rails <code>$ sudo gem install rails sqlite</code></li>
+	<li>git <code>$ sudo apt-get install -Y git-core</code></li>
+</ol>
+<h2>Setup a new rails app with git source control</h2>
+<p>Create a brand new rails application <code>$ rails APP_NAME</code><br />
+Then Change into the root directory <code>$ cd APP_NAME</code><br />
+Ensure git ignores generated files</p>
+<pre>
+  $ touch .gitignore
+  $ touch log/.gitignore
+  $ touch tmp/.gitignore
+</pre>
+<p>Add these files to .gitignore</p>
+<pre>
+  log/*.log
+  tmp/**/*
+  .DS_Store
+  doc/api
+  doc/app
+</pre>
+
+<p>Add all files <code>$ git add .</code>, and then commit <code>$ git commit -m "Starting new app"</code></p>
+<p>Congratulations! You&#8217;re now good to go with git &amp; rails.</p>
+<p>Optionally, you can freeze your version of rails: Use <code>rake rails:freeze:gems</code> to use the latest version of rails in your gem repository OR you can use a specific release with <code>rake rails:freeze:edge RELEASE=1.2.0</code></p>
+<p>All your work thusfar has been saved on your computer. So how do you share your work with others? You&#8217;ll have to create a shared repository. You can store your shared repository on a server and access it via <span class="caps">SSH</span> or use a hosted service such as <a href="http://github.com/">github</a> or <a href="http://unfuddle.com/">unfuddle</a> .</p>
+<h2>A day in the life of a rails git project</h2>
+<ul>
+	<li>Setup local git repository (see main section above)</li>
+	<li>Setup remote git repository (see sharing your work section above)</li>
+	<li>Edit files, run tests etc.</li>
+	<li>Use <code>git status</code> or <code>git diff --color</code> to see what you&#8217;ve changed</li>
+	<li>Add all files with <code>git add .</code> or add specific files using <code>git add [FILENAME] [FILENAME] ...</code>.</li>
+	<li>Commit your work: <code>git commit -m 'COMMIT MESSAGE'</code></li>
+	<li>Share your work (assuming you have a remote repository set up) <code>git push origin master</code></li>
+	<li>Fetch lastest changes from remote repository <code>git pull origin master</code></li>
+</ul>
+<h2>References</h2>
+<ul>
+	<li><a href="http://railscasts.com/episodes/96-git-on-rails">Railcasts git screencast</a></li>
+	<li><a href="http://gitcasts.com/">GitCasts</a></li>
+	<li><a href="http://wiki.sourcemage.org/Git_Guide">SourceMage git guide</a></li>
+	<li><a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">Git users manual</a></li>
+</ul>
+</div>
+
+<p class='comments'>
+   If you&apos;d like to discuss this article, you can send me an email 
+   <a href="mailto:&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;">&#107;&#101;&#105;&#116;&#104;&#64;&#100;&#97;&#110;&#99;&#105;&#110;&#103;&#116;&#101;&#120;&#116;&#46;&#99;&#111;&#109;</a> and/or 
+   publish an article online and link back to this page.
+</p>
+
+      
+      <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-8421111-1");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      
+      
+      <p class='copyright'>
+         <a href="http://creativecommons.org/licenses/by-sa/2.5/">Copyright &copy;</a>
+         2006 - 2014, 
+         <a href="index.html">Keith McDonnell</a>.
+      </p>
+      
+   </body>
+
+<!-- Mirrored from www.keithmcdonnell.net/setting_up_a_new_rails_app_with_git.html by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 03 Apr 2014 18:49:48 GMT -->
+</html>

@@ -1,7 +1,7 @@
 .sales { 
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 750px;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  /* max-width: 750px; */
   font-family: Charter, 'Hoefler Text', Cambria, Georgia, Times New Roman, serif;
   font-size: 19px;
   line-height: 29px;
@@ -23,8 +23,8 @@ blockquote, .case-study { margin: 1.6em; }
 .cta a { text-decoration: underline; }
 
 blockquote img { 
-width: 50px;
-height: 50px;
+  width: 50px;
+  height: 50px;
   margin-left: 0.6em;
   border-radius: 150px;
   -webkit-border-radius: 150px;
@@ -67,3 +67,7 @@ z-index: 0;
 .well { background-color: ghostwhite; }
 .fa-check-circle-o { color: limegreen; }
 .fa-question-circle { color: gold; }
+
+a { text-decoration: underline; }
+a, a:hover { color: blue; }
+a:visited { color: indigo; }
